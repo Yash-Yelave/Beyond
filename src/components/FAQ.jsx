@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const FAQ = () => {
   const [openIndex, setOpenIndex] = useState(null);
@@ -23,8 +24,14 @@ const FAQ = () => {
   };
 
   return (
-    <div className="w-full bg-slate-50 py-16 px-4">
-      <div className="max-w-4xl mx-auto">
+    <section className="w-full bg-slate-50 py-16 px-4">
+      <motion.div 
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+        className="max-w-4xl mx-auto"
+      >
         <h2 className="text-4xl font-bold text-center text-slate-900 mb-8">
           WISDOM Framework & General FAQs
         </h2>
@@ -48,25 +55,39 @@ const FAQ = () => {
                 onClick={() => toggleAccordion(index)}
               >
                 <span className="font-semibold text-lg text-slate-900">{faq.question}</span>
-                <span className="text-slate-500 ml-4 text-2xl font-light">
+                <motion.span 
+                  animate={{ rotate: openIndex === index ? 180 : 0 }}
+                  transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                  className="text-slate-500 ml-4 text-2xl font-light"
+                >
                   {openIndex === index ? '−' : '+'}
-                </span>
+                </motion.span>
               </button>
               
-              <div 
-                className={`transition-all duration-300 ease-in-out ${
-                  openIndex === index ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
-                } overflow-hidden`}
-              >
-                <div className="px-6 pb-6 text-slate-600 text-lg leading-relaxed">
-                  {faq.answer}
-                </div>
-              </div>
+              <AnimatePresence initial={false}>
+                {openIndex === index && (
+                  <motion.div 
+                    initial="collapsed"
+                    animate="open"
+                    exit="collapsed"
+                    variants={{
+                      open: { opacity: 1, height: "auto" },
+                      collapsed: { opacity: 0, height: 0 }
+                    }}
+                    transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                    className="overflow-hidden"
+                  >
+                    <div className="px-6 pb-6 text-slate-600 text-lg leading-relaxed">
+                      {faq.answer}
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
           ))}
         </div>
-      </div>
-    </div>
+      </motion.div>
+    </section>
   );
 };
 
