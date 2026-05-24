@@ -1,8 +1,14 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 
 const Header = () => {
   return (
-    <header className="w-full bg-slate-900 py-5 px-6 md:px-12 flex items-center justify-between sticky top-0 z-50 shadow-md">
+    <motion.header 
+      initial={{ y: -50, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+      className="w-full bg-slate-900 py-5 px-6 md:px-12 flex items-center justify-between sticky top-0 z-50 shadow-md"
+    >
       <div className="text-white font-bold text-2xl tracking-widest uppercase">
         Beyond
       </div>
@@ -14,11 +20,15 @@ const Header = () => {
         <a href="#wisdom" className="hover:text-white transition-colors">Wisdom</a>
       </nav>
       <div>
-        <button className="border border-white text-white px-6 py-2.5 rounded-full hover:bg-white hover:text-slate-900 transition-colors font-semibold text-sm">
+        <motion.button 
+          whileHover={{ scale: 1.03 }}
+          whileTap={{ scale: 0.97 }}
+          className="border border-white text-white px-6 py-2.5 rounded-full hover:bg-white hover:text-slate-900 transition-colors font-semibold text-sm"
+        >
           Bespoke Request
-        </button>
+        </motion.button>
       </div>
-    </header>
+    </motion.header>
   );
 };
 
