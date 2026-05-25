@@ -42,10 +42,11 @@ export default function FeaturedProjectsSlider() {
                   <video
                     className="w-full h-full object-cover"
                     src={project.videoSrc}
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
+                    autoPlay={true}
+                    loop={true}
+                    muted={true}
+                    defaultMuted={true}
+                    playsInline={true}
                   />
                 </div>
                 <h3 className="text-lg font-bold text-slate-900">
