@@ -3,6 +3,7 @@ import Header from './components/Header';
 import Hero from './components/Hero';
 import MetricsBanner from './components/MetricsBanner';
 import Portfolio from './components/Portfolio';
+import MissionVision from './components/MissionVision';
 import EcosystemPillars from './components/EcosystemPillars';
 import CommunityReel from './components/CommunityReel';
 import FAQ from './components/FAQ';
@@ -17,6 +18,7 @@ function App() {
         <Hero />
         <MetricsBanner />
         <Portfolio />
+        <MissionVision />
         <EcosystemPillars />
         <CommunityReel />
         <FAQ />
