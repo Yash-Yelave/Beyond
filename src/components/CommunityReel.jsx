@@ -43,8 +43,7 @@ export default function CommunityReel() {
           {reels.map((reel, i) => (
             <div
               key={i}
-              className="relative bg-slate-800 rounded-2xl overflow-hidden cursor-pointer group"
-              style={{ aspectRatio: '9/16' }}
+              className="relative aspect-video bg-slate-800 rounded-2xl overflow-hidden cursor-pointer group"
             >
               {/* Gradient overlay */}
               <div className="absolute inset-0 bg-gradient-to-b from-slate-900/10 via-transparent to-slate-900/70" />
