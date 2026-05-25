@@ -1,4 +1,8 @@
 import React from 'react';
+import { motion } from 'framer-motion';
+
+const EASE = [0.25, 0.1, 0.25, 1];
+const VIEWPORT = { once: true, margin: '-100px' };
 
 const cards = [
   {
@@ -17,14 +21,23 @@ const cards = [
   },
 ];
 
+/* Stagger delays for right-column items (card-01, card-02, button) */
+const staggerDelay = (index) => index * 0.2;
+
 export default function MissionVision() {
   return (
     <section className="bg-white py-24">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 
-          {/* ── Left Column: Community Image ── */}
-          <div className="relative">
+          {/* ── Left Column: Community Image (slide from left) ── */}
+          <motion.div
+            className="relative"
+            initial={{ x: -30, opacity: 0 }}
+            whileInView={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.8, ease: EASE }}
+            viewport={VIEWPORT}
+          >
             {/* Teal under-glow */}
             <div
               className="absolute -inset-3 rounded-3xl opacity-20 blur-2xl"
@@ -71,15 +84,19 @@ export default function MissionVision() {
                 </p>
               </div>
             </div>
-          </div>
+          </motion.div>
 
-          {/* ── Right Column: Cards + CTA ── */}
+          {/* ── Right Column: Staggered Cards + CTA ── */}
           <div className="flex flex-col gap-6 justify-center">
 
-            {cards.map((card) => (
-              <div
+            {cards.map((card, index) => (
+              <motion.div
                 key={card.badge}
                 className="bg-white border border-slate-100 rounded-2xl p-6 shadow-sm flex items-start gap-6 hover:shadow-md transition-shadow duration-300"
+                initial={{ y: 24, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.6, ease: EASE, delay: staggerDelay(index) }}
+                viewport={VIEWPORT}
               >
                 {/* Badge */}
                 <div
@@ -97,13 +114,20 @@ export default function MissionVision() {
                     {card.description}
                   </p>
                 </div>
-              </div>
+              </motion.div>
             ))}
 
-            {/* CTA Button */}
-            <button className="bg-teal-500 text-white font-bold py-4 px-10 rounded-lg shadow-md hover:bg-teal-600 hover:shadow-lg transition-all self-start mt-4 tracking-wide uppercase text-sm">
+            {/* CTA Button — staggered after both cards */}
+            <motion.button
+              className="bg-teal-500 text-white font-bold py-4 px-10 rounded-lg shadow-md hover:bg-teal-600 hover:shadow-lg transition-all self-start mt-4 tracking-wide uppercase text-sm"
+              initial={{ y: 24, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.6, ease: EASE, delay: staggerDelay(cards.length) }}
+              viewport={VIEWPORT}
+            >
               Apply for Invite
-            </button>
+            </motion.button>
+
           </div>
 
         </div>
