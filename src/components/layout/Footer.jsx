@@ -3,22 +3,22 @@ import { Link } from 'react-router-dom';
 
 const columns = [
   {
-    heading: 'Platform',
+    heading: 'Ecosystem',
     links: [
       { label: 'Home',               to: '/' },
-      { label: 'About the Ecosystem', to: '/about' },
-      { label: 'Membership',          to: '/membership' },
-      { label: 'Events',              to: '/events' },
-      { label: 'Insights',            to: '/insights' },
+      { label: 'About',              to: '/about' },
+      { label: 'Membership',         to: '/membership' },
+      { label: 'Events',             to: '/events' },
+      { label: 'Insights',           to: '/insights' },
     ],
   },
   {
-    heading: 'Actions',
+    heading: 'Access',
     links: [
       { label: 'Submit Opportunity', to: '/submit-opportunity' },
-      { label: 'Apply for Membership', to: '/membership' },
-      { label: 'Contact Us',          to: '/contact' },
-      { label: 'Member Login',        to: '/dashboard' },
+      { label: 'Apply',              to: '/membership' },
+      { label: 'Contact Us',         to: '/contact' },
+      { label: 'Member Login',       to: '/dashboard' },
     ],
   },
   {
@@ -31,68 +31,54 @@ const columns = [
   },
 ];
 
-const socials = [
-  { label: 'LinkedIn', href: '#', icon: 'M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z M4 6a2 2 0 100-4 2 2 0 000 4z' },
-  { label: 'Twitter',  href: '#', icon: 'M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z' },
-  { label: 'Instagram', href: '#', icon: 'M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z M17.5 6.5h.01 M7.5 2h9A5.5 5.5 0 0122 7.5v9a5.5 5.5 0 01-5.5 5.5h-9A5.5 5.5 0 012 16.5v-9A5.5 5.5 0 017.5 2z' },
-];
-
 export default function Footer() {
   return (
-    <footer className="bg-charcoal border-t border-charcoal-text/10 pt-24 pb-12">
+    <footer className="bg-deep-slate border-t border-deep-slate-text/10 pt-16 pb-10">
       <div className="max-w-[1400px] mx-auto px-6">
 
         {/* Top: brand + columns */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-16 pb-20 border-b border-charcoal-text/10">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 pb-16 border-b border-deep-slate-text/10">
 
           {/* Brand column */}
-          <div className="md:col-span-1">
-            <Link to="/" className="text-charcoal-text font-serif text-3xl tracking-[0.05em] hover:opacity-80 transition-opacity">
-              Beyond
+          <div className="md:col-span-5 lg:col-span-4">
+            <Link to="/" className="text-deep-slate-text font-serif text-[24px] font-medium tracking-tight hover:opacity-80 transition-opacity inline-block mb-4">
+              Beyond.
             </Link>
-            <p className="mt-6 text-sm text-charcoal-text/60 leading-[1.8]">
-              A curated ecosystem for visionary founders, investors, and operators building meaningful growth together.
+            <p className="text-[14px] text-deep-slate-text/60 leading-[1.8] max-w-[320px]">
+              A curated ecosystem connecting visionary founders, investors, and operators.
             </p>
-            {/* Socials */}
-            <div className="flex gap-4 mt-8">
-              {socials.map((s) => (
-                <a key={s.label} href={s.href} aria-label={s.label}
-                  className="w-10 h-10 rounded-full border border-charcoal-text/20 flex items-center justify-center hover:bg-charcoal-text/10 hover:border-charcoal-text/40 transition-all duration-300">
-                  <svg className="w-4 h-4 text-charcoal-text/80" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d={s.icon} />
-                  </svg>
-                </a>
-              ))}
-            </div>
           </div>
 
           {/* Link columns */}
-          {columns.map((col) => (
-            <div key={col.heading}>
-              <p className="text-[11px] font-semibold tracking-[0.2em] uppercase text-charcoal-text/40 mb-8">
-                {col.heading}
-              </p>
-              <ul className="space-y-4">
-                {col.links.map((l) => (
-                  <li key={l.label}>
-                    <Link to={l.to} className="text-sm text-charcoal-text/70 hover:text-gold transition-colors duration-300">
-                      {l.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+          <div className="md:col-span-7 lg:col-span-8 grid grid-cols-2 lg:grid-cols-3 gap-8">
+            {columns.map((col) => (
+              <div key={col.heading}>
+                <p className="text-[12px] font-semibold tracking-wider uppercase text-deep-slate-text/40 mb-6">
+                  {col.heading}
+                </p>
+                <ul className="space-y-4">
+                  {col.links.map((l) => (
+                    <li key={l.label}>
+                      <Link to={l.to} className="text-[14px] font-medium text-deep-slate-text/70 hover:text-deep-slate-text transition-colors duration-200">
+                        {l.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* Bottom bar */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-[12px] tracking-[0.05em] text-charcoal-text/40">
-            © {new Date().getFullYear()} Beyond Ecosystem. All rights reserved.
+          <p className="text-[13px] text-deep-slate-text/40 font-medium">
+            © {new Date().getFullYear()} Beyond Network. All rights reserved.
           </p>
-          <p className="text-[12px] tracking-[0.05em] text-charcoal-text/40">
-            Strictly Private & Confidential.
-          </p>
+          <div className="flex gap-6">
+            <a href="#" className="text-deep-slate-text/40 hover:text-deep-slate-text/80 transition-colors">LinkedIn</a>
+            <a href="#" className="text-deep-slate-text/40 hover:text-deep-slate-text/80 transition-colors">Twitter</a>
+          </div>
         </div>
 
       </div>

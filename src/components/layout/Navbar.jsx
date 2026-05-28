@@ -18,19 +18,18 @@ function NavLink({ to, label, active, onClick }) {
     <Link
       to={to}
       onClick={onClick}
-      className={`relative text-[12px] uppercase tracking-[0.18em] font-medium transition-colors duration-300 group ${
-        active ? 'text-primary' : 'text-secondary hover:text-primary'
+      className={`relative text-[14px] font-medium transition-colors duration-300 ${
+        active ? 'text-ink' : 'text-slate hover:text-ink'
       }`}
     >
       {label}
       {active && (
         <motion.div
-          layoutId="nav-underline"
-          className="absolute -bottom-2 left-0 right-0 h-[1px] bg-gold"
+          layoutId="nav-pill"
+          className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-forest"
           transition={{ duration: 0.4, ease: EASE }}
         />
       )}
-      <span className="absolute -bottom-2 left-0 right-0 h-[1px] bg-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left ease-out" />
     </Link>
   );
 }
@@ -38,11 +37,11 @@ function NavLink({ to, label, active, onClick }) {
 const MenuIcon = ({ open }) => (
   <div className="w-6 h-5 flex flex-col justify-between">
     <motion.span animate={{ rotate: open ? 45 : 0, y: open ? 9 : 0 }} transition={{ duration: 0.4, ease: EASE }}
-      className="block h-[1px] w-full bg-primary origin-center" />
+      className="block h-[1.5px] w-full bg-ink origin-center" />
     <motion.span animate={{ opacity: open ? 0 : 1 }} transition={{ duration: 0.2 }}
-      className="block h-[1px] w-full bg-primary" />
+      className="block h-[1.5px] w-full bg-ink" />
     <motion.span animate={{ rotate: open ? -45 : 0, y: open ? -9 : 0 }} transition={{ duration: 0.4, ease: EASE }}
-      className="block h-[1px] w-full bg-primary origin-center" />
+      className="block h-[1.5px] w-full bg-ink origin-center" />
   </div>
 );
 
@@ -65,18 +64,18 @@ export default function Navbar() {
   return (
     <>
       <motion.header
-        initial={{ y: -90, opacity: 0 }}
+        initial={{ y: -80, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.9, ease: EASE }}
-        className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${
-          scrolled ? 'bg-ivory/95 backdrop-blur-md border-b border-border shadow-sm shadow-stone/20' : 'bg-transparent'
+        transition={{ duration: 0.6, ease: EASE }}
+        className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
+          scrolled ? 'bg-pearl/90 backdrop-blur-md border-b border-line' : 'bg-transparent'
         }`}
       >
-        <div className="max-w-[1400px] mx-auto px-6 h-[90px] flex items-center justify-between gap-6">
+        <div className="max-w-[1400px] mx-auto px-6 h-[80px] flex items-center justify-between gap-6">
 
           {/* Brand */}
-          <Link to="/" className="text-primary font-serif font-medium text-2xl tracking-[0.1em] shrink-0 hover:opacity-70 transition-opacity">
-            Beyond
+          <Link to="/" className="text-ink font-serif font-medium text-[22px] tracking-tight shrink-0 hover:opacity-80 transition-opacity">
+            Beyond.
           </Link>
 
           {/* Desktop nav */}
@@ -90,14 +89,14 @@ export default function Navbar() {
           <div className="hidden lg:flex items-center gap-6 shrink-0">
             <Link
               to="/dashboard"
-              className="text-[12px] uppercase tracking-[0.18em] font-medium text-secondary hover:text-primary transition-colors"
+              className="text-[14px] font-semibold text-slate hover:text-ink transition-colors"
             >
-              Member Login
+              Log In
             </Link>
             <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
               <Link
                 to="/membership"
-                className="inline-flex items-center justify-center border border-gold text-gold hover:bg-gold hover:text-ivory h-[46px] px-7 font-medium text-[13px] tracking-[0.05em] transition-all duration-300"
+                className="inline-flex items-center justify-center border border-forest/30 text-forest hover:border-forest hover:bg-forest/5 h-[42px] px-6 rounded-lg font-semibold text-[13px] transition-all duration-200"
               >
                 Apply
               </Link>
@@ -120,27 +119,27 @@ export default function Navbar() {
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
+            initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.4, ease: EASE }}
-            className="fixed top-[90px] inset-x-0 z-40 bg-ivory border-b border-border shadow-2xl lg:hidden h-[calc(100vh-90px)] overflow-y-auto"
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.3, ease: EASE }}
+            className="fixed top-[80px] inset-x-0 z-40 bg-card border-b border-line shadow-lg lg:hidden h-[calc(100vh-80px)] overflow-y-auto"
           >
-            <nav className="px-6 py-12 flex flex-col gap-6">
+            <nav className="px-6 py-8 flex flex-col gap-6">
               {navLinks.map((l, i) => (
                 <motion.div
                   key={l.to}
-                  initial={{ opacity: 0, x: -20 }}
+                  initial={{ opacity: 0, x: -10 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.4, delay: i * 0.05, ease: EASE }}
+                  transition={{ duration: 0.3, delay: i * 0.05, ease: EASE }}
                 >
                   <Link
                     to={l.to}
                     onClick={() => setMobileOpen(false)}
-                    className={`block text-xl font-serif tracking-wide transition-colors duration-300 ${
+                    className={`block text-[18px] font-medium transition-colors duration-200 ${
                       isActive(l.to)
-                        ? 'text-gold'
-                        : 'text-primary hover:text-gold-hover'
+                        ? 'text-forest'
+                        : 'text-ink hover:text-forest'
                     }`}
                   >
                     {l.label}
@@ -149,16 +148,16 @@ export default function Navbar() {
               ))}
               
               <motion.div 
-                initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.4 }}
-                className="border-t border-border mt-8 pt-8 flex flex-col gap-4"
+                initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }}
+                className="border-t border-line mt-6 pt-8 flex flex-col gap-4"
               >
                 <Link to="/membership" onClick={() => setMobileOpen(false)}
-                  className="w-full inline-flex items-center justify-center bg-gold text-ivory h-[52px] font-medium text-[13px] tracking-[0.05em] transition-all duration-300">
+                  className="w-full inline-flex items-center justify-center bg-forest text-card h-[48px] rounded-lg font-semibold text-[14px] transition-all duration-200">
                   Apply for Membership
                 </Link>
                 <Link to="/dashboard" onClick={() => setMobileOpen(false)}
-                  className="w-full inline-flex items-center justify-center border border-border text-primary h-[52px] font-medium text-[13px] tracking-[0.05em] transition-all duration-300">
-                  Member Login
+                  className="w-full inline-flex items-center justify-center border border-line text-ink h-[48px] rounded-lg font-semibold text-[14px] transition-all duration-200">
+                  Log In
                 </Link>
               </motion.div>
             </nav>
@@ -166,8 +165,8 @@ export default function Navbar() {
         )}
       </AnimatePresence>
 
-      {/* Spacer so content doesn't hide behind fixed header */}
-      <div className="h-[90px]" />
+      {/* Spacer */}
+      <div className="h-[80px]" />
     </>
   );
 }
