@@ -8,10 +8,10 @@ export default function HeroSection() {
   return (
     <section className="relative bg-pearl min-h-screen flex items-center overflow-hidden">
       
-      <div className="max-w-[1400px] mx-auto w-full px-6 flex flex-col lg:flex-row items-center justify-between gap-16 relative z-10 py-16 lg:py-0">
+      <div className="max-w-[1440px] mx-auto w-full px-6 flex flex-col lg:flex-row items-center justify-between gap-16 relative z-10 py-[100px] lg:py-[140px]">
         
         {/* Inner Content Wrapper for Grid Alignment */}
-        <div className="w-full max-w-[1200px] mx-auto flex flex-col lg:flex-row items-center justify-between gap-16">
+        <div className="w-full max-w-[1240px] mx-auto flex flex-col lg:flex-row items-center justify-between gap-16">
           
           {/* Left Content */}
           <motion.div
@@ -21,14 +21,14 @@ export default function HeroSection() {
             className="w-full lg:w-[55%] flex flex-col items-start"
           >
             {/* Top Label */}
-            <div className="flex items-center gap-4 mb-8">
+            <div className="flex items-center gap-4 mb-4">
               <span className="w-8 h-[1px] bg-copper" />
               <span className="text-[12px] font-bold tracking-widest text-slate uppercase">
                 Curated Private Network
               </span>
             </div>
 
-            <h1 className="font-serif text-[44px] leading-[1.15] lg:text-[64px] font-medium text-ink tracking-[-0.02em] mb-8">
+            <h1 className="font-serif text-[44px] leading-[1.15] lg:text-[64px] font-medium text-ink tracking-[-0.02em] mb-6">
               The next generation of <br className="hidden lg:block" /> builders & visionaries.
             </h1>
 
