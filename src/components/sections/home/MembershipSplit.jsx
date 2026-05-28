@@ -6,11 +6,11 @@ const EASE = [0.25, 0.1, 0.25, 1];
 
 export default function MembershipSplit() {
   return (
-    <section className="bg-pearl overflow-hidden lg:min-h-[90vh] flex flex-col justify-center py-24 lg:py-0">
-      <div className="max-w-[1400px] mx-auto px-6 w-full">
+    <section className="bg-pearl py-[100px] lg:py-[140px]">
+      <div className="max-w-[1440px] mx-auto px-6 w-full">
         
         {/* Inner Content Wrapper */}
-        <div className="max-w-[1200px] mx-auto">
+        <div className="max-w-[1240px] mx-auto">
           
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             
@@ -20,7 +20,7 @@ export default function MembershipSplit() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.8, ease: EASE }}
-              className="bg-card p-10 lg:p-16 border border-line rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.03)] flex flex-col justify-between h-full"
+              className="bg-card p-10 lg:p-16 border border-line rounded-2xl shadow-[0_4px_12px_rgba(0,0,0,0.02)] flex flex-col justify-between h-full"
             >
               <div>
                 <div className="w-12 h-12 bg-forest/10 rounded-xl flex items-center justify-center text-forest mb-10">

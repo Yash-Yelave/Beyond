@@ -28,14 +28,14 @@ const steps = [
 
 export default function EcosystemFlow() {
   return (
-    <section className="bg-stone border-y border-line overflow-hidden lg:min-h-[90vh] flex flex-col justify-center py-24 lg:py-0">
-      <div className="max-w-[1400px] mx-auto px-6 w-full">
+    <section className="bg-stone border-y border-line py-[100px] lg:py-[140px]">
+      <div className="max-w-[1440px] mx-auto px-6 w-full">
         
         {/* Inner Content Wrapper */}
-        <div className="max-w-[1200px] mx-auto">
+        <div className="max-w-[1240px] mx-auto">
           
           <div className="max-w-[620px] mb-24">
-             <div className="flex items-center gap-4 mb-8">
+             <div className="flex items-center gap-4 mb-4">
               <span className="w-8 h-[1px] bg-forest" />
               <span className="text-[12px] font-bold tracking-widest text-slate uppercase">
                 Network Pathways
@@ -61,7 +61,7 @@ export default function EcosystemFlow() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-50px" }}
                   transition={{ duration: 0.6, delay: idx * 0.15, ease: EASE }}
-                  className="relative flex flex-col items-start bg-card p-8 lg:p-10 rounded-2xl border border-line shadow-[0_4px_12px_rgba(0,0,0,0.02)]"
+                  className="relative flex flex-col items-start bg-card p-8 lg:p-10 rounded-2xl border border-line shadow-[0_4px_12px_rgba(0,0,0,0.02)] h-full"
                 >
                   {/* Node Indicator */}
                   <div className="w-12 h-12 bg-forest/10 border-[2px] border-card shadow-[0_0_0_2px_rgba(42,77,69,0.2)] text-forest rounded-full flex items-center justify-center font-bold text-[14px] mb-8 absolute -top-6 left-8">
