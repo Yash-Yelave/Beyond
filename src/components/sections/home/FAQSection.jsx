@@ -36,41 +36,38 @@ export default function FAQSection() {
   };
 
   return (
-    <section className="bg-slate-50 py-24 lg:py-32 border-y border-slate-100">
-      <div className="max-w-3xl mx-auto px-6">
+    <section className="bg-stone py-20 lg:py-32 border-y border-border/50">
+      <div className="max-w-[800px] mx-auto px-6">
         
-        <div className="text-center mb-16">
-          <h2 className="text-3xl lg:text-4xl font-bold text-slate-900 mb-4 tracking-tight">
+        <div className="mb-20">
+          <h2 className="font-serif text-[40px] leading-[50px] lg:text-[52px] lg:leading-[60px] font-light text-primary mb-6 tracking-[-0.02em]">
             Frequently Asked Questions
           </h2>
-          <p className="text-lg text-slate-500">
-            Everything you need to know about the ecosystem.
-          </p>
+          <div className="w-full h-[1px] bg-border mt-12" />
         </div>
 
-        <div className="space-y-4">
+        <div className="space-y-0">
           {faqs.map((faq, idx) => {
             const isOpen = openIdx === idx;
             return (
-              <div 
-                key={idx} 
-                className={`bg-white border transition-colors duration-300 rounded-2xl overflow-hidden ${
-                  isOpen ? 'border-teal-200 shadow-sm' : 'border-slate-200 hover:border-slate-300'
-                }`}
-              >
+              <div key={idx} className="border-b border-border">
                 <button
                   onClick={() => toggleFAQ(idx)}
-                  className="w-full flex items-center justify-between p-6 text-left focus:outline-none"
+                  className="w-full flex items-center justify-between py-8 text-left focus:outline-none group"
                 >
-                  <span className={`text-[15px] font-medium pr-8 transition-colors ${isOpen ? 'text-teal-700' : 'text-slate-900'}`}>
+                  <span className={`font-serif text-[22px] leading-[32px] pr-8 transition-colors duration-500 ${isOpen ? 'text-gold' : 'text-primary group-hover:text-gold'}`}>
                     {faq.q}
                   </span>
-                  <div className={`shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-colors ${isOpen ? 'bg-teal-50 text-teal-600' : 'bg-slate-50 text-slate-400'}`}>
+                  <div className="shrink-0 flex items-center justify-center">
                     <svg
-                      className={`w-4 h-4 transition-transform duration-300 ${isOpen ? 'rotate-180' : 'rotate-0'}`}
-                      fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                      className={`w-6 h-6 text-primary transition-transform duration-500 ${isOpen ? 'rotate-180 text-gold' : 'rotate-0'}`}
+                      fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1}
                     >
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                      {isOpen ? (
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M20 12H4" />
+                      ) : (
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m8-8H4" />
+                      )}
                     </svg>
                   </div>
                 </button>
@@ -80,9 +77,10 @@ export default function FAQSection() {
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: 'auto', opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
+                      transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
+                      className="overflow-hidden"
                     >
-                      <div className="px-6 pb-6 text-slate-500 text-sm leading-relaxed border-t border-slate-50 pt-4">
+                      <div className="pb-10 text-[18px] leading-[34px] text-secondary max-w-[620px]">
                         {faq.a}
                       </div>
                     </motion.div>

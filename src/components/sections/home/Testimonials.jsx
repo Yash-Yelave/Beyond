@@ -32,45 +32,39 @@ const testimonials = [
 
 export default function Testimonials() {
   return (
-    <section className="bg-white py-24 lg:py-32">
-      <div className="max-w-7xl mx-auto px-6">
+    <section className="bg-ivory py-20 lg:py-32">
+      <div className="max-w-[1400px] mx-auto px-6">
         
-        <div className="text-center max-w-2xl mx-auto mb-16">
-          <h2 className="text-3xl lg:text-4xl font-bold text-slate-900 mb-4 tracking-tight">
-            Voices from the Ecosystem
+        <div className="max-w-[620px] mb-20">
+          <div className="w-12 h-[1px] bg-gold mb-8" />
+          <h2 className="font-serif text-[40px] leading-[50px] lg:text-[52px] lg:leading-[60px] font-light text-primary mb-6 tracking-[-0.02em]">
+            Voices from the Ecosystem.
           </h2>
-          <p className="text-lg text-slate-500">
+          <p className="text-[18px] leading-[34px] text-secondary">
             Hear from the ambitious people already building within Beyond.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-12">
           {testimonials.map((t, idx) => (
             <motion.div
               key={idx}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.6, delay: idx * 0.1, ease: EASE }}
-              className="bg-white border border-slate-100 rounded-2xl p-8 flex flex-col shadow-[0_2px_15px_-3px_rgba(0,0,0,0.05),0_10px_20px_-2px_rgba(0,0,0,0.02)] hover:shadow-xl hover:shadow-slate-200/50 transition-all duration-300"
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.9, delay: idx * 0.1, ease: EASE }}
+              className="bg-card border border-border p-10 lg:p-14 rounded-sm flex flex-col"
             >
               <div className="flex-grow">
-                {/* Quote Icon */}
-                <svg className="w-8 h-8 text-teal-100 mb-6" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
-                </svg>
-                <p className="text-slate-600 text-[15px] leading-relaxed mb-8 italic">
+                <p className="font-serif text-[22px] leading-[38px] text-primary mb-12 italic tracking-tight">
                   "{t.quote}"
                 </p>
               </div>
               
-              <div className="pt-6 border-t border-slate-50 flex items-center gap-4">
-                <div className="w-10 h-10 bg-slate-100 rounded-full flex items-center justify-center border border-slate-200 shrink-0">
-                   <span className="text-slate-400 text-xs font-semibold">{t.name.charAt(0)}</span>
-                </div>
+              <div className="pt-8 border-t border-border/50 flex items-center gap-4">
                 <div>
-                  <h4 className="text-sm font-semibold text-slate-900">{t.name}</h4>
-                  <p className="text-xs text-slate-500">{t.role}</p>
+                  <h4 className="text-[13px] font-semibold tracking-[0.1em] uppercase text-primary mb-1">{t.name}</h4>
+                  <p className="text-[14px] text-secondary">{t.role}</p>
                 </div>
               </div>
             </motion.div>
