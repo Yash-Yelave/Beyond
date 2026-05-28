@@ -71,7 +71,7 @@ export default function Navbar() {
           scrolled ? 'bg-pearl/90 backdrop-blur-md border-b border-line' : 'bg-transparent'
         }`}
       >
-        <div className="max-w-[1400px] mx-auto px-6 h-[80px] flex items-center justify-between gap-6">
+        <div className="max-w-[1400px] mx-auto px-6 h-[72px] flex items-center justify-between gap-6">
 
           {/* Brand */}
           <Link to="/" className="text-ink font-serif font-medium text-[22px] tracking-tight shrink-0 hover:opacity-80 transition-opacity">
@@ -123,7 +123,7 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.3, ease: EASE }}
-            className="fixed top-[80px] inset-x-0 z-40 bg-card border-b border-line shadow-lg lg:hidden h-[calc(100vh-80px)] overflow-y-auto"
+            className="fixed top-[72px] inset-x-0 z-40 bg-card border-b border-line shadow-lg lg:hidden h-[calc(100vh-72px)] overflow-y-auto"
           >
             <nav className="px-6 py-8 flex flex-col gap-6">
               {navLinks.map((l, i) => (
@@ -166,7 +166,7 @@ export default function Navbar() {
       </AnimatePresence>
 
       {/* Spacer */}
-      <div className="h-[80px]" />
+      <div className="h-[72px]" />
     </>
   );
 }
