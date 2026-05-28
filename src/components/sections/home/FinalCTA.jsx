@@ -6,7 +6,7 @@ const EASE = [0.25, 0.1, 0.25, 1];
 
 export default function FinalCTA() {
   return (
-    <section className="bg-deep-slate relative overflow-hidden lg:min-h-[70vh] flex flex-col justify-center py-32 lg:py-0">
+    <section className="bg-deep-slate relative overflow-hidden py-[100px] lg:py-[140px]">
       
       {/* Abstract Background Elements */}
       <div className="absolute inset-0 w-full h-full opacity-10 mix-blend-overlay pointer-events-none">
@@ -19,21 +19,21 @@ export default function FinalCTA() {
       </div>
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-forest/10 rounded-full blur-[100px] pointer-events-none -translate-y-1/2 translate-x-1/3" />
       
-      <div className="max-w-[1400px] mx-auto px-6 w-full relative z-10">
-        <div className="max-w-[800px] mx-auto text-center">
+      <div className="max-w-[1440px] mx-auto px-6 w-full relative z-10">
+        <div className="max-w-[980px] mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.8, ease: EASE }}
           >
-            <div className="w-12 h-[1px] bg-copper mx-auto mb-10" />
+            <div className="w-12 h-[1px] bg-copper mx-auto mb-8" />
             
-            <h2 className="font-serif text-[40px] leading-[1.2] lg:text-[56px] font-medium text-deep-slate-text tracking-[-0.02em] mb-8">
+            <h2 className="font-serif text-[40px] leading-[1.2] lg:text-[56px] font-medium text-deep-slate-text tracking-[-0.02em] mb-6">
               Build relationships <br className="hidden md:block" /> beyond transactions.
             </h2>
             
-            <p className="text-[16px] lg:text-[18px] leading-[1.7] text-deep-slate-text/70 mb-14 max-w-[540px] mx-auto font-medium">
+            <p className="text-[16px] lg:text-[18px] leading-[1.7] text-deep-slate-text/70 mb-12 max-w-[560px] mx-auto font-medium">
               Join a highly curated network designed for ambitious founders, active investors, and seasoned operators.
             </p>
             

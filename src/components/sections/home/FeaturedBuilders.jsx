@@ -32,15 +32,15 @@ const builders = [
 
 export default function FeaturedBuilders() {
   return (
-    <section className="bg-stone border-y border-line overflow-hidden lg:min-h-[90vh] flex flex-col justify-center py-24 lg:py-0">
-      <div className="max-w-[1400px] mx-auto px-6 w-full">
+    <section className="bg-stone border-y border-line py-[100px] lg:py-[140px]">
+      <div className="max-w-[1440px] mx-auto px-6 w-full">
         
         {/* Inner Content Wrapper */}
-        <div className="max-w-[1200px] mx-auto">
+        <div className="max-w-[1240px] mx-auto">
           
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
             <div className="max-w-[620px]">
-               <div className="flex items-center gap-4 mb-8">
+               <div className="flex items-center gap-4 mb-4">
                 <span className="w-8 h-[1px] bg-copper" />
                 <span className="text-[12px] font-bold tracking-widest text-slate uppercase">
                   Featured Projects
@@ -69,7 +69,7 @@ export default function FeaturedBuilders() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.6, delay: idx * 0.1, ease: EASE }}
-                className="group flex flex-col bg-card rounded-2xl border border-line overflow-hidden shadow-[0_4px_12px_rgba(0,0,0,0.02)] hover:shadow-[0_12px_24px_rgba(0,0,0,0.06)] transition-all duration-300"
+                className="group flex flex-col bg-card rounded-2xl border border-line overflow-hidden shadow-[0_4px_12px_rgba(0,0,0,0.02)] hover:shadow-[0_12px_24px_rgba(0,0,0,0.06)] transition-all duration-300 h-full"
               >
                 {/* Image Area */}
                 <div className="w-full aspect-[16/10] bg-surface relative overflow-hidden border-b border-line">
@@ -99,7 +99,7 @@ export default function FeaturedBuilders() {
                   <p className="text-[14px] text-slate mb-6 font-medium italic">
                     by {b.name}
                   </p>
-                  <p className="text-[15px] leading-[1.6] text-slate mb-10 flex-grow">
+                  <p className="text-[15px] leading-[1.6] text-slate mb-10 flex-grow max-w-[620px]">
                     {b.desc}
                   </p>
                   

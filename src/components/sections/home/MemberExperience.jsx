@@ -5,15 +5,15 @@ const EASE = [0.25, 0.1, 0.25, 1];
 
 export default function MemberExperience() {
   return (
-    <section className="bg-pearl border-y border-line overflow-hidden lg:min-h-[90vh] flex flex-col justify-center py-24 lg:py-0">
-      <div className="max-w-[1400px] mx-auto px-6 w-full">
+    <section className="bg-pearl border-y border-line py-[100px] lg:py-[140px]">
+      <div className="max-w-[1440px] mx-auto px-6 w-full">
         
         {/* Inner Content Wrapper */}
-        <div className="max-w-[1200px] mx-auto">
+        <div className="max-w-[1240px] mx-auto">
           
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
             <div className="max-w-[620px]">
-              <div className="flex items-center gap-4 mb-8">
+              <div className="flex items-center gap-4 mb-4">
                 <span className="w-8 h-[1px] bg-copper" />
                 <span className="text-[12px] font-bold tracking-widest text-slate uppercase">
                   The Network in Motion
@@ -29,7 +29,7 @@ export default function MemberExperience() {
           </div>
 
           {/* Dynamic Editorial Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-6 lg:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-10">
             
             {/* Main Large Card */}
             <motion.div
@@ -39,7 +39,7 @@ export default function MemberExperience() {
               transition={{ duration: 0.8, ease: EASE }}
               className="md:col-span-8 flex flex-col gap-4"
             >
-              <div className="w-full aspect-[16/9] bg-card relative overflow-hidden rounded-2xl border border-line shadow-sm group">
+              <div className="w-full aspect-[16/9] bg-card relative overflow-hidden rounded-2xl border border-line shadow-[0_4px_12px_rgba(0,0,0,0.02)] group">
                 <div className="absolute inset-0 bg-ink/5 mix-blend-multiply opacity-20 group-hover:bg-transparent transition-colors duration-[1s] ease-out z-10 pointer-events-none" />
                 <img 
                   src="/14995841-meeting-4784909.jpg" 
@@ -48,7 +48,7 @@ export default function MemberExperience() {
                   loading="lazy"
                 />
               </div>
-              <div className="flex items-center gap-3 ml-1">
+              <div className="flex items-center gap-3 ml-2 mt-2">
                 <span className="px-2.5 py-1 rounded bg-forest/10 text-forest text-[11px] font-bold uppercase tracking-wider">
                   Founder Dinners
                 </span>
@@ -64,7 +64,7 @@ export default function MemberExperience() {
               transition={{ duration: 0.8, delay: 0.2, ease: EASE }}
               className="md:col-span-4 flex flex-col gap-4 md:mt-16 lg:mt-24"
             >
-              <div className="w-full aspect-[4/5] bg-surface relative overflow-hidden rounded-2xl border border-line shadow-sm group">
+              <div className="w-full aspect-[4/5] bg-surface relative overflow-hidden rounded-2xl border border-line shadow-[0_4px_12px_rgba(0,0,0,0.02)] group">
                 <div className="absolute inset-0 bg-stone mix-blend-multiply opacity-50 group-hover:bg-transparent transition-colors duration-[1s] ease-out z-10 pointer-events-none" />
                 <img 
                   src="/quilia-1-aA2Fadydc-unsplash.jpg" 
@@ -73,7 +73,7 @@ export default function MemberExperience() {
                   loading="lazy"
                 />
               </div>
-              <div className="flex items-center gap-3 ml-1">
+              <div className="flex items-center gap-3 ml-2 mt-2">
                 <span className="px-2.5 py-1 rounded bg-copper/10 text-copper text-[11px] font-bold uppercase tracking-wider">
                   Strategic Circles
                 </span>
