@@ -6,83 +6,65 @@ const EASE = [0.25, 0.1, 0.25, 1];
 
 export default function HeroSection() {
   return (
-    <section className="relative bg-white pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-        {/* Left Messaging */}
+    <section className="relative bg-ivory min-h-screen flex items-center overflow-hidden pt-[90px]">
+      
+      {/* Background Layer: Soft Cinematic Overlay or Pattern (optional, keeping minimal for luxury) */}
+      <div className="absolute inset-0 pointer-events-none opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(#1E1E1A 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
+
+      <div className="relative max-w-[1400px] mx-auto w-full px-6 py-20 lg:py-32 flex flex-col justify-center">
+        
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: EASE }}
-          className="max-w-xl"
+          transition={{ duration: 0.9, ease: EASE }}
+          className="max-w-[720px]"
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-50 border border-slate-100 mb-6">
-            <span className="w-2 h-2 rounded-full bg-teal-500 animate-pulse" />
-            <span className="text-xs font-semibold tracking-wide text-slate-500 uppercase">
+          {/* Label with divider */}
+          <div className="mb-10">
+            <div className="w-12 h-[1px] bg-gold mb-4" />
+            <span className="text-[12px] font-semibold tracking-[0.18em] text-secondary uppercase">
               Private Ecosystem for Builders & Visionaries
             </span>
           </div>
 
-          <h1 className="text-5xl lg:text-6xl font-bold text-slate-900 leading-[1.1] mb-6 tracking-tight">
-            Beyond Traditional <br className="hidden lg:block" /> Networking
+          <h1 className="font-serif text-[48px] leading-[58px] lg:text-[72px] lg:leading-[82px] font-light text-primary tracking-[-0.03em] mb-8">
+            Beyond Traditional <br className="hidden lg:block" /> Networking.
           </h1>
 
-          <p className="text-lg text-slate-500 leading-relaxed mb-10">
+          <p className="text-[18px] leading-[34px] text-secondary mb-12 max-w-[620px]">
             A curated ecosystem connecting founders, investors, creators, and operators through meaningful collaboration, strategic access, and long-term growth.
           </p>
 
-          <div className="flex flex-col sm:flex-row items-center gap-4 mb-10">
-            <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} className="w-full sm:w-auto">
-              <Link to="/membership" className="flex items-center justify-center w-full bg-slate-900 text-white px-8 py-4 rounded-xl font-medium text-sm hover:bg-slate-800 transition-colors shadow-lg shadow-slate-900/10">
+          <div className="flex flex-col sm:flex-row items-center gap-6 mb-16">
+            <motion.div whileHover={{ scale: 1.01 }} whileTap={{ scale: 0.99 }} className="w-full sm:w-auto">
+              <Link to="/membership" className="flex items-center justify-center w-full bg-gold text-ivory px-8 h-[52px] rounded-lg font-medium text-[15px] hover:bg-gold-hover transition-colors shadow-sm">
                 Apply for Membership
               </Link>
             </motion.div>
-            <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} className="w-full sm:w-auto">
-              <Link to="/submit-opportunity" className="flex items-center justify-center w-full bg-white text-slate-900 border border-slate-200 px-8 py-4 rounded-xl font-medium text-sm hover:bg-slate-50 hover:border-slate-300 transition-all shadow-sm">
+            <motion.div whileHover={{ scale: 1.01 }} whileTap={{ scale: 0.99 }} className="w-full sm:w-auto">
+              <Link to="/submit-opportunity" className="flex items-center justify-center w-full bg-transparent border border-gold text-gold px-8 h-[52px] rounded-lg font-medium text-[15px] hover:bg-gold hover:text-ivory transition-colors">
                 Submit Opportunity
               </Link>
             </motion.div>
           </div>
 
-          <div className="flex flex-wrap items-center gap-x-6 gap-y-3 text-sm text-slate-400">
-            <div className="flex items-center gap-2">
-              <svg className="w-4 h-4 text-teal-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"/></svg>
-              <span>Curated community</span>
+          {/* Trust Indicators */}
+          <div className="flex flex-wrap items-center gap-x-8 gap-y-4 text-[13px] tracking-[0.05em] text-secondary/70">
+            <div className="flex items-center gap-3">
+              <span className="w-1.5 h-1.5 bg-border rounded-full" />
+              <span>Curated Ecosystem</span>
             </div>
-            <div className="flex items-center gap-2">
-              <svg className="w-4 h-4 text-teal-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"/></svg>
-              <span>Founder-led ecosystem</span>
+            <div className="flex items-center gap-3">
+              <span className="w-1.5 h-1.5 bg-border rounded-full" />
+              <span>Founder-Led</span>
             </div>
-            <div className="flex items-center gap-2">
-              <svg className="w-4 h-4 text-teal-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"/></svg>
-              <span>High-trust network</span>
-            </div>
-          </div>
-        </motion.div>
-
-        {/* Right Visual */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1, delay: 0.2, ease: EASE }}
-          className="relative lg:h-[600px] flex items-center justify-center"
-        >
-          {/* Abstract Premium Visual Component */}
-          <div className="absolute inset-0 bg-gradient-to-br from-slate-50 to-slate-100/50 rounded-[2rem] border border-slate-100 shadow-2xl shadow-slate-200/50 overflow-hidden flex items-center justify-center">
-            {/* Soft decorative elements */}
-            <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-teal-100 rounded-full mix-blend-multiply filter blur-3xl opacity-50 animate-blob"></div>
-            <div className="absolute top-1/3 right-1/4 w-64 h-64 bg-blue-50 rounded-full mix-blend-multiply filter blur-3xl opacity-50 animate-blob animation-delay-2000"></div>
-            <div className="absolute bottom-1/4 left-1/3 w-64 h-64 bg-slate-200 rounded-full mix-blend-multiply filter blur-3xl opacity-50 animate-blob animation-delay-4000"></div>
-            
-            {/* Center geometric anchor */}
-            <div className="relative w-48 h-48 sm:w-64 sm:h-64 border border-white/60 bg-white/40 backdrop-blur-xl rounded-full shadow-lg flex items-center justify-center">
-              <div className="w-32 h-32 sm:w-40 sm:h-40 border border-white/80 bg-white/60 backdrop-blur-md rounded-full shadow-sm flex items-center justify-center">
-                <div className="w-16 h-16 sm:w-20 sm:h-20 bg-white rounded-full shadow-inner flex items-center justify-center">
-                   <div className="w-3 h-3 bg-teal-400 rounded-full shadow-[0_0_15px_rgba(45,212,191,0.5)]"></div>
-                </div>
-              </div>
+            <div className="flex items-center gap-3">
+              <span className="w-1.5 h-1.5 bg-border rounded-full" />
+              <span>Strategic Access</span>
             </div>
           </div>
         </motion.div>
+        
       </div>
     </section>
   );
