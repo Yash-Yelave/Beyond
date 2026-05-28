@@ -33,65 +33,67 @@ const insights = [
 
 export default function Insights() {
   return (
-    <div className="bg-pearl min-h-screen pt-[100px] pb-24 lg:pt-[120px] lg:pb-32">
-      <div className="max-w-[1400px] mx-auto px-6">
-        <SectionHeading 
-          eyebrow="Insights & Perspectives" 
-          title="Signals from the Ecosystem" 
-          subtitle="Tactical advice, market observations, and learnings aggregated from the Beyond network."
-        />
+    <div className="bg-pearl min-h-screen pt-[120px] pb-[100px] lg:pt-[160px] lg:pb-[140px]">
+      <div className="max-w-[1440px] mx-auto px-6 w-full">
+        <div className="max-w-[1240px] mx-auto">
+          <SectionHeading 
+            eyebrow="Insights & Perspectives" 
+            title="Signals from the Ecosystem" 
+            subtitle="Tactical advice, market observations, and learnings aggregated from the Beyond network."
+          />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto mt-16">
-          {insights.map((article, i) => (
-            <motion.article 
-              key={i}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: i * 0.1, ease: EASE }}
-              className="group flex flex-col bg-card rounded-xl border border-line overflow-hidden hover:shadow-lg transition-shadow duration-300 cursor-pointer"
-            >
-              {/* Image Area */}
-              <div className="w-full aspect-[16/10] bg-surface relative overflow-hidden border-b border-line">
-                 <div className="absolute inset-0 bg-ink/5 mix-blend-multiply z-10 pointer-events-none group-hover:bg-transparent transition-colors duration-700" />
-                 <img 
-                    src={article.image} 
-                    alt={article.title} 
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
-                    loading="lazy"
-                  />
-              </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-16">
+            {insights.map((article, i) => (
+              <motion.article 
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: i * 0.1, ease: EASE }}
+                className="group flex flex-col bg-card rounded-2xl border border-line overflow-hidden shadow-[0_4px_12px_rgba(0,0,0,0.02)] hover:shadow-[0_12px_24px_rgba(0,0,0,0.06)] transition-all duration-300 cursor-pointer h-full"
+              >
+                {/* Image Area */}
+                <div className="w-full aspect-[16/10] bg-surface relative overflow-hidden border-b border-line">
+                   <div className="absolute inset-0 bg-ink/5 mix-blend-multiply z-10 pointer-events-none group-hover:bg-transparent transition-colors duration-700" />
+                   <img 
+                      src={article.image} 
+                      alt={article.title} 
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                      loading="lazy"
+                    />
+                </div>
 
-              {/* Content */}
-              <div className="p-8 flex flex-col flex-grow">
-                <div className="flex items-center justify-between mb-4">
-                  <span className="px-2.5 py-1 rounded-full bg-forest/10 text-forest text-[11px] font-bold tracking-wider uppercase">
-                    {article.category}
-                  </span>
-                  <span className="text-[12px] font-medium text-slate">
-                    {article.readTime}
-                  </span>
+                {/* Content */}
+                <div className="p-8 lg:p-10 flex flex-col flex-grow">
+                  <div className="flex items-center justify-between mb-6">
+                    <span className="px-2.5 py-1 rounded-full bg-forest/10 text-forest text-[11px] font-bold tracking-wider uppercase">
+                      {article.category}
+                    </span>
+                    <span className="text-[12px] font-medium text-slate">
+                      {article.readTime}
+                    </span>
+                  </div>
+                  
+                  <h3 className="font-serif text-[24px] font-medium text-ink mb-4 group-hover:text-forest transition-colors">
+                    {article.title}
+                  </h3>
+                  
+                  <p className="text-[15px] leading-[1.6] text-slate font-medium mb-10 flex-grow max-w-[620px]">
+                    {article.excerpt}
+                  </p>
+                  
+                  <div className="flex items-center justify-between pt-8 border-t border-line/60 mt-auto">
+                    <span className="text-[12px] font-bold text-slate uppercase tracking-wider">{article.date}</span>
+                    <span className="inline-flex items-center gap-2 text-[14px] font-bold text-ink group-hover:text-copper transition-colors">
+                      Read Article
+                      <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                      </svg>
+                    </span>
+                  </div>
                 </div>
-                
-                <h3 className="font-serif text-[24px] font-medium text-ink mb-3 group-hover:text-forest transition-colors">
-                  {article.title}
-                </h3>
-                
-                <p className="text-[14px] leading-[1.6] text-slate font-medium mb-8 flex-grow">
-                  {article.excerpt}
-                </p>
-                
-                <div className="flex items-center justify-between pt-6 border-t border-line/60">
-                  <span className="text-[12px] font-bold text-slate uppercase tracking-wider">{article.date}</span>
-                  <span className="inline-flex items-center gap-2 text-[14px] font-bold text-ink group-hover:text-copper transition-colors">
-                    Read Article
-                    <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                    </svg>
-                  </span>
-                </div>
-              </div>
-            </motion.article>
-          ))}
+              </motion.article>
+            ))}
+          </div>
         </div>
       </div>
     </div>
