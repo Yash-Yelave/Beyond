@@ -23,7 +23,7 @@ const faqs = [
   },
   {
     question: 'What happens after my submission is reviewed?',
-    answer: 'If your submission is shortlisted, our team will reach out to schedule an introductory call. We'll then discuss next steps, which may include ecosystem onboarding, curated investor introductions, or mentorship matching — based on your specific needs.',
+    answer: `If your submission is shortlisted, our team will reach out to schedule an introductory call. We'll then discuss next steps, which may include ecosystem onboarding, curated investor introductions, or mentorship matching — based on your specific needs.`,
   },
   {
     question: 'Does Beyond guarantee funding?',
