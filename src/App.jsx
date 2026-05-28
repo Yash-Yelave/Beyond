@@ -10,14 +10,23 @@ import FAQ from './components/FAQ';
 import FeaturedProjectsSlider from './components/FeaturedProjectsSlider';
 import Footer from './components/Footer';
 import SubmitOpportunityPage from './components/SubmitOpportunityPage';
+import MembershipPage from './components/MembershipPage';
+
+const getPage = () => {
+  const h = window.location.hash;
+  if (h === '#/submit') return 'submit';
+  if (h === '#/membership') return 'membership';
+  return 'home';
+};
 
 function App() {
-  const [page, setPage] = useState(
-    () => window.location.hash === '#/submit' ? 'submit' : 'home'
-  );
+  const [page, setPage] = useState(getPage);
 
   useEffect(() => {
-    const onHash = () => setPage(window.location.hash === '#/submit' ? 'submit' : 'home');
+    const onHash = () => {
+      setPage(getPage());
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
     window.addEventListener('hashchange', onHash);
     return () => window.removeEventListener('hashchange', onHash);
   }, []);
@@ -26,9 +35,9 @@ function App() {
     <div className="min-h-screen bg-white font-sans text-slate-900 flex flex-col">
       <Header />
       <main className="flex-grow">
-        {page === 'submit' ? (
-          <SubmitOpportunityPage />
-        ) : (
+        {page === 'submit' && <SubmitOpportunityPage />}
+        {page === 'membership' && <MembershipPage />}
+        {page === 'home' && (
           <>
             <Hero />
             <MetricsBanner />
