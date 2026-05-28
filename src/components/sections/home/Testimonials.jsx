@@ -32,39 +32,47 @@ const testimonials = [
 
 export default function Testimonials() {
   return (
-    <section className="bg-ivory py-20 lg:py-32">
+    <section className="bg-stone py-24 lg:py-32 border-y border-line">
       <div className="max-w-[1400px] mx-auto px-6">
         
         <div className="max-w-[620px] mb-20">
-          <div className="w-12 h-[1px] bg-gold mb-8" />
-          <h2 className="font-serif text-[40px] leading-[50px] lg:text-[52px] lg:leading-[60px] font-light text-primary mb-6 tracking-[-0.02em]">
-            Voices from the Ecosystem.
+           <div className="flex items-center gap-4 mb-8">
+            <span className="w-8 h-[1px] bg-forest" />
+            <span className="text-[12px] font-bold tracking-widest text-slate uppercase">
+              Member Insights
+            </span>
+          </div>
+          <h2 className="font-serif text-[36px] leading-[1.2] lg:text-[48px] font-medium text-ink mb-6 tracking-[-0.02em]">
+            Voices from the Network.
           </h2>
-          <p className="text-[18px] leading-[34px] text-secondary">
-            Hear from the ambitious people already building within Beyond.
+          <p className="text-[16px] leading-[1.7] text-slate font-medium">
+            Real outcomes and experiences from the people already building within the ecosystem.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {testimonials.map((t, idx) => (
             <motion.div
               key={idx}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.9, delay: idx * 0.1, ease: EASE }}
-              className="bg-card border border-border p-10 lg:p-14 rounded-sm flex flex-col"
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.6, delay: idx * 0.1, ease: EASE }}
+              className="bg-card border border-line p-10 lg:p-12 rounded-xl flex flex-col shadow-sm"
             >
               <div className="flex-grow">
-                <p className="font-serif text-[22px] leading-[38px] text-primary mb-12 italic tracking-tight">
+                <p className="font-serif text-[20px] leading-[1.6] text-ink mb-10">
                   "{t.quote}"
                 </p>
               </div>
               
-              <div className="pt-8 border-t border-border/50 flex items-center gap-4">
+              <div className="flex items-center justify-between mt-auto pt-6 border-t border-line/60">
                 <div>
-                  <h4 className="text-[13px] font-semibold tracking-[0.1em] uppercase text-primary mb-1">{t.name}</h4>
-                  <p className="text-[14px] text-secondary">{t.role}</p>
+                  <h4 className="text-[14px] font-bold text-ink mb-0.5">{t.name}</h4>
+                  <p className="text-[13px] text-slate font-medium">{t.role}</p>
+                </div>
+                <div className="px-3 py-1 bg-surface rounded text-[11px] font-bold text-slate uppercase tracking-wider">
+                  {t.type}
                 </div>
               </div>
             </motion.div>
