@@ -4,34 +4,40 @@ import { motion } from 'framer-motion';
 const EASE = [0.25, 0.1, 0.25, 1];
 
 const metrics = [
-  { value: '500+', label: 'Founders & Operators' },
-  { value: '$250M+', label: 'Strategic Collaborations' },
-  { value: '120+', label: 'Community Sessions' },
-  { value: '45+', label: 'Ecosystem Reach' },
+  { value: '500+', label: 'Founders & Operators', sub: 'Highly vetted ecosystem' },
+  { value: '$250M+', label: 'Collaborations', sub: 'Funding and strategic deals' },
+  { value: '120+', label: 'Curated Sessions', sub: 'Interactive community events' },
+  { value: '45+', label: 'Global Reach', sub: 'Cross-border intelligence' },
 ];
 
 export default function MetricsSection() {
   return (
-    <section className="bg-ivory py-16 md:py-20 lg:py-32 border-y border-border/50 relative">
+    <section className="bg-card py-16 border-y border-line relative z-10">
       <div className="max-w-[1400px] mx-auto px-6">
         
-        {/* Metrics Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-0 relative">
+        {/* Compact Panels Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           
           {metrics.map((metric, idx) => (
             <motion.div
               key={idx}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.8, delay: idx * 0.1, ease: EASE }}
-              className={`flex flex-col items-center text-center lg:border-r border-border/40 last:border-0 ${idx % 2 === 0 ? 'md:border-r' : 'md:border-0 lg:border-r'}`}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.6, delay: idx * 0.1, ease: EASE }}
+              className="bg-pearl p-8 rounded-xl border border-line flex flex-col relative overflow-hidden group"
             >
-              <div className="font-serif text-[48px] md:text-[64px] leading-none text-primary mb-6 font-light tracking-[-0.02em]">
+              <div className="absolute top-0 left-0 w-1 h-full bg-forest/0 group-hover:bg-forest transition-colors duration-300" />
+              
+              <div className="font-serif text-[36px] font-medium text-ink mb-2">
                 {metric.value}
               </div>
-              <div className="text-[11px] font-semibold tracking-[0.2em] text-secondary uppercase">
+              <div className="text-[13px] font-bold tracking-wide text-ink uppercase mb-2">
                 {metric.label}
+              </div>
+              <div className="w-6 h-[1.5px] bg-line mb-3 group-hover:bg-copper transition-colors duration-300" />
+              <div className="text-[13px] font-medium text-slate">
+                {metric.sub}
               </div>
             </motion.div>
           ))}

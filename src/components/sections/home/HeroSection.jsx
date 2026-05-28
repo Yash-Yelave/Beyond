@@ -6,65 +6,96 @@ const EASE = [0.25, 0.1, 0.25, 1];
 
 export default function HeroSection() {
   return (
-    <section className="relative bg-ivory min-h-screen flex items-center overflow-hidden pt-[90px]">
+    <section className="relative bg-pearl min-h-screen flex items-center pt-[80px] overflow-hidden">
       
-      {/* Background Layer: Soft Cinematic Overlay or Pattern (optional, keeping minimal for luxury) */}
-      <div className="absolute inset-0 pointer-events-none opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(#1E1E1A 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
-
-      <div className="relative max-w-[1400px] mx-auto w-full px-6 py-20 lg:py-32 flex flex-col justify-center">
+      <div className="max-w-[1400px] mx-auto w-full px-6 py-20 lg:py-24 grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
         
+        {/* Left Content */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, ease: EASE }}
-          className="max-w-[720px]"
+          transition={{ duration: 0.8, ease: EASE }}
+          className="lg:col-span-6 flex flex-col items-start"
         >
-          {/* Label with divider */}
-          <div className="mb-10">
-            <div className="w-12 h-[1px] bg-gold mb-4" />
-            <span className="text-[12px] font-semibold tracking-[0.18em] text-secondary uppercase">
-              Private Ecosystem for Builders & Visionaries
+          {/* Top Label */}
+          <div className="flex items-center gap-4 mb-8">
+            <span className="w-8 h-[1px] bg-copper" />
+            <span className="text-[12px] font-bold tracking-widest text-slate uppercase">
+              Curated Private Network
             </span>
           </div>
 
-          <h1 className="font-serif text-[48px] leading-[58px] lg:text-[72px] lg:leading-[82px] font-light text-primary tracking-[-0.03em] mb-8">
-            Beyond Traditional <br className="hidden lg:block" /> Networking.
+          <h1 className="font-serif text-[44px] leading-[1.15] lg:text-[64px] font-medium text-ink tracking-[-0.02em] mb-8">
+            The next generation of <br className="hidden lg:block" /> builders & visionaries.
           </h1>
 
-          <p className="text-[18px] leading-[34px] text-secondary mb-12 max-w-[620px]">
-            A curated ecosystem connecting founders, investors, creators, and operators through meaningful collaboration, strategic access, and long-term growth.
+          <p className="text-[16px] lg:text-[18px] leading-[1.7] text-slate mb-12 max-w-[540px] font-medium">
+            Beyond is a structured ecosystem connecting ambitious founders, active investors, and seasoned operators through intentional, high-trust pathways.
           </p>
 
-          <div className="flex flex-col sm:flex-row items-center gap-6 mb-16">
-            <motion.div whileHover={{ scale: 1.01 }} whileTap={{ scale: 0.99 }} className="w-full sm:w-auto">
-              <Link to="/membership" className="flex items-center justify-center w-full bg-gold text-ivory px-8 h-[52px] rounded-lg font-medium text-[15px] hover:bg-gold-hover transition-colors shadow-sm">
-                Apply for Membership
-              </Link>
-            </motion.div>
-            <motion.div whileHover={{ scale: 1.01 }} whileTap={{ scale: 0.99 }} className="w-full sm:w-auto">
-              <Link to="/submit-opportunity" className="flex items-center justify-center w-full bg-transparent border border-gold text-gold px-8 h-[52px] rounded-lg font-medium text-[15px] hover:bg-gold hover:text-ivory transition-colors">
-                Submit Opportunity
-              </Link>
-            </motion.div>
+          <div className="flex flex-col sm:flex-row items-center gap-5 mb-14 w-full sm:w-auto">
+            <Link to="/membership" className="w-full sm:w-auto flex items-center justify-center bg-forest text-card px-8 h-[48px] rounded-lg font-semibold text-[15px] hover:bg-forest-hover transition-colors shadow-sm">
+              Apply for Membership
+            </Link>
+            <Link to="/submit-opportunity" className="w-full sm:w-auto flex items-center justify-center bg-transparent border-[1.5px] border-copper/40 text-copper px-8 h-[48px] rounded-lg font-semibold text-[15px] hover:bg-copper/5 hover:border-copper transition-colors">
+              Submit Opportunity
+            </Link>
           </div>
 
           {/* Trust Indicators */}
-          <div className="flex flex-wrap items-center gap-x-8 gap-y-4 text-[13px] tracking-[0.05em] text-secondary/70">
-            <div className="flex items-center gap-3">
-              <span className="w-1.5 h-1.5 bg-border rounded-full" />
-              <span>Curated Ecosystem</span>
+          <div className="flex flex-wrap items-center gap-x-8 gap-y-4 text-[13px] font-medium text-slate/80">
+            <div className="flex items-center gap-2.5">
+              <span className="w-1.5 h-1.5 bg-forest rounded-sm" />
+              <span>Vetted Members</span>
             </div>
-            <div className="flex items-center gap-3">
-              <span className="w-1.5 h-1.5 bg-border rounded-full" />
+            <div className="flex items-center gap-2.5">
+              <span className="w-1.5 h-1.5 bg-forest rounded-sm" />
+              <span>Strategic Connections</span>
+            </div>
+            <div className="flex items-center gap-2.5">
+              <span className="w-1.5 h-1.5 bg-forest rounded-sm" />
               <span>Founder-Led</span>
-            </div>
-            <div className="flex items-center gap-3">
-              <span className="w-1.5 h-1.5 bg-border rounded-full" />
-              <span>Strategic Access</span>
             </div>
           </div>
         </motion.div>
         
+        {/* Right Visual Ecosystem Layers */}
+        <div className="lg:col-span-6 relative h-[500px] lg:h-[600px] hidden md:flex items-center justify-center">
+          
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1, ease: EASE, delay: 0.2 }}
+            className="absolute inset-0 right-0 w-[80%] h-[80%] ml-auto mt-auto bg-stone border border-line rounded-xl shadow-sm flex flex-col p-6"
+          >
+            <div className="w-full h-1/2 border-b border-line border-dashed flex items-end pb-4">
+              <span className="text-[12px] font-bold text-slate/50 uppercase tracking-widest">Network Nodes</span>
+            </div>
+            <div className="w-full h-1/2 flex items-start pt-4 gap-4">
+              <div className="w-12 h-12 rounded-full bg-forest/10 border border-forest/20 flex items-center justify-center text-forest text-[10px] font-bold">INV</div>
+              <div className="w-12 h-12 rounded-full bg-copper/10 border border-copper/20 flex items-center justify-center text-copper text-[10px] font-bold">FND</div>
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, x: -20, y: 20 }}
+            animate={{ opacity: 1, x: 0, y: 0 }}
+            transition={{ duration: 1, ease: EASE, delay: 0.4 }}
+            className="absolute top-10 left-0 w-[60%] h-[60%] bg-card border border-line rounded-xl shadow-[0_20px_40px_-15px_rgba(0,0,0,0.05)] p-6 z-10 flex flex-col justify-between"
+          >
+            <div>
+              <div className="w-8 h-1 bg-forest mb-6 rounded-full" />
+              <div className="w-3/4 h-3 bg-surface rounded-sm mb-3" />
+              <div className="w-1/2 h-3 bg-surface rounded-sm" />
+            </div>
+            <div className="flex justify-between items-end">
+              <div className="w-10 h-10 bg-surface rounded-full" />
+              <div className="w-24 h-8 bg-surface rounded-md" />
+            </div>
+          </motion.div>
+
+        </div>
+
       </div>
     </section>
   );
