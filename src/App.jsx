@@ -1,18 +1,18 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from 'react-router-dom';
 
 // Layouts
 import MainLayout from './components/layout/MainLayout';
 
-// Pages
-import Home from './pages/Home';
-import About from './pages/About';
-import Membership from './pages/Membership';
-import Events from './pages/Events';
-import Insights from './pages/Insights';
-import SubmitOpportunity from './pages/SubmitOpportunity';
-import Contact from './pages/Contact';
-import Dashboard from './pages/Dashboard';
+// Pages (Lazy Loaded for Production Code Splitting)
+const Home = lazy(() => import('./pages/Home'));
+const About = lazy(() => import('./pages/About'));
+const Membership = lazy(() => import('./pages/Membership'));
+const Events = lazy(() => import('./pages/Events'));
+const Insights = lazy(() => import('./pages/Insights'));
+const SubmitOpportunity = lazy(() => import('./pages/SubmitOpportunity'));
+const Contact = lazy(() => import('./pages/Contact'));
+const Dashboard = lazy(() => import('./pages/Dashboard'));
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -28,7 +28,11 @@ const router = createBrowserRouter(
       </Route>
       
       {/* Dashboard stands alone (no public header/footer) */}
-      <Route path="/dashboard" element={<Dashboard />} />
+      <Route path="/dashboard" element={
+        <Suspense fallback={<div className="min-h-screen bg-pearl flex items-center justify-center text-forest">Loading...</div>}>
+          <Dashboard />
+        </Suspense>
+      } />
     </>
   )
 );
