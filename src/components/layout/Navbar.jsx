@@ -18,30 +18,31 @@ function NavLink({ to, label, active, onClick }) {
     <Link
       to={to}
       onClick={onClick}
-      className={`relative text-sm font-medium transition-colors duration-200 group ${
-        active ? 'text-slate-900' : 'text-slate-500 hover:text-slate-900'
+      className={`relative text-[12px] uppercase tracking-[0.18em] font-medium transition-colors duration-300 group ${
+        active ? 'text-primary' : 'text-secondary hover:text-primary'
       }`}
     >
       {label}
       {active && (
         <motion.div
           layoutId="nav-underline"
-          className="absolute -bottom-1 left-0 right-0 h-[2px] bg-teal-500 rounded-full"
-          transition={{ duration: 0.3, ease: EASE }}
+          className="absolute -bottom-2 left-0 right-0 h-[1px] bg-gold"
+          transition={{ duration: 0.4, ease: EASE }}
         />
       )}
+      <span className="absolute -bottom-2 left-0 right-0 h-[1px] bg-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left ease-out" />
     </Link>
   );
 }
 
 const MenuIcon = ({ open }) => (
-  <div className="w-5 h-4 flex flex-col justify-between">
-    <motion.span animate={{ rotate: open ? 45 : 0, y: open ? 6 : 0 }} transition={{ duration: 0.3 }}
-      className="block h-[2px] w-full bg-slate-900 rounded-full origin-center" />
-    <motion.span animate={{ opacity: open ? 0 : 1, scaleX: open ? 0 : 1 }} transition={{ duration: 0.2 }}
-      className="block h-[2px] w-full bg-slate-900 rounded-full" />
-    <motion.span animate={{ rotate: open ? -45 : 0, y: open ? -10 : 0 }} transition={{ duration: 0.3 }}
-      className="block h-[2px] w-full bg-slate-900 rounded-full origin-center" />
+  <div className="w-6 h-5 flex flex-col justify-between">
+    <motion.span animate={{ rotate: open ? 45 : 0, y: open ? 9 : 0 }} transition={{ duration: 0.4, ease: EASE }}
+      className="block h-[1px] w-full bg-primary origin-center" />
+    <motion.span animate={{ opacity: open ? 0 : 1 }} transition={{ duration: 0.2 }}
+      className="block h-[1px] w-full bg-primary" />
+    <motion.span animate={{ rotate: open ? -45 : 0, y: open ? -9 : 0 }} transition={{ duration: 0.4, ease: EASE }}
+      className="block h-[1px] w-full bg-primary origin-center" />
   </div>
 );
 
@@ -51,7 +52,7 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 16);
+    const onScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
@@ -64,39 +65,39 @@ export default function Navbar() {
   return (
     <>
       <motion.header
-        initial={{ y: -60, opacity: 0 }}
+        initial={{ y: -90, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.7, ease: EASE }}
-        className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
-          scrolled ? 'bg-white/90 backdrop-blur-md shadow-sm border-b border-slate-100' : 'bg-white'
+        transition={{ duration: 0.9, ease: EASE }}
+        className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${
+          scrolled ? 'bg-ivory/95 backdrop-blur-md border-b border-border shadow-sm shadow-stone/20' : 'bg-transparent'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between gap-6">
+        <div className="max-w-[1400px] mx-auto px-6 h-[90px] flex items-center justify-between gap-6">
 
           {/* Brand */}
-          <Link to="/" className="text-slate-900 font-bold text-xl tracking-[0.15em] uppercase shrink-0 hover:opacity-80 transition-opacity">
+          <Link to="/" className="text-primary font-serif font-medium text-2xl tracking-[0.1em] shrink-0 hover:opacity-70 transition-opacity">
             Beyond
           </Link>
 
           {/* Desktop nav */}
-          <nav className="hidden lg:flex items-center gap-7">
+          <nav className="hidden lg:flex items-center gap-10">
             {navLinks.map((l) => (
               <NavLink key={l.to} {...l} active={isActive(l.to)} />
             ))}
           </nav>
 
           {/* Right actions */}
-          <div className="hidden lg:flex items-center gap-3 shrink-0">
+          <div className="hidden lg:flex items-center gap-6 shrink-0">
             <Link
               to="/dashboard"
-              className="text-sm font-medium text-slate-500 hover:text-slate-900 transition-colors px-3 py-2"
+              className="text-[12px] uppercase tracking-[0.18em] font-medium text-secondary hover:text-primary transition-colors"
             >
-              Login
+              Member Login
             </Link>
-            <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
+            <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
               <Link
                 to="/membership"
-                className="bg-teal-500 text-white text-sm font-semibold px-5 py-2.5 rounded-xl hover:bg-teal-400 transition-colors shadow-sm shadow-teal-500/20"
+                className="inline-flex items-center justify-center border border-gold text-gold hover:bg-gold hover:text-ivory h-[46px] px-7 font-medium text-[13px] tracking-[0.05em] transition-all duration-300"
               >
                 Apply
               </Link>
@@ -105,7 +106,7 @@ export default function Navbar() {
 
           {/* Mobile hamburger */}
           <button
-            className="lg:hidden p-2 rounded-lg hover:bg-slate-100 transition-colors"
+            className="lg:hidden p-2 -mr-2"
             onClick={() => setMobileOpen((v) => !v)}
             aria-label="Toggle menu"
           >
@@ -119,50 +120,54 @@ export default function Navbar() {
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -8 }}
+            initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.25, ease: EASE }}
-            className="fixed top-16 inset-x-0 z-40 bg-white border-b border-slate-100 shadow-xl lg:hidden"
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.4, ease: EASE }}
+            className="fixed top-[90px] inset-x-0 z-40 bg-ivory border-b border-border shadow-2xl lg:hidden h-[calc(100vh-90px)] overflow-y-auto"
           >
-            <nav className="max-w-7xl mx-auto px-6 py-4 flex flex-col gap-1">
+            <nav className="px-6 py-12 flex flex-col gap-6">
               {navLinks.map((l, i) => (
                 <motion.div
                   key={l.to}
-                  initial={{ opacity: 0, x: -12 }}
+                  initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.2, delay: i * 0.04, ease: EASE }}
+                  transition={{ duration: 0.4, delay: i * 0.05, ease: EASE }}
                 >
                   <Link
                     to={l.to}
                     onClick={() => setMobileOpen(false)}
-                    className={`block px-4 py-3 rounded-xl text-sm font-medium transition-colors duration-150 ${
+                    className={`block text-xl font-serif tracking-wide transition-colors duration-300 ${
                       isActive(l.to)
-                        ? 'bg-teal-50/50 text-teal-600'
-                        : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'
+                        ? 'text-gold'
+                        : 'text-primary hover:text-gold-hover'
                     }`}
                   >
                     {l.label}
                   </Link>
                 </motion.div>
               ))}
-              <div className="border-t border-slate-100 mt-3 pt-3 flex gap-3">
-                <Link to="/dashboard" onClick={() => setMobileOpen(false)}
-                  className="flex-1 text-center text-sm font-medium text-slate-600 border border-slate-200 py-3 rounded-xl hover:bg-slate-50 transition-colors">
-                  Login
-                </Link>
+              
+              <motion.div 
+                initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.4 }}
+                className="border-t border-border mt-8 pt-8 flex flex-col gap-4"
+              >
                 <Link to="/membership" onClick={() => setMobileOpen(false)}
-                  className="flex-1 text-center text-sm font-semibold bg-teal-500 text-white py-3 rounded-xl hover:bg-teal-400 transition-colors">
-                  Apply
+                  className="w-full inline-flex items-center justify-center bg-gold text-ivory h-[52px] font-medium text-[13px] tracking-[0.05em] transition-all duration-300">
+                  Apply for Membership
                 </Link>
-              </div>
+                <Link to="/dashboard" onClick={() => setMobileOpen(false)}
+                  className="w-full inline-flex items-center justify-center border border-border text-primary h-[52px] font-medium text-[13px] tracking-[0.05em] transition-all duration-300">
+                  Member Login
+                </Link>
+              </motion.div>
             </nav>
           </motion.div>
         )}
       </AnimatePresence>
 
       {/* Spacer so content doesn't hide behind fixed header */}
-      <div className="h-16" />
+      <div className="h-[90px]" />
     </>
   );
 }

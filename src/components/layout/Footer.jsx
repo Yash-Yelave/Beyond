@@ -39,26 +39,26 @@ const socials = [
 
 export default function Footer() {
   return (
-    <footer className="bg-slate-50 border-t border-slate-200">
-      <div className="max-w-7xl mx-auto px-6 py-16">
+    <footer className="bg-charcoal border-t border-charcoal-text/10 pt-24 pb-12">
+      <div className="max-w-[1400px] mx-auto px-6">
 
         {/* Top: brand + columns */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 pb-12 border-b border-slate-200">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-16 pb-20 border-b border-charcoal-text/10">
 
           {/* Brand column */}
           <div className="md:col-span-1">
-            <Link to="/" className="text-slate-900 font-bold text-xl tracking-[0.15em] uppercase hover:opacity-80 transition-opacity">
+            <Link to="/" className="text-charcoal-text font-serif text-3xl tracking-[0.05em] hover:opacity-80 transition-opacity">
               Beyond
             </Link>
-            <p className="mt-4 text-sm text-slate-500 leading-relaxed">
+            <p className="mt-6 text-sm text-charcoal-text/60 leading-[1.8]">
               A curated ecosystem for visionary founders, investors, and operators building meaningful growth together.
             </p>
             {/* Socials */}
-            <div className="flex gap-3 mt-6">
+            <div className="flex gap-4 mt-8">
               {socials.map((s) => (
                 <a key={s.label} href={s.href} aria-label={s.label}
-                  className="w-9 h-9 rounded-xl bg-slate-200 flex items-center justify-center hover:bg-slate-300 transition-colors">
-                  <svg className="w-4 h-4 text-slate-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
+                  className="w-10 h-10 rounded-full border border-charcoal-text/20 flex items-center justify-center hover:bg-charcoal-text/10 hover:border-charcoal-text/40 transition-all duration-300">
+                  <svg className="w-4 h-4 text-charcoal-text/80" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                     <path strokeLinecap="round" strokeLinejoin="round" d={s.icon} />
                   </svg>
                 </a>
@@ -69,13 +69,13 @@ export default function Footer() {
           {/* Link columns */}
           {columns.map((col) => (
             <div key={col.heading}>
-              <p className="text-xs font-semibold tracking-[0.15em] uppercase text-slate-400 mb-4">
+              <p className="text-[11px] font-semibold tracking-[0.2em] uppercase text-charcoal-text/40 mb-8">
                 {col.heading}
               </p>
-              <ul className="space-y-3">
+              <ul className="space-y-4">
                 {col.links.map((l) => (
                   <li key={l.label}>
-                    <Link to={l.to} className="text-sm text-slate-500 hover:text-slate-900 transition-colors duration-150">
+                    <Link to={l.to} className="text-sm text-charcoal-text/70 hover:text-gold transition-colors duration-300">
                       {l.label}
                     </Link>
                   </li>
@@ -87,11 +87,11 @@ export default function Footer() {
 
         {/* Bottom bar */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-xs text-slate-500">
+          <p className="text-[12px] tracking-[0.05em] text-charcoal-text/40">
             © {new Date().getFullYear()} Beyond Ecosystem. All rights reserved.
           </p>
-          <p className="text-xs text-slate-500 italic">
-            Built for builders who create beyond boundaries.
+          <p className="text-[12px] tracking-[0.05em] text-charcoal-text/40">
+            Strictly Private & Confidential.
           </p>
         </div>
 
