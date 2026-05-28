@@ -37,7 +37,13 @@ export default function MemberExperience() {
             className="md:col-span-8 flex flex-col gap-4"
           >
             <div className="w-full aspect-[16/9] bg-card relative overflow-hidden rounded-xl border border-line group">
-              <div className="absolute inset-0 bg-line mix-blend-multiply opacity-20 group-hover:scale-105 transition-transform duration-[1s] ease-out" />
+              <div className="absolute inset-0 bg-ink/5 mix-blend-multiply opacity-20 group-hover:bg-transparent transition-colors duration-[1s] ease-out z-10 pointer-events-none" />
+              <img 
+                src="/14995841-meeting-4784909.jpg" 
+                alt="Founder Dinners" 
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[1s] ease-out"
+                loading="lazy"
+              />
             </div>
             <div className="flex items-center gap-3">
               <span className="px-2.5 py-1 rounded bg-forest/10 text-forest text-[11px] font-bold uppercase tracking-wider">
@@ -56,7 +62,13 @@ export default function MemberExperience() {
             className="md:col-span-4 flex flex-col gap-4 md:mt-16 lg:mt-24"
           >
             <div className="w-full aspect-[3/4] bg-pearl relative overflow-hidden rounded-xl border border-line group">
-              <div className="absolute inset-0 bg-surface mix-blend-multiply opacity-50 group-hover:scale-105 transition-transform duration-[1s] ease-out" />
+              <div className="absolute inset-0 bg-surface mix-blend-multiply opacity-50 group-hover:bg-transparent transition-colors duration-[1s] ease-out z-10 pointer-events-none" />
+              <img 
+                src="/quilia-1-aA2Fadydc-unsplash.jpg" 
+                alt="Strategic Circles" 
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[1s] ease-out"
+                loading="lazy"
+              />
             </div>
             <div className="flex items-center gap-3">
               <span className="px-2.5 py-1 rounded bg-copper/10 text-copper text-[11px] font-bold uppercase tracking-wider">

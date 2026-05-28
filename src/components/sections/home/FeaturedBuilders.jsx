@@ -10,6 +10,7 @@ const builders = [
     desc: 'Scaling mental wellness through AI-driven personalized therapeutics.',
     industry: 'HealthTech',
     date: 'Oct 2024',
+    image: '/quilia-1-aA2Fadydc-unsplash.jpg'
   },
   {
     name: 'Marcus Chen',
@@ -17,6 +18,7 @@ const builders = [
     desc: 'Building the next generation of borderless payment infrastructure.',
     industry: 'FinTech',
     date: 'Sep 2024',
+    image: '/annie-spratt-hCb3lIB8L8E-unsplash.jpg'
   },
   {
     name: 'Sarah Jenkins',
@@ -24,6 +26,7 @@ const builders = [
     desc: 'Decentralized grid solutions for sustainable urban environments.',
     industry: 'ClimateTech',
     date: 'Aug 2024',
+    image: '/campaign-creators-gMsnXqILjp4-unsplash.jpg'
   }
 ];
 
@@ -67,7 +70,13 @@ export default function FeaturedBuilders() {
             >
               {/* Image Area */}
               <div className="w-full aspect-[16/10] bg-surface relative overflow-hidden border-b border-line">
-                 <div className="absolute inset-0 bg-line mix-blend-multiply opacity-30 group-hover:scale-105 transition-transform duration-700 ease-out" />
+                 <div className="absolute inset-0 bg-ink/5 mix-blend-multiply z-10 pointer-events-none group-hover:bg-transparent transition-colors duration-700" />
+                 <img 
+                    src={b.image} 
+                    alt={b.project} 
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                    loading="lazy"
+                  />
               </div>
 
               {/* Content */}
