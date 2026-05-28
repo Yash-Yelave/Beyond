@@ -39,15 +39,15 @@ const socials = [
 
 export default function Footer() {
   return (
-    <footer className="bg-slate-950 border-t border-slate-800">
+    <footer className="bg-slate-50 border-t border-slate-200">
       <div className="max-w-7xl mx-auto px-6 py-16">
 
         {/* Top: brand + columns */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 pb-12 border-b border-slate-800">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 pb-12 border-b border-slate-200">
 
           {/* Brand column */}
           <div className="md:col-span-1">
-            <Link to="/" className="text-white font-bold text-xl tracking-[0.15em] uppercase hover:opacity-80 transition-opacity">
+            <Link to="/" className="text-slate-900 font-bold text-xl tracking-[0.15em] uppercase hover:opacity-80 transition-opacity">
               Beyond
             </Link>
             <p className="mt-4 text-sm text-slate-500 leading-relaxed">
@@ -57,8 +57,8 @@ export default function Footer() {
             <div className="flex gap-3 mt-6">
               {socials.map((s) => (
                 <a key={s.label} href={s.href} aria-label={s.label}
-                  className="w-9 h-9 rounded-xl bg-slate-800 flex items-center justify-center hover:bg-slate-700 transition-colors">
-                  <svg className="w-4 h-4 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
+                  className="w-9 h-9 rounded-xl bg-slate-200 flex items-center justify-center hover:bg-slate-300 transition-colors">
+                  <svg className="w-4 h-4 text-slate-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
                     <path strokeLinecap="round" strokeLinejoin="round" d={s.icon} />
                   </svg>
                 </a>
@@ -69,13 +69,13 @@ export default function Footer() {
           {/* Link columns */}
           {columns.map((col) => (
             <div key={col.heading}>
-              <p className="text-xs font-semibold tracking-[0.15em] uppercase text-slate-500 mb-4">
+              <p className="text-xs font-semibold tracking-[0.15em] uppercase text-slate-400 mb-4">
                 {col.heading}
               </p>
               <ul className="space-y-3">
                 {col.links.map((l) => (
                   <li key={l.label}>
-                    <Link to={l.to} className="text-sm text-slate-400 hover:text-white transition-colors duration-150">
+                    <Link to={l.to} className="text-sm text-slate-500 hover:text-slate-900 transition-colors duration-150">
                       {l.label}
                     </Link>
                   </li>
@@ -87,10 +87,10 @@ export default function Footer() {
 
         {/* Bottom bar */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-xs text-slate-600">
+          <p className="text-xs text-slate-500">
             © {new Date().getFullYear()} Beyond Ecosystem. All rights reserved.
           </p>
-          <p className="text-xs text-slate-700 italic">
+          <p className="text-xs text-slate-500 italic">
             Built for builders who create beyond boundaries.
           </p>
         </div>

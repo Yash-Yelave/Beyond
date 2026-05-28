@@ -19,7 +19,7 @@ function NavLink({ to, label, active, onClick }) {
       to={to}
       onClick={onClick}
       className={`relative text-sm font-medium transition-colors duration-200 group ${
-        active ? 'text-white' : 'text-slate-400 hover:text-slate-200'
+        active ? 'text-slate-900' : 'text-slate-500 hover:text-slate-900'
       }`}
     >
       {label}
@@ -37,11 +37,11 @@ function NavLink({ to, label, active, onClick }) {
 const MenuIcon = ({ open }) => (
   <div className="w-5 h-4 flex flex-col justify-between">
     <motion.span animate={{ rotate: open ? 45 : 0, y: open ? 6 : 0 }} transition={{ duration: 0.3 }}
-      className="block h-[2px] w-full bg-white rounded-full origin-center" />
+      className="block h-[2px] w-full bg-slate-900 rounded-full origin-center" />
     <motion.span animate={{ opacity: open ? 0 : 1, scaleX: open ? 0 : 1 }} transition={{ duration: 0.2 }}
-      className="block h-[2px] w-full bg-white rounded-full" />
+      className="block h-[2px] w-full bg-slate-900 rounded-full" />
     <motion.span animate={{ rotate: open ? -45 : 0, y: open ? -10 : 0 }} transition={{ duration: 0.3 }}
-      className="block h-[2px] w-full bg-white rounded-full origin-center" />
+      className="block h-[2px] w-full bg-slate-900 rounded-full origin-center" />
   </div>
 );
 
@@ -68,13 +68,13 @@ export default function Navbar() {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.7, ease: EASE }}
         className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
-          scrolled ? 'bg-slate-900/95 backdrop-blur-md shadow-lg shadow-black/20' : 'bg-slate-900'
+          scrolled ? 'bg-white/90 backdrop-blur-md shadow-sm border-b border-slate-100' : 'bg-white'
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between gap-6">
 
           {/* Brand */}
-          <Link to="/" className="text-white font-bold text-xl tracking-[0.15em] uppercase shrink-0 hover:opacity-80 transition-opacity">
+          <Link to="/" className="text-slate-900 font-bold text-xl tracking-[0.15em] uppercase shrink-0 hover:opacity-80 transition-opacity">
             Beyond
           </Link>
 
@@ -89,7 +89,7 @@ export default function Navbar() {
           <div className="hidden lg:flex items-center gap-3 shrink-0">
             <Link
               to="/dashboard"
-              className="text-sm font-medium text-slate-400 hover:text-white transition-colors px-3 py-2"
+              className="text-sm font-medium text-slate-500 hover:text-slate-900 transition-colors px-3 py-2"
             >
               Login
             </Link>
@@ -105,7 +105,7 @@ export default function Navbar() {
 
           {/* Mobile hamburger */}
           <button
-            className="lg:hidden p-2 rounded-lg hover:bg-white/10 transition-colors"
+            className="lg:hidden p-2 rounded-lg hover:bg-slate-100 transition-colors"
             onClick={() => setMobileOpen((v) => !v)}
             aria-label="Toggle menu"
           >
@@ -123,7 +123,7 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.25, ease: EASE }}
-            className="fixed top-16 inset-x-0 z-40 bg-slate-900 border-t border-slate-800 shadow-2xl lg:hidden"
+            className="fixed top-16 inset-x-0 z-40 bg-white border-b border-slate-100 shadow-xl lg:hidden"
           >
             <nav className="max-w-7xl mx-auto px-6 py-4 flex flex-col gap-1">
               {navLinks.map((l, i) => (
@@ -138,17 +138,17 @@ export default function Navbar() {
                     onClick={() => setMobileOpen(false)}
                     className={`block px-4 py-3 rounded-xl text-sm font-medium transition-colors duration-150 ${
                       isActive(l.to)
-                        ? 'bg-teal-600/20 text-teal-400'
-                        : 'text-slate-300 hover:bg-white/5 hover:text-white'
+                        ? 'bg-teal-50/50 text-teal-600'
+                        : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'
                     }`}
                   >
                     {l.label}
                   </Link>
                 </motion.div>
               ))}
-              <div className="border-t border-slate-800 mt-3 pt-3 flex gap-3">
+              <div className="border-t border-slate-100 mt-3 pt-3 flex gap-3">
                 <Link to="/dashboard" onClick={() => setMobileOpen(false)}
-                  className="flex-1 text-center text-sm font-medium text-slate-400 border border-slate-700 py-3 rounded-xl hover:bg-white/5 transition-colors">
+                  className="flex-1 text-center text-sm font-medium text-slate-600 border border-slate-200 py-3 rounded-xl hover:bg-slate-50 transition-colors">
                   Login
                 </Link>
                 <Link to="/membership" onClick={() => setMobileOpen(false)}
