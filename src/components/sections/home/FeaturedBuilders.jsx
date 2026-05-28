@@ -9,81 +9,87 @@ const builders = [
     project: 'Aura Health',
     desc: 'Scaling mental wellness through AI-driven personalized therapeutics.',
     industry: 'HealthTech',
+    offset: 'mt-0',
   },
   {
     name: 'Marcus Chen',
     project: 'Nexus Finance',
     desc: 'Building the next generation of borderless payment infrastructure.',
     industry: 'FinTech',
+    offset: 'lg:mt-16',
   },
   {
     name: 'Sarah Jenkins',
     project: 'Lumina Energy',
     desc: 'Decentralized grid solutions for sustainable urban environments.',
     industry: 'ClimateTech',
+    offset: 'lg:mt-32',
   }
 ];
 
 export default function FeaturedBuilders() {
   return (
-    <section className="bg-slate-50 py-24 lg:py-32 border-y border-slate-100">
-      <div className="max-w-7xl mx-auto px-6">
+    <section className="bg-stone py-20 lg:py-32 border-y border-border/50">
+      <div className="max-w-[1400px] mx-auto px-6">
         
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
-          <div className="max-w-2xl">
-            <h2 className="text-3xl lg:text-4xl font-bold text-slate-900 mb-4 tracking-tight">
-              Backed by Builders
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8">
+          <div className="max-w-[620px]">
+            <div className="w-12 h-[1px] bg-gold mb-8" />
+            <h2 className="font-serif text-[40px] leading-[50px] lg:text-[52px] lg:leading-[60px] font-light text-primary mb-6 tracking-[-0.02em]">
+              Backed by Builders.
             </h2>
-            <p className="text-lg text-slate-500">
+            <p className="text-[18px] leading-[34px] text-secondary">
               Meet the visionary founders shaping the future within the Beyond ecosystem.
             </p>
           </div>
-          <button className="hidden md:inline-flex items-center gap-2 text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors">
+          <button className="hidden md:inline-flex items-center gap-3 text-[12px] font-semibold uppercase tracking-[0.18em] text-primary hover:text-gold transition-colors pb-2 border-b border-gold/30 hover:border-gold">
             View All Members
-            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
           </button>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 lg:gap-12">
           {builders.map((b, idx) => (
             <motion.div
               key={idx}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.5, delay: idx * 0.1, ease: EASE }}
-              className="bg-white border border-slate-100 rounded-2xl p-6 flex flex-col shadow-sm hover:shadow-lg hover:shadow-slate-200/50 transition-all duration-300 group"
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.9, delay: idx * 0.1, ease: EASE }}
+              className={`group flex flex-col ${b.offset}`}
             >
-              <div className="flex items-center justify-between mb-6">
-                <span className="text-xs font-semibold px-3 py-1 bg-slate-50 border border-slate-100 text-slate-500 rounded-full">
+              {/* Image Area */}
+              <div className="w-full aspect-[4/5] bg-muted mb-8 overflow-hidden rounded-md border border-border/50 relative">
+                 <div className="absolute inset-0 bg-[#D4CFC4] mix-blend-multiply opacity-20 group-hover:scale-105 transition-transform duration-[1.5s] ease-out" />
+              </div>
+
+              {/* Content */}
+              <div>
+                <span className="block text-[11px] font-semibold tracking-[0.2em] text-gold uppercase mb-4">
                   {b.industry}
                 </span>
-                <div className="w-10 h-10 bg-slate-100 rounded-full flex items-center justify-center border border-slate-200">
-                  <span className="text-slate-400 text-xs font-medium">{b.name.charAt(0)}</span>
-                </div>
-              </div>
-
-              <div className="flex-grow">
-                <h3 className="text-xl font-semibold text-slate-900 mb-1">{b.project}</h3>
-                <p className="text-sm font-medium text-slate-400 mb-4">by {b.name}</p>
-                <p className="text-sm text-slate-500 leading-relaxed line-clamp-3">
+                <h3 className="font-serif text-[28px] leading-[38px] font-light text-primary mb-2">
+                  {b.project}
+                </h3>
+                <p className="text-[15px] text-secondary/80 mb-6 font-medium italic">
+                  by {b.name}
+                </p>
+                <p className="text-[16px] leading-[30px] text-secondary mb-8">
                   {b.desc}
                 </p>
-              </div>
-
-              <div className="mt-8 pt-6 border-t border-slate-50">
-                <button className="flex items-center gap-2 text-sm font-medium text-slate-900 group-hover:text-teal-600 transition-colors">
-                  View Story
-                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                <button className="inline-flex items-center gap-3 text-[13px] font-medium tracking-[0.05em] text-primary group-hover:text-gold transition-colors">
+                  Explore Story 
+                  <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
                 </button>
               </div>
             </motion.div>
           ))}
         </div>
 
-        <button className="w-full mt-8 py-4 border border-slate-200 rounded-xl text-sm font-medium text-slate-600 hover:bg-slate-50 transition-colors md:hidden">
-          View All Members
-        </button>
+        <div className="mt-16 md:hidden">
+          <button className="w-full inline-flex items-center justify-center border border-border text-primary h-[52px] font-medium text-[13px] tracking-[0.05em] uppercase hover:bg-card transition-colors">
+            View All Members
+          </button>
+        </div>
 
       </div>
     </section>
