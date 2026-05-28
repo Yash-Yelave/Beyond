@@ -9,24 +9,28 @@ const testimonials = [
     name: "James Arthur",
     role: "Founder, Synthetix AI",
     type: "Founder",
+    avatar: "/annie-spratt-hCb3lIB8L8E-unsplash.jpg"
   },
   {
     quote: "The signal-to-noise ratio here is unmatched. As an investor, I’m looking for founders who are deliberate about how they build. This ecosystem naturally filters for that.",
     name: "Sophia Lin",
     role: "Partner, Horizon Ventures",
     type: "Investor",
+    avatar: "/campaign-creators-gMsnXqILjp4-unsplash.jpg"
   },
   {
     quote: "I joined expecting a standard network, but found a brain trust. The quality of operators here means I can get an answer to a complex scaling problem within hours.",
     name: "David K.",
     role: "VP Eng, ScaleTech",
     type: "Operator",
+    avatar: "/14995841-meeting-4784909.jpg"
   },
   {
     quote: "The community experiences are incredible. Finding true peers when you are building something novel is hard. Beyond gave me my inner circle.",
     name: "Maya Patel",
     role: "Creator & Builder",
     type: "Creator",
+    avatar: "/quilia-1-aA2Fadydc-unsplash.jpg"
   }
 ];
 
@@ -67,11 +71,19 @@ export default function Testimonials() {
               </div>
               
               <div className="flex items-center justify-between mt-auto pt-6 border-t border-line/60">
-                <div>
-                  <h4 className="text-[14px] font-bold text-ink mb-0.5">{t.name}</h4>
-                  <p className="text-[13px] text-slate font-medium">{t.role}</p>
+                <div className="flex items-center gap-4">
+                  <img 
+                    src={t.avatar} 
+                    alt={t.name} 
+                    className="w-12 h-12 rounded-full object-cover border border-line"
+                    loading="lazy"
+                  />
+                  <div>
+                    <h4 className="text-[14px] font-bold text-ink mb-0.5">{t.name}</h4>
+                    <p className="text-[13px] text-slate font-medium">{t.role}</p>
+                  </div>
                 </div>
-                <div className="px-3 py-1 bg-surface rounded text-[11px] font-bold text-slate uppercase tracking-wider">
+                <div className="hidden sm:block px-3 py-1 bg-surface rounded text-[11px] font-bold text-slate uppercase tracking-wider">
                   {t.type}
                 </div>
               </div>

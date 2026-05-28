@@ -7,8 +7,17 @@ const EASE = [0.25, 0.1, 0.25, 1];
 export default function FinalCTA() {
   return (
     <section className="bg-deep-slate py-32 lg:py-40 relative overflow-hidden">
-      {/* Subtle abstract background element */}
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-forest/5 rounded-full blur-[100px] pointer-events-none -translate-y-1/2 translate-x-1/3" />
+      
+      {/* Abstract Background Elements */}
+      <div className="absolute inset-0 w-full h-full opacity-10 mix-blend-overlay pointer-events-none">
+        <img 
+          src="/uh_yeah_20101995-space-4660847.jpg" 
+          alt="" 
+          className="w-full h-full object-cover"
+          loading="lazy"
+        />
+      </div>
+      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-forest/10 rounded-full blur-[100px] pointer-events-none -translate-y-1/2 translate-x-1/3" />
       
       <div className="relative max-w-[800px] mx-auto px-6 text-center z-10">
         <motion.div
