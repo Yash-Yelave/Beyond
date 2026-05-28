@@ -6,65 +6,61 @@ const EASE = [0.25, 0.1, 0.25, 1];
 
 export default function MembershipSplit() {
   return (
-    <section className="bg-stone py-20 lg:py-32 border-y border-border/50">
+    <section className="bg-pearl py-24 lg:py-32">
       <div className="max-w-[1400px] mx-auto px-6">
         
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           
           {/* Left Card: Membership */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.9, ease: EASE }}
-            className="bg-card p-12 lg:p-16 border border-border shadow-[0_10px_30px_-10px_rgba(0,0,0,0.03)] flex flex-col justify-between"
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.8, ease: EASE }}
+            className="bg-card p-10 lg:p-14 border border-line rounded-2xl shadow-sm flex flex-col justify-between"
           >
             <div>
-              <div className="text-gold mb-10">
-                <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1}>
+              <div className="w-12 h-12 bg-forest/10 rounded-xl flex items-center justify-center text-forest mb-8">
+                <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
                 </svg>
               </div>
-              <h2 className="font-serif text-[36px] leading-[46px] lg:text-[44px] lg:leading-[54px] font-light text-primary mb-6 tracking-[-0.02em]">
+              <h2 className="font-serif text-[32px] lg:text-[40px] font-medium text-ink mb-4 tracking-[-0.02em]">
                 Become a Member
               </h2>
-              <p className="text-[18px] leading-[34px] text-secondary mb-12 max-w-[480px]">
-                Join the ecosystem as a founder, investor, operator, creator, or mentor. Gain access to the network, events, and strategic resources.
+              <p className="text-[16px] leading-[1.7] text-slate mb-12 max-w-[480px] font-medium">
+                Join the ecosystem as a founder, investor, operator, or creator. Gain access to the curated network and exclusive strategic resources.
               </p>
             </div>
-            <motion.div whileHover={{ scale: 1.01 }} whileTap={{ scale: 0.99 }}>
-              <Link to="/membership" className="inline-flex items-center justify-center bg-gold text-ivory px-8 h-[52px] rounded-lg font-medium text-[15px] hover:bg-gold-hover transition-colors shadow-sm">
-                Apply for Membership
-              </Link>
-            </motion.div>
+            <Link to="/membership" className="inline-flex items-center justify-center bg-forest text-card h-[48px] px-8 rounded-lg font-semibold text-[14px] hover:bg-forest-hover transition-colors w-max">
+              Apply for Membership
+            </Link>
           </motion.div>
 
           {/* Right Card: Opportunity */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.9, delay: 0.2, ease: EASE }}
-            className="bg-ivory p-12 lg:p-16 border border-border shadow-[0_10px_30px_-10px_rgba(0,0,0,0.03)] flex flex-col justify-between"
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.8, delay: 0.1, ease: EASE }}
+            className="bg-stone p-10 lg:p-14 border border-line rounded-2xl flex flex-col justify-between"
           >
             <div>
-              <div className="text-gold mb-10">
-                <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1}>
+              <div className="w-12 h-12 bg-copper/10 rounded-xl flex items-center justify-center text-copper mb-8">
+                <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
                 </svg>
               </div>
-              <h2 className="font-serif text-[36px] leading-[46px] lg:text-[44px] lg:leading-[54px] font-light text-primary mb-6 tracking-[-0.02em]">
+              <h2 className="font-serif text-[32px] lg:text-[40px] font-medium text-ink mb-4 tracking-[-0.02em]">
                 Submit Opportunity
               </h2>
-              <p className="text-[18px] leading-[34px] text-secondary mb-12 max-w-[480px]">
-                Present your startup, project, or investment opportunity to the network for strategic support, funding, and collaborations.
+              <p className="text-[16px] leading-[1.7] text-slate mb-12 max-w-[480px] font-medium">
+                Present your startup, project, or investment opportunity directly to the network for strategic support, funding, and collaborations.
               </p>
             </div>
-            <motion.div whileHover={{ scale: 1.01 }} whileTap={{ scale: 0.99 }}>
-              <Link to="/submit-opportunity" className="inline-flex items-center justify-center bg-transparent border border-gold text-gold px-8 h-[52px] rounded-lg font-medium text-[15px] hover:bg-gold hover:text-ivory transition-colors">
-                Submit Opportunity
-              </Link>
-            </motion.div>
+            <Link to="/submit-opportunity" className="inline-flex items-center justify-center bg-card border-[1.5px] border-copper/40 text-copper h-[48px] px-8 rounded-lg font-semibold text-[14px] hover:bg-copper/5 hover:border-copper transition-colors w-max">
+              Submit Opportunity
+            </Link>
           </motion.div>
 
         </div>
