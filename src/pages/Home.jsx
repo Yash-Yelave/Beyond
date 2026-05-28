@@ -1,12 +1,12 @@
 import React from 'react';
-import Hero from '../components/Hero';
-import MetricsBanner from '../components/MetricsBanner';
-import Portfolio from '../components/Portfolio';
-import MissionVision from '../components/MissionVision';
-import EcosystemPillars from '../components/EcosystemPillars';
-import CommunityReel from '../components/CommunityReel';
-import FAQ from '../components/FAQ';
-import FeaturedProjectsSlider from '../components/FeaturedProjectsSlider';
+import Hero from '../components/sections/home/Hero';
+import MetricsBanner from '../components/sections/home/MetricsBanner';
+import Portfolio from '../components/sections/home/Portfolio';
+import MissionVision from '../components/sections/home/MissionVision';
+import EcosystemPillars from '../components/sections/home/EcosystemPillars';
+import CommunityReel from '../components/sections/home/CommunityReel';
+import FAQ from '../components/sections/home/FAQ';
+import FeaturedProjectsSlider from '../components/sections/home/FeaturedProjectsSlider';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 
