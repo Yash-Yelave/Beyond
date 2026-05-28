@@ -17,7 +17,7 @@ const Header = () => {
         <a href="#investment-hubs" className="hover:text-white transition-colors">Investment Hubs</a>
         <a href="#mentorship" className="hover:text-white transition-colors">Mentorship</a>
         <a href="#events" className="hover:text-white transition-colors">Events</a>
-        <a href="#wisdom" className="hover:text-white transition-colors">Wisdom</a>
+        <a href="#/membership" className="text-teal-300 hover:text-teal-200 transition-colors font-semibold">Become a Member</a>
         <a href="#/submit" className="text-teal-400 hover:text-teal-300 transition-colors">Submit Opportunity</a>
       </nav>
       <div>
