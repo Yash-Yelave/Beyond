@@ -45,7 +45,7 @@ export default function AboutEcosystem() {
           </Link>
         </motion.div>
 
-        {/* Right Visual: Layered Architecture Blocks */}
+        {/* Right Visual: Asymmetrical Image Composition */}
         <div className="lg:col-span-7 relative h-[500px] lg:h-[600px] flex items-center justify-center">
           
           {/* Back Layer */}
@@ -54,18 +54,15 @@ export default function AboutEcosystem() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 1, ease: EASE }}
-            className="absolute right-0 top-10 w-[70%] h-[60%] bg-pearl rounded-xl border border-line shadow-sm overflow-hidden flex flex-col"
+            className="absolute right-0 top-10 w-[70%] h-[60%] rounded-xl border border-line shadow-sm overflow-hidden flex flex-col group"
           >
-            <div className="h-10 border-b border-line flex items-center px-4 gap-2 bg-surface">
-               <div className="w-2 h-2 rounded-full bg-line" />
-               <div className="w-2 h-2 rounded-full bg-line" />
-               <div className="w-2 h-2 rounded-full bg-line" />
-            </div>
-            <div className="p-6 flex-grow flex flex-col gap-4">
-              <div className="w-full h-4 bg-surface rounded" />
-              <div className="w-3/4 h-4 bg-surface rounded" />
-              <div className="w-5/6 h-4 bg-surface rounded" />
-            </div>
+            <div className="absolute inset-0 bg-copper/5 mix-blend-multiply z-10 pointer-events-none group-hover:bg-transparent transition-colors duration-700" />
+            <img 
+              src="/campaign-creators-gMsnXqILjp4-unsplash.jpg" 
+              alt="Collaborative workspace" 
+              className="w-full h-full object-cover"
+              loading="lazy"
+            />
           </motion.div>
 
           {/* Front Layer */}
@@ -74,25 +71,15 @@ export default function AboutEcosystem() {
             whileInView={{ opacity: 1, x: 0, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 1, delay: 0.2, ease: EASE }}
-            className="absolute left-0 bottom-10 w-[60%] h-[60%] bg-card rounded-xl border border-line shadow-lg overflow-hidden flex flex-col p-6"
+            className="absolute left-0 bottom-10 w-[60%] h-[60%] rounded-xl border-4 border-card shadow-lg overflow-hidden flex flex-col group"
           >
-            <div className="flex items-center gap-4 mb-6">
-              <div className="w-12 h-12 rounded-full bg-forest/10 flex items-center justify-center text-forest text-[10px] font-bold">PRJ</div>
-              <div>
-                <div className="w-24 h-3 bg-surface rounded mb-2" />
-                <div className="w-16 h-2 bg-surface rounded" />
-              </div>
-            </div>
-            <div className="grid grid-cols-2 gap-4">
-               <div className="h-16 border border-line rounded-md bg-pearl flex flex-col justify-center px-4">
-                 <div className="w-6 h-[2px] bg-forest mb-2" />
-                 <div className="w-12 h-2 bg-surface rounded" />
-               </div>
-               <div className="h-16 border border-line rounded-md bg-pearl flex flex-col justify-center px-4">
-                 <div className="w-6 h-[2px] bg-copper mb-2" />
-                 <div className="w-12 h-2 bg-surface rounded" />
-               </div>
-            </div>
+            <div className="absolute inset-0 bg-forest/5 mix-blend-multiply z-10 pointer-events-none group-hover:bg-transparent transition-colors duration-700" />
+            <img 
+              src="/annie-spratt-hCb3lIB8L8E-unsplash.jpg" 
+              alt="Founder workspace" 
+              className="w-full h-full object-cover"
+              loading="lazy"
+            />
           </motion.div>
 
         </div>
