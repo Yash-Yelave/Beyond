@@ -6,66 +6,93 @@ const EASE = [0.25, 0.1, 0.25, 1];
 
 export default function AboutEcosystem() {
   return (
-    <section className="bg-ivory py-20 lg:py-32 overflow-hidden">
+    <section className="bg-stone py-24 lg:py-32 overflow-hidden border-y border-line">
       <div className="max-w-[1400px] mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-center">
         
         {/* Left Text Content */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.9, ease: EASE }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.8, ease: EASE }}
           className="lg:col-span-5"
         >
-          <div className="w-12 h-[1px] bg-gold mb-10" />
+          <div className="flex items-center gap-4 mb-8">
+            <span className="w-8 h-[1px] bg-copper" />
+            <span className="text-[12px] font-bold tracking-widest text-slate uppercase">
+              The Platform
+            </span>
+          </div>
           
-          <h2 className="font-serif text-[40px] leading-[50px] lg:text-[52px] lg:leading-[60px] font-light text-primary mb-10 tracking-[-0.02em]">
-            Not just another social network. A curated engine for growth.
+          <h2 className="font-serif text-[36px] leading-[1.2] lg:text-[48px] font-medium text-ink mb-8 tracking-[-0.02em]">
+            A curated engine for growth and intelligence.
           </h2>
           
-          <div className="space-y-8 text-secondary text-[18px] leading-[34px] mb-12">
+          <div className="space-y-6 text-slate text-[16px] leading-[1.7] font-medium mb-10">
             <p>
-              Traditional networking is transactional, noisy, and inefficient. Beyond is built differently. It's a high-trust environment where every interaction is intentional and highly relevant.
+              Traditional networking relies on serendipity. Beyond replaces it with structured intentionality. We have built a high-trust environment where ambitious founders, active investors, and seasoned operators connect.
             </p>
             <p>
-              We curate our members to ensure alignment in ambition and values. Inside, members contribute, collaborate, and grow together—focusing on long-term relationships that compound over time.
+              By tightly curating our members, we ensure alignment in ambition and intent, creating a platform where relationships compound and opportunities scale rapidly.
             </p>
           </div>
 
-          <Link to="/about" className="group inline-flex items-center gap-4 text-[13px] font-semibold tracking-[0.1em] uppercase text-primary hover:text-gold transition-colors">
-            <span>Explore the Ecosystem</span>
-            <span className="w-8 h-[1px] bg-primary group-hover:bg-gold transition-colors" />
+          <Link to="/about" className="group inline-flex items-center gap-3 text-[14px] font-bold text-ink hover:text-forest transition-colors">
+            Explore the Ecosystem
+            <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
           </Link>
-
         </motion.div>
 
-        {/* Right Visual: Offset Image Stack */}
-        <div className="lg:col-span-7 relative h-[600px] lg:h-[800px] flex items-center justify-center">
+        {/* Right Visual: Layered Architecture Blocks */}
+        <div className="lg:col-span-7 relative h-[500px] lg:h-[600px] flex items-center justify-center">
           
-          {/* Back Image */}
+          {/* Back Layer */}
           <motion.div
-            initial={{ opacity: 0, x: 40 }}
+            initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 1.2, ease: EASE }}
-            className="absolute right-0 top-10 w-[70%] h-[60%] lg:h-[70%] bg-muted rounded-md shadow-[0_20px_40px_-15px_rgba(0,0,0,0.05)] border border-border/50 overflow-hidden"
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 1, ease: EASE }}
+            className="absolute right-0 top-10 w-[70%] h-[60%] bg-pearl rounded-xl border border-line shadow-sm overflow-hidden flex flex-col"
           >
-            <div className="absolute inset-0 bg-[#D4CFC4] mix-blend-multiply opacity-20" />
-            <div className="absolute inset-0 flex items-center justify-center opacity-10">
-              <span className="font-serif text-6xl tracking-widest text-primary">BEYOND</span>
+            <div className="h-10 border-b border-line flex items-center px-4 gap-2 bg-surface">
+               <div className="w-2 h-2 rounded-full bg-line" />
+               <div className="w-2 h-2 rounded-full bg-line" />
+               <div className="w-2 h-2 rounded-full bg-line" />
+            </div>
+            <div className="p-6 flex-grow flex flex-col gap-4">
+              <div className="w-full h-4 bg-surface rounded" />
+              <div className="w-3/4 h-4 bg-surface rounded" />
+              <div className="w-5/6 h-4 bg-surface rounded" />
             </div>
           </motion.div>
 
-          {/* Front Image */}
+          {/* Front Layer */}
           <motion.div
-            initial={{ opacity: 0, x: -40, y: 40 }}
+            initial={{ opacity: 0, x: -20, y: 20 }}
             whileInView={{ opacity: 1, x: 0, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 1.2, delay: 0.2, ease: EASE }}
-            className="absolute left-0 bottom-10 w-[65%] h-[55%] lg:h-[65%] bg-stone rounded-md shadow-[0_30px_60px_-20px_rgba(0,0,0,0.08)] border border-border overflow-hidden"
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 1, delay: 0.2, ease: EASE }}
+            className="absolute left-0 bottom-10 w-[60%] h-[60%] bg-card rounded-xl border border-line shadow-lg overflow-hidden flex flex-col p-6"
           >
-            <div className="absolute inset-0 bg-[#E5DFD3] mix-blend-multiply opacity-30" />
-            <div className="w-full h-full border border-white/20 m-4 rounded-sm" style={{ width: 'calc(100% - 32px)', height: 'calc(100% - 32px)' }} />
+            <div className="flex items-center gap-4 mb-6">
+              <div className="w-12 h-12 rounded-full bg-forest/10 flex items-center justify-center text-forest text-[10px] font-bold">PRJ</div>
+              <div>
+                <div className="w-24 h-3 bg-surface rounded mb-2" />
+                <div className="w-16 h-2 bg-surface rounded" />
+              </div>
+            </div>
+            <div className="grid grid-cols-2 gap-4">
+               <div className="h-16 border border-line rounded-md bg-pearl flex flex-col justify-center px-4">
+                 <div className="w-6 h-[2px] bg-forest mb-2" />
+                 <div className="w-12 h-2 bg-surface rounded" />
+               </div>
+               <div className="h-16 border border-line rounded-md bg-pearl flex flex-col justify-center px-4">
+                 <div className="w-6 h-[2px] bg-copper mb-2" />
+                 <div className="w-12 h-2 bg-surface rounded" />
+               </div>
+            </div>
           </motion.div>
 
         </div>
