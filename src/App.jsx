@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from 'react-router-dom';
 
 // Layouts
 import MainLayout from './components/layout/MainLayout';
@@ -14,25 +14,27 @@ import SubmitOpportunity from './pages/SubmitOpportunity';
 import Contact from './pages/Contact';
 import Dashboard from './pages/Dashboard';
 
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <>
+      <Route element={<MainLayout />}>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/membership" element={<Membership />} />
+        <Route path="/events" element={<Events />} />
+        <Route path="/insights" element={<Insights />} />
+        <Route path="/submit-opportunity" element={<SubmitOpportunity />} />
+        <Route path="/contact" element={<Contact />} />
+      </Route>
+      
+      {/* Dashboard stands alone (no public header/footer) */}
+      <Route path="/dashboard" element={<Dashboard />} />
+    </>
+  )
+);
+
 function App() {
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route element={<MainLayout />}>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/membership" element={<Membership />} />
-          <Route path="/events" element={<Events />} />
-          <Route path="/insights" element={<Insights />} />
-          <Route path="/submit-opportunity" element={<SubmitOpportunity />} />
-          <Route path="/contact" element={<Contact />} />
-        </Route>
-        
-        {/* Dashboard stands alone (no public header/footer) */}
-        <Route path="/dashboard" element={<Dashboard />} />
-      </Routes>
-    </BrowserRouter>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;
