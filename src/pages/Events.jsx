@@ -1,9 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import SectionHeading from '../components/ui/SectionHeading';
+import { Link } from 'react-router-dom';
 
 const EASE = [0.25, 0.1, 0.25, 1];
-const VIEWPORT = { once: true, margin: '-60px' };
 
 const events = [
   {
@@ -13,7 +13,7 @@ const events = [
     location: 'Bengaluru, India (Invite Only)',
     type: 'In-Person',
     desc: 'An intimate, off-the-record discussion with founders who have recently crossed $5M ARR.',
-    color: 'bg-teal-50 border-teal-100 text-teal-700',
+    image: '/14995841-meeting-4784909.jpg'
   },
   {
     title: 'Investor Mixer: DeepTech & AI',
@@ -22,7 +22,7 @@ const events = [
     location: 'Mumbai, India',
     type: 'Mixer',
     desc: 'Curated networking evening for early-stage DeepTech founders and active seed/Series A investors.',
-    color: 'bg-blue-50 border-blue-100 text-blue-700',
+    image: '/campaign-creators-gMsnXqILjp4-unsplash.jpg'
   },
   {
     title: 'Masterclass: Structuring Founder Equity',
@@ -31,58 +31,83 @@ const events = [
     location: 'Virtual',
     type: 'Masterclass',
     desc: 'Expert-led session on cap tables, vesting schedules, and secondary sales for growth-stage founders.',
-    color: 'bg-violet-50 border-violet-100 text-violet-700',
+    image: '/annie-spratt-hCb3lIB8L8E-unsplash.jpg'
   }
 ];
 
 export default function Events() {
   return (
-    <div className="bg-slate-50 min-h-screen py-24">
-      <div className="max-w-5xl mx-auto px-6">
+    <div className="bg-stone min-h-screen py-24 lg:py-32">
+      <div className="max-w-[1400px] mx-auto px-6">
         <SectionHeading 
           eyebrow="Ecosystem Events" 
           title="Curated Gatherings" 
           subtitle="We design spaces for high-signal conversations and meaningful connections. Most events are exclusive to Beyond members."
         />
 
-        <div className="space-y-6 mt-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto mt-16">
           {events.map((e, i) => (
             <motion.div 
               key={i}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: i * 0.1, ease: EASE }}
-              className="bg-white border border-slate-100 rounded-2xl p-6 md:p-8 flex flex-col md:flex-row md:items-center gap-6 shadow-sm hover:shadow-md transition-shadow"
+              className="group flex flex-col bg-card rounded-xl border border-line overflow-hidden shadow-sm hover:shadow-lg transition-shadow duration-300"
             >
-              <div className="flex-grow">
-                <div className="flex items-center gap-3 mb-3">
-                  <span className={`text-xs font-semibold px-3 py-1 rounded-full border ${e.color}`}>
+              {/* Image Area */}
+              <div className="w-full aspect-[16/10] bg-surface relative overflow-hidden border-b border-line">
+                 <div className="absolute inset-0 bg-ink/5 mix-blend-multiply z-10 pointer-events-none group-hover:bg-transparent transition-colors duration-700" />
+                 <img 
+                    src={e.image} 
+                    alt={e.title} 
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                    loading="lazy"
+                  />
+              </div>
+
+              {/* Content Area */}
+              <div className="p-8 flex flex-col flex-grow">
+                <div className="flex items-center justify-between mb-4">
+                  <span className="px-2.5 py-1 rounded-full bg-forest/10 text-forest text-[11px] font-bold tracking-wider uppercase">
                     {e.type}
                   </span>
-                  <span className="text-sm font-medium text-slate-500">{e.date} • {e.time}</span>
+                  <span className="text-[12px] font-medium text-slate">
+                    {e.date}
+                  </span>
                 </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-2">{e.title}</h3>
-                <p className="text-slate-600 text-sm leading-relaxed mb-4">{e.desc}</p>
-                <div className="flex items-center gap-2 text-sm font-medium text-slate-500">
-                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                  </svg>
-                  {e.location}
+                
+                <h3 className="font-serif text-[24px] font-medium text-ink mb-3 line-clamp-2">
+                  {e.title}
+                </h3>
+                
+                <div className="flex items-center gap-2 text-[13px] font-bold text-copper uppercase tracking-wider mb-4">
+                  {e.time}
                 </div>
-              </div>
-              <div className="shrink-0">
-                <button className="w-full md:w-auto bg-slate-900 text-white px-6 py-3 rounded-xl text-sm font-semibold hover:bg-slate-800 transition-colors">
-                  Request Invite
-                </button>
+                
+                <p className="text-[14px] text-slate font-medium leading-[1.6] mb-8 flex-grow">
+                  {e.desc}
+                </p>
+                
+                <div className="flex flex-col gap-4 mt-auto border-t border-line/60 pt-6">
+                  <div className="flex items-center gap-2 text-[13px] font-medium text-slate">
+                    <svg className="w-4 h-4 text-slate/70" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                    {e.location}
+                  </div>
+                  <button className="w-full bg-forest text-card py-3 rounded-lg text-[14px] font-semibold hover:bg-forest-hover transition-colors">
+                    Request Invite
+                  </button>
+                </div>
               </div>
             </motion.div>
           ))}
         </div>
         
-        <div className="mt-16 text-center border-t border-slate-200 pt-10">
-          <p className="text-slate-500 text-sm">
-            Are you a Beyond member? <a href="/dashboard" className="text-teal-600 font-semibold hover:underline">Log in</a> to view the full private calendar.
+        <div className="mt-20 text-center max-w-lg mx-auto">
+          <p className="text-[14px] text-slate font-medium">
+            Are you a Beyond member? <Link to="/dashboard" className="text-copper font-bold hover:underline">Log in</Link> to view the full private calendar.
           </p>
         </div>
       </div>
