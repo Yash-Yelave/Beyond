@@ -7,25 +7,29 @@ export default {
   theme: {
     extend: {
       colors: {
-        ivory: '#F7F4EE',
-        stone: '#EFE9DF',
-        card: '#FBF9F5',
-        primary: '#1E1E1A',
-        secondary: '#5E5A54',
-        gold: {
-          DEFAULT: '#9B7B45',
-          hover: '#7C6135',
+        pearl: '#F8F9F7',
+        stone: '#F0F2F0',
+        card: '#FFFFFF',
+        ink: '#1A1C1A',
+        slate: '#545856',
+        forest: {
+          DEFAULT: '#2A4D45',
+          hover: '#223d37',
         },
-        border: '#D9D1C4',
-        muted: '#ECE7DE',
-        charcoal: {
-          DEFAULT: '#151515',
-          text: '#F5F3EE',
+        copper: {
+          DEFAULT: '#C27A5B',
+          hover: '#a8674b',
+        },
+        line: '#E2E5E2',
+        surface: '#E9ECE9',
+        'deep-slate': {
+          DEFAULT: '#1E2623',
+          text: '#F4F6F4',
         }
       },
       fontFamily: {
-        sans: ['Inter', 'sans-serif'],
-        serif: ['Playfair Display', 'serif'],
+        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+        serif: ['Fraunces', 'serif'],
       },
     },
   },
