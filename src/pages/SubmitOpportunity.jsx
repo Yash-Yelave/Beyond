@@ -35,65 +35,87 @@ const faqs = [
 function FAQAccordion({ items }) {
   const [open, setOpen] = React.useState(null);
   return (
-    <div className="space-y-3">
-      {items.map((item, i) => (
-        <motion.div key={i} initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={VIEWPORT} transition={{ duration: 0.45, ease: EASE, delay: i * 0.06 }} className="border border-slate-100 rounded-xl overflow-hidden bg-white shadow-sm">
-          <button onClick={() => setOpen(open === i ? null : i)} className="w-full px-6 py-5 text-left flex justify-between items-center gap-4 hover:bg-slate-50/80 transition-colors focus:outline-none">
-            <span className="font-semibold text-slate-900 text-sm">{item.q}</span>
-            <motion.div animate={{ rotate: open === i ? 45 : 0 }} transition={{ duration: 0.25 }} className="shrink-0 w-6 h-6 rounded-full border border-slate-200 flex items-center justify-center text-slate-400">
-              <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m8-8H4" /></svg>
-            </motion.div>
-          </button>
-          {open === i && (
-            <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.3, ease: EASE }} className="overflow-hidden">
-              <div className="px-6 pb-5 border-t border-slate-50"><p className="text-sm text-slate-500 leading-relaxed pt-4">{item.a}</p></div>
-            </motion.div>
-          )}
-        </motion.div>
-      ))}
+    <div className="space-y-0 border-t border-line">
+      {items.map((item, i) => {
+        const isOpen = open === i;
+        return (
+          <div key={i} className="border-b border-line">
+            <button onClick={() => setOpen(isOpen ? null : i)} className="w-full flex items-center justify-between py-8 text-left focus:outline-none group">
+              <span className={`font-sans text-[18px] font-medium pr-8 transition-colors duration-300 ${isOpen ? 'text-forest' : 'text-ink group-hover:text-forest'}`}>{item.q}</span>
+              <div className="shrink-0 flex items-center justify-center">
+                <svg className={`w-5 h-5 transition-all duration-300 ${isOpen ? 'rotate-180 text-forest' : 'rotate-0 text-slate group-hover:text-ink'}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  {isOpen ? <path strokeLinecap="round" strokeLinejoin="round" d="M20 12H4" /> : <path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m8-8H4" />}
+                </svg>
+              </div>
+            </button>
+            {isOpen && (
+              <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} transition={{ duration: 0.4, ease: EASE }} className="overflow-hidden">
+                <div className="pb-8 text-[15px] leading-[1.7] text-slate font-medium max-w-[680px]">{item.a}</div>
+              </motion.div>
+            )}
+          </div>
+        );
+      })}
     </div>
   );
 }
 
 export default function SubmitOpportunity() {
   return (
-    <div className="bg-white">
+    <div className="bg-pearl min-h-screen">
 
       {/* ── Hero ─────────────────────────────────────────────────────── */}
-      <section className="bg-slate-900 py-20 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: 'linear-gradient(rgba(255,255,255,1) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,1) 1px,transparent 1px)', backgroundSize: '44px 44px' }} />
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[320px] rounded-full opacity-[0.10] blur-3xl pointer-events-none" style={{ background: 'radial-gradient(ellipse,#14b8a6 0%,transparent 70%)' }} />
-        <div className="relative max-w-4xl mx-auto px-6 text-center">
-          <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease: EASE }}>
-            <div className="inline-flex items-center gap-2 bg-white/5 border border-white/10 rounded-full px-4 py-1.5 mb-6">
-              <span className="w-2 h-2 rounded-full bg-teal-400 animate-pulse" />
-              <span className="text-xs font-semibold text-slate-300 tracking-wide uppercase">Submit Opportunity</span>
+      <section className="relative pt-[120px] pb-24 lg:pt-[160px] lg:pb-32 overflow-hidden border-b border-line">
+        <div className="max-w-[1400px] mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+          
+          <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease: EASE }} className="lg:col-span-6">
+            <div className="flex items-center gap-4 mb-8">
+              <span className="w-8 h-[1px] bg-copper" />
+              <span className="text-[12px] font-bold tracking-widest text-slate uppercase">Submit Opportunity</span>
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold text-white tracking-tight leading-[1.12] mb-5">
-              Bring Your Opportunity to Beyond
+            <h1 className="font-serif text-[44px] md:text-[64px] font-medium text-ink tracking-[-0.02em] leading-[1.12] mb-6">
+              Bring Your Vision <br className="hidden md:block" /> to Beyond.
             </h1>
-            <p className="text-lg text-slate-400 leading-relaxed max-w-2xl mx-auto mb-8">
+            <p className="text-[16px] lg:text-[18px] text-slate font-medium leading-[1.7] max-w-[540px] mb-10">
               Whether you're seeking funding, strategic partnerships, mentorship, or investor introductions — share your opportunity with our curated ecosystem.
             </p>
-            <div className="flex flex-wrap justify-center gap-3">
+            <div className="flex flex-wrap items-center gap-3">
               {['Funding Access', 'Investor Matching', 'Strategic Partnerships', 'Mentorship', 'Ecosystem Support'].map((tag) => (
-                <span key={tag} className="bg-white/8 border border-white/10 text-slate-300 text-xs font-medium px-3 py-1.5 rounded-full">{tag}</span>
+                <span key={tag} className="bg-forest/5 border border-forest/10 text-forest text-[11px] font-bold tracking-wider uppercase px-3 py-1.5 rounded">{tag}</span>
               ))}
             </div>
           </motion.div>
+          
+          <div className="lg:col-span-6 relative h-[400px] lg:h-[500px] hidden md:flex items-center justify-center">
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 1, ease: EASE, delay: 0.2 }}
+              className="absolute inset-0 w-full h-full bg-stone border border-line rounded-xl overflow-hidden group"
+            >
+              <div className="absolute inset-0 bg-ink/5 mix-blend-multiply z-10 pointer-events-none group-hover:bg-transparent transition-colors duration-700" />
+              <img 
+                src="/annie-spratt-hCb3lIB8L8E-unsplash.jpg" 
+                alt="Founder workspace" 
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[1s] ease-out"
+                loading="lazy"
+              />
+            </motion.div>
+          </div>
+
         </div>
       </section>
 
       {/* ── Trust signals ─────────────────────────────────────────────── */}
-      <section className="border-b border-slate-100 bg-slate-50 py-10">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+      <section className="bg-stone py-12 border-b border-line">
+        <div className="max-w-[1400px] mx-auto px-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto">
             {signals.map((s, i) => (
-              <motion.div key={i} initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={VIEWPORT} transition={{ duration: 0.45, ease: EASE, delay: i * 0.08 }} className="flex items-center gap-3">
-                <div className="w-9 h-9 bg-teal-50 border border-teal-100 rounded-xl flex items-center justify-center shrink-0">
-                  <svg className="w-4 h-4 text-teal-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.7}><path strokeLinecap="round" strokeLinejoin="round" d={s.icon} /></svg>
+              <motion.div key={i} initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={VIEWPORT} transition={{ duration: 0.45, ease: EASE, delay: i * 0.08 }} className="flex items-center justify-center md:justify-start gap-4">
+                <div className="w-10 h-10 bg-forest/10 rounded-full flex items-center justify-center shrink-0">
+                  <svg className="w-4 h-4 text-forest" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d={s.icon} /></svg>
                 </div>
-                <span className="text-xs font-semibold text-slate-600 leading-snug">{s.label}</span>
+                <span className="text-[13px] font-bold text-slate uppercase tracking-wider leading-snug">{s.label}</span>
               </motion.div>
             ))}
           </div>
@@ -101,59 +123,67 @@ export default function SubmitOpportunity() {
       </section>
 
       {/* ── Process flow ──────────────────────────────────────────────── */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
+      <section className="py-24 lg:py-32 bg-pearl">
+        <div className="max-w-[1400px] mx-auto px-6">
           <SectionHeading eyebrow="How It Works" title="Our Review Process" subtitle="A structured, respectful approach to evaluating every submission." />
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto mt-16">
             {steps.map((s, i) => (
-              <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={VIEWPORT} transition={{ duration: 0.5, ease: EASE, delay: i * 0.1 }} className="bg-slate-50 border border-slate-100 rounded-2xl p-6 flex flex-col gap-4">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-slate-900 text-white flex items-center justify-center text-xs font-bold shadow-md shadow-slate-900/20">{s.n}</div>
-                  <div className="w-9 h-9 bg-teal-50 border border-teal-100 rounded-xl flex items-center justify-center">
-                    <svg className="w-4 h-4 text-teal-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.7}><path strokeLinecap="round" strokeLinejoin="round" d={s.icon} /></svg>
-                  </div>
+              <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={VIEWPORT} transition={{ duration: 0.5, ease: EASE, delay: i * 0.1 }} className="relative flex flex-col items-start bg-card p-8 rounded-xl border border-line shadow-sm mt-6">
+                <div className="w-12 h-12 bg-forest/10 border-[2px] border-card shadow-[0_0_0_2px_rgba(42,77,69,0.2)] text-forest rounded-full flex items-center justify-center font-bold text-[14px] mb-6 absolute -top-6 left-8">
+                  {s.n}
                 </div>
-                <div><h3 className="text-sm font-semibold text-slate-900 mb-1.5">{s.title}</h3><p className="text-xs text-slate-500 leading-relaxed">{s.desc}</p></div>
+                <div className="mt-4">
+                  <h3 className="font-serif text-[20px] font-medium text-ink mb-3">{s.title}</h3>
+                  <p className="text-[14px] text-slate font-medium leading-[1.6]">{s.desc}</p>
+                </div>
               </motion.div>
             ))}
           </div>
-          <p className="text-center text-xs text-slate-400 mt-10 max-w-lg mx-auto">We prioritize alignment, contribution, and long-term collaboration over mass submission.</p>
+          <p className="text-center text-[14px] text-slate font-medium mt-16 max-w-lg mx-auto">We prioritize alignment, contribution, and long-term collaboration over mass submission.</p>
         </div>
       </section>
 
       {/* ── Form ──────────────────────────────────────────────────────── */}
-      <section id="submit-form" className="py-16 bg-slate-50">
+      <section id="submit-form" className="py-24 lg:py-32 bg-stone border-y border-line">
         <div className="max-w-4xl mx-auto px-6">
           <SectionHeading eyebrow="Application" title="Submit Your Opportunity" subtitle="Takes 6–8 minutes. Every field helps us understand your vision better." />
           <FundingForm />
-          <p className="text-center text-xs text-slate-400 mt-5">Our team carefully reviews every submission to maintain ecosystem quality and integrity.</p>
+          <p className="text-center text-[13px] text-slate font-medium mt-8">Our team carefully reviews every submission to maintain ecosystem quality and integrity.</p>
         </div>
       </section>
 
       {/* ── FAQ ───────────────────────────────────────────────────────── */}
-      <section className="py-20 bg-white">
+      <section className="py-24 lg:py-32 bg-card">
         <div className="max-w-3xl mx-auto px-6">
           <SectionHeading eyebrow="FAQs" title="Common Questions" subtitle="Everything you need to know before submitting." />
           <FAQAccordion items={faqs} />
-          <p className="text-center text-xs text-slate-400 mt-10">
+          <p className="text-center text-[14px] text-slate font-medium mt-12">
             Have more questions?{' '}
-            <Link to="/contact" className="text-teal-600 hover:underline font-medium">Reach out to our team</Link>
+            <Link to="/contact" className="text-copper hover:underline font-bold">Reach out to our team</Link>
           </p>
         </div>
       </section>
 
       {/* ── Final CTA ─────────────────────────────────────────────────── */}
-      <section className="bg-slate-900 py-20 relative overflow-hidden">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[280px] rounded-full opacity-[0.10] blur-3xl pointer-events-none" style={{ background: 'radial-gradient(ellipse,#14b8a6 0%,transparent 70%)' }} />
-        <div className="relative max-w-3xl mx-auto px-6 text-center">
+      <section className="bg-deep-slate py-32 relative overflow-hidden">
+        <div className="absolute inset-0 w-full h-full opacity-10 mix-blend-overlay pointer-events-none">
+          <img src="/uh_yeah_20101995-space-4660847.jpg" alt="" className="w-full h-full object-cover" loading="lazy" />
+        </div>
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-forest/10 rounded-full blur-[100px] pointer-events-none -translate-y-1/2 translate-x-1/3" />
+        
+        <div className="relative max-w-[800px] mx-auto px-6 text-center z-10">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={VIEWPORT} transition={{ duration: 0.7, ease: EASE }}>
-            <h2 className="text-3xl md:text-4xl font-bold text-white tracking-tight mb-4">Ready to grow beyond?</h2>
-            <p className="text-slate-400 text-base leading-relaxed mb-8">Join a curated network where the right introductions change everything.</p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <motion.a href="#submit-form" whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} className="inline-block bg-teal-500 text-white px-8 py-3.5 rounded-xl font-semibold text-sm hover:bg-teal-400 transition-colors">Submit Your Opportunity</motion.a>
-              <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
-                <Link to="/membership" className="inline-block bg-white/10 border border-white/10 text-white px-8 py-3.5 rounded-xl font-semibold text-sm hover:bg-white/15 transition-colors">Apply for Membership</Link>
-              </motion.div>
+            <div className="w-12 h-[1px] bg-copper mx-auto mb-8" />
+            <h2 className="font-serif text-[40px] md:text-[56px] font-medium text-deep-slate-text tracking-[-0.02em] mb-6 leading-[1.2]">Ready to grow beyond?</h2>
+            <p className="text-[16px] lg:text-[18px] text-deep-slate-text/70 font-medium max-w-[540px] mx-auto leading-[1.7] mb-12">Join a curated network where the right introductions change everything.</p>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-5">
+              <a href="#submit-form" className="flex items-center justify-center w-full sm:w-auto bg-forest text-card px-8 h-[52px] rounded-lg font-semibold text-[15px] hover:bg-forest-hover transition-colors shadow-sm">
+                Submit Your Opportunity
+              </a>
+              <Link to="/membership" className="flex items-center justify-center w-full sm:w-auto bg-transparent border-[1.5px] border-deep-slate-text/20 text-deep-slate-text px-8 h-[52px] rounded-lg font-semibold text-[15px] hover:bg-deep-slate-text/5 hover:border-deep-slate-text/40 transition-colors">
+                Apply for Membership
+              </Link>
             </div>
           </motion.div>
         </div>
