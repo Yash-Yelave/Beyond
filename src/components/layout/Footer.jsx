@@ -34,7 +34,7 @@ const columns = [
 export default function Footer() {
   return (
     <footer className="bg-deep-slate border-t border-deep-slate-text/10 pt-16 pb-10">
-      <div className="max-w-[1400px] mx-auto px-6">
+      <div className="max-w-[1440px] mx-auto px-6">
 
         {/* Top: brand + columns */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 pb-16 border-b border-deep-slate-text/10">
@@ -76,8 +76,8 @@ export default function Footer() {
             © {new Date().getFullYear()} Beyond Network. All rights reserved.
           </p>
           <div className="flex gap-6">
-            <a href="#" className="text-deep-slate-text/40 hover:text-deep-slate-text/80 transition-colors">LinkedIn</a>
-            <a href="#" className="text-deep-slate-text/40 hover:text-deep-slate-text/80 transition-colors">Twitter</a>
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="text-deep-slate-text/40 hover:text-deep-slate-text/80 transition-colors">LinkedIn</a>
+            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter" className="text-deep-slate-text/40 hover:text-deep-slate-text/80 transition-colors">Twitter</a>
           </div>
         </div>
 

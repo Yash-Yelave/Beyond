@@ -71,7 +71,7 @@ export default function Navbar() {
           scrolled ? 'bg-pearl/90 backdrop-blur-md border-b border-line' : 'bg-transparent'
         }`}
       >
-        <div className="max-w-[1400px] mx-auto px-6 h-[72px] flex items-center justify-between gap-6">
+        <div className="max-w-[1440px] mx-auto px-6 h-[72px] flex items-center justify-between gap-6">
 
           {/* Brand */}
           <Link to="/" className="text-ink font-serif font-medium text-[22px] tracking-tight shrink-0 hover:opacity-80 transition-opacity">
