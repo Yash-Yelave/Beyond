@@ -68,7 +68,7 @@ function FAQAccordion({ items }) {
             </button>
             {isOpen && (
               <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} transition={{ duration: 0.4, ease: EASE }} className="overflow-hidden">
-                <div className="pb-8 text-[15px] leading-[1.7] text-slate font-medium max-w-[680px]">{item.a}</div>
+                <div className="pb-8 text-[15px] leading-[1.7] text-slate font-medium max-w-[720px]">{item.a}</div>
               </motion.div>
             )}
           </div>
@@ -86,65 +86,67 @@ export default function Membership() {
     <div className="bg-pearl min-h-screen">
 
       {/* ── Hero ────────────────────────────────────────────────────── */}
-      <section className="relative pt-[80px] pb-24 lg:pt-[100px] lg:pb-32 overflow-hidden border-b border-line">
-        <div className="max-w-[1400px] mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
-          
-          <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease: EASE }} className="lg:col-span-6">
-            <div className="flex items-center gap-4 mb-8">
-              <span className="w-8 h-[1px] bg-copper" />
-              <span className="text-[12px] font-bold tracking-widest text-slate uppercase">Membership</span>
-            </div>
-            <h1 className="font-serif text-[44px] md:text-[64px] font-medium text-ink tracking-[-0.02em] leading-[1.12] mb-6">
-              Become Part of <br/> <span className="text-forest">Beyond</span>.
-            </h1>
-            <p className="text-[16px] lg:text-[18px] text-slate font-medium leading-[1.7] max-w-[540px] mb-12">
-              Join a curated ecosystem of visionary founders, investors, creators, and operators building meaningful growth together.
-            </p>
+      <section className="relative pt-[100px] pb-[100px] lg:pt-[140px] lg:pb-[140px] overflow-hidden border-b border-line">
+        <div className="max-w-[1440px] mx-auto px-6 w-full">
+          <div className="max-w-[1240px] mx-auto flex flex-col lg:flex-row gap-16 items-center justify-between">
             
-            <div className="flex flex-col sm:flex-row items-center gap-5 w-full sm:w-auto">
-              <a href="#membership-form" className="flex items-center justify-center w-full sm:w-auto bg-forest text-card px-8 h-[52px] rounded-lg font-semibold text-[15px] hover:bg-forest-hover transition-colors shadow-sm">
-                Apply for Membership
-              </a>
-              <Link to="/" className="flex items-center justify-center w-full sm:w-auto bg-transparent border-[1.5px] border-copper/40 text-copper px-8 h-[52px] rounded-lg font-semibold text-[15px] hover:bg-copper/5 hover:border-copper transition-colors">
-                Explore Ecosystem
-              </Link>
-            </div>
-          </motion.div>
-
-          <div className="lg:col-span-6 relative h-[400px] lg:h-[500px] hidden md:flex items-center justify-center">
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 1, ease: EASE, delay: 0.2 }}
-              className="absolute inset-0 w-full h-full bg-stone border border-line rounded-xl overflow-hidden group"
-            >
-              <div className="absolute inset-0 bg-ink/5 mix-blend-multiply z-10 pointer-events-none group-hover:bg-transparent transition-colors duration-700" />
-              <img 
-                src="/14995841-meeting-4784909.jpg" 
-                alt="Ecosystem members" 
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[1s] ease-out"
-                loading="lazy"
-              />
+            <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease: EASE }} className="w-full lg:w-[55%]">
+              <div className="flex items-center gap-4 mb-4">
+                <span className="w-8 h-[1px] bg-copper" />
+                <span className="text-[12px] font-bold tracking-widest text-slate uppercase">Membership</span>
+              </div>
+              <h1 className="font-serif text-[44px] md:text-[64px] font-medium text-ink tracking-[-0.02em] leading-[1.12] mb-6">
+                Become Part of <br/> <span className="text-forest">Beyond</span>.
+              </h1>
+              <p className="text-[16px] lg:text-[18px] text-slate font-medium leading-[1.7] max-w-[560px] mb-12">
+                Join a curated ecosystem of visionary founders, investors, creators, and operators building meaningful growth together.
+              </p>
+              
+              <div className="flex flex-col sm:flex-row items-center gap-5 w-full sm:w-auto">
+                <a href="#membership-form" className="flex items-center justify-center w-full sm:w-auto bg-forest text-card px-8 h-[52px] rounded-lg font-semibold text-[15px] hover:bg-forest-hover transition-colors shadow-sm">
+                  Apply for Membership
+                </a>
+                <Link to="/" className="flex items-center justify-center w-full sm:w-auto bg-transparent border-[1.5px] border-copper/40 text-copper px-8 h-[52px] rounded-lg font-semibold text-[15px] hover:bg-copper/5 hover:border-copper transition-colors">
+                  Explore Ecosystem
+                </Link>
+              </div>
             </motion.div>
-          </div>
 
+            <div className="w-full lg:w-[45%] relative hidden md:flex items-center justify-end">
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 1, ease: EASE, delay: 0.2 }}
+                className="relative w-full aspect-[16/10] bg-stone border border-line rounded-2xl overflow-hidden group shadow-[0_20px_40px_-15px_rgba(0,0,0,0.05)]"
+              >
+                <div className="absolute inset-0 bg-ink/5 mix-blend-multiply z-10 pointer-events-none group-hover:bg-transparent transition-colors duration-700" />
+                <img 
+                  src="/14995841-meeting-4784909.jpg" 
+                  alt="Ecosystem members" 
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[1s] ease-out"
+                  loading="lazy"
+                />
+              </motion.div>
+            </div>
+
+          </div>
         </div>
       </section>
 
       {/* ── Benefits ────────────────────────────────────────────────── */}
-      <section className="py-24 lg:py-32 bg-stone border-b border-line">
-        <div className="max-w-[1400px] mx-auto px-6">
+      <section className="py-[100px] lg:py-[140px] bg-stone border-b border-line">
+        <div className="max-w-[1440px] mx-auto px-6 w-full">
           <SectionHeading eyebrow="Member Benefits" title="Why Join Beyond" subtitle="An ecosystem engineered for compounding relationships and long-term collaborative growth." />
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-[1240px] mx-auto">
             {benefits.map((b, i) => (
-              <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={VIEWPORT} transition={{ duration: 0.5, ease: EASE, delay: i * 0.08 }} className="bg-card border border-line rounded-xl p-8 shadow-sm flex flex-col gap-6 group">
+              <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={VIEWPORT} transition={{ duration: 0.5, ease: EASE, delay: i * 0.08 }} className="bg-card border border-line rounded-2xl p-10 shadow-[0_4px_12px_rgba(0,0,0,0.02)] flex flex-col gap-6 group">
                 <div className="w-12 h-12 rounded-xl bg-forest/5 flex items-center justify-center shrink-0">
                   <svg className="w-6 h-6 text-forest" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d={b.path} /></svg>
                 </div>
                 <div>
                   <h3 className="font-serif text-[20px] font-medium text-ink mb-3">{b.title}</h3>
-                  <p className="text-[15px] text-slate font-medium leading-[1.7]">{b.desc}</p>
+                  <p className="text-[15px] text-slate font-medium leading-[1.7] max-w-[620px]">{b.desc}</p>
                 </div>
               </motion.div>
             ))}
@@ -153,62 +155,64 @@ export default function Membership() {
       </section>
 
       {/* ── Who is this for ─────────────────────────────────────────── */}
-      <section className="py-24 lg:py-32 bg-card">
-        <div className="max-w-[1400px] mx-auto px-6">
+      <section className="py-[100px] lg:py-[140px] bg-card">
+        <div className="max-w-[1440px] mx-auto px-6 w-full">
           <SectionHeading eyebrow="Who Is This For" title="Built for the Ambitious" subtitle="Beyond is designed for people who create value, not just consume it." />
           
-          <div className="flex flex-wrap justify-center gap-3 mb-12">
-            {audiences.map(a => (
-              <button 
-                key={a.id} 
-                onClick={() => setActiveTab(a.id)} 
-                className={`px-6 py-3 rounded-lg border text-[14px] font-bold transition-colors duration-300 ${activeTab === a.id ? 'bg-forest text-card border-forest' : 'bg-stone text-slate border-line hover:border-slate/40'}`}
-              >
-                {a.label}
-              </button>
-            ))}
-          </div>
-          
-          <motion.div key={activeTab} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, ease: EASE }} className="bg-stone border border-line rounded-xl overflow-hidden shadow-sm max-w-5xl mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-line">
-              <div className="p-10">
-                <p className="text-[12px] font-bold tracking-widest uppercase text-slate mb-6">Why You Belong</p>
-                <p className="text-[15px] text-ink font-medium leading-[1.7]">{active.why}</p>
-              </div>
-              <div className="p-10">
-                <p className="text-[12px] font-bold tracking-widest uppercase text-slate mb-6">What You Receive</p>
-                <ul className="space-y-4">
-                  {active.receives.map((r, i) => (
-                    <li key={i} className="flex items-start gap-3">
-                      <svg className="w-4 h-4 text-copper shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
-                      <span className="text-[14px] text-slate font-medium leading-[1.6]">{r}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div className="p-10 flex flex-col justify-between">
-                <div>
-                  <p className="text-[12px] font-bold tracking-widest uppercase text-slate mb-6">How You Contribute</p>
-                  <p className="text-[15px] text-slate font-medium leading-[1.7]">{active.contributes}</p>
-                </div>
-                <a href="#membership-form" className="mt-8 inline-flex items-center gap-2 text-[14px] font-bold text-ink hover:text-copper transition-colors group">
-                  Apply Now 
-                  <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
-                </a>
-              </div>
+          <div className="max-w-[1240px] mx-auto">
+            <div className="flex flex-wrap justify-center gap-3 mb-12">
+              {audiences.map(a => (
+                <button 
+                  key={a.id} 
+                  onClick={() => setActiveTab(a.id)} 
+                  className={`px-6 py-3 rounded-lg border text-[14px] font-bold transition-colors duration-300 ${activeTab === a.id ? 'bg-forest text-card border-forest' : 'bg-stone text-slate border-line hover:border-slate/40'}`}
+                >
+                  {a.label}
+                </button>
+              ))}
             </div>
-          </motion.div>
+            
+            <motion.div key={activeTab} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, ease: EASE }} className="bg-stone border border-line rounded-2xl overflow-hidden shadow-[0_4px_12px_rgba(0,0,0,0.02)] w-full">
+              <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-line">
+                <div className="p-10 lg:p-12">
+                  <p className="text-[12px] font-bold tracking-widest uppercase text-slate mb-6">Why You Belong</p>
+                  <p className="text-[15px] text-ink font-medium leading-[1.7]">{active.why}</p>
+                </div>
+                <div className="p-10 lg:p-12">
+                  <p className="text-[12px] font-bold tracking-widest uppercase text-slate mb-6">What You Receive</p>
+                  <ul className="space-y-4">
+                    {active.receives.map((r, i) => (
+                      <li key={i} className="flex items-start gap-3">
+                        <svg className="w-4 h-4 text-copper shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
+                        <span className="text-[14px] text-slate font-medium leading-[1.6]">{r}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div className="p-10 lg:p-12 flex flex-col justify-between">
+                  <div>
+                    <p className="text-[12px] font-bold tracking-widest uppercase text-slate mb-6">How You Contribute</p>
+                    <p className="text-[15px] text-slate font-medium leading-[1.7]">{active.contributes}</p>
+                  </div>
+                  <a href="#membership-form" className="mt-8 inline-flex items-center gap-2 text-[14px] font-bold text-ink hover:text-copper transition-colors group">
+                    Apply Now 
+                    <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+                  </a>
+                </div>
+              </div>
+            </motion.div>
+          </div>
         </div>
       </section>
 
       {/* ── Process ─────────────────────────────────────────────────── */}
-      <section className="py-24 lg:py-32 bg-stone border-y border-line">
-        <div className="max-w-[1400px] mx-auto px-6">
+      <section className="py-[100px] lg:py-[140px] bg-stone border-y border-line">
+        <div className="max-w-[1440px] mx-auto px-6 w-full">
           <SectionHeading eyebrow="The Process" title="How Membership Works" />
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-[1240px] mx-auto">
             {processSteps.map((s, i) => (
-              <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={VIEWPORT} transition={{ duration: 0.5, ease: EASE, delay: i * 0.1 }} className="relative flex flex-col items-start bg-card p-8 rounded-xl border border-line shadow-sm mt-6">
+              <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={VIEWPORT} transition={{ duration: 0.5, ease: EASE, delay: i * 0.1 }} className="relative flex flex-col items-start bg-card p-8 lg:p-10 rounded-2xl border border-line shadow-[0_4px_12px_rgba(0,0,0,0.02)] mt-6">
                 <div className="w-12 h-12 bg-forest/10 border-[2px] border-card shadow-[0_0_0_2px_rgba(42,77,69,0.2)] text-forest rounded-full flex items-center justify-center font-bold text-[14px] mb-6 absolute -top-6 left-8">
                   {s.n}
                 </div>
@@ -219,27 +223,29 @@ export default function Membership() {
               </motion.div>
             ))}
           </div>
-          <p className="text-center text-[14px] text-slate font-medium mt-16 max-w-lg mx-auto">We prioritize alignment, contribution, and long-term collaboration over mass membership.</p>
+          <p className="text-center text-[14px] text-slate font-medium mt-16 max-w-[620px] mx-auto">We prioritize alignment, contribution, and long-term collaboration over mass membership.</p>
         </div>
       </section>
 
       {/* ── Membership Form ─────────────────────────────────────────── */}
-      <section id="membership-form" className="py-24 lg:py-32 bg-pearl">
-        <div className="max-w-3xl mx-auto px-6">
-          <SectionHeading eyebrow="Application" title="Apply for Membership" subtitle="Takes 4–6 minutes. Every field helps us understand you better." />
-          <MembershipForm />
-          <p className="text-center text-[13px] text-slate font-medium mt-8">Our team carefully reviews every application to maintain the quality and integrity of the ecosystem.</p>
+      <section id="membership-form" className="py-[100px] lg:py-[140px] bg-pearl">
+        <div className="max-w-[1440px] mx-auto px-6 w-full">
+          <div className="max-w-[980px] mx-auto">
+            <SectionHeading eyebrow="Application" title="Apply for Membership" subtitle="Takes 4–6 minutes. Every field helps us understand you better." />
+            <MembershipForm />
+            <p className="text-center text-[13px] text-slate font-medium mt-8 max-w-[620px] mx-auto">Our team carefully reviews every application to maintain the quality and integrity of the ecosystem.</p>
+          </div>
         </div>
       </section>
 
       {/* ── Testimonials ────────────────────────────────────────────── */}
-      <section className="py-24 lg:py-32 bg-stone border-y border-line">
-        <div className="max-w-[1400px] mx-auto px-6">
+      <section className="py-[100px] lg:py-[140px] bg-stone border-y border-line">
+        <div className="max-w-[1440px] mx-auto px-6 w-full">
           <SectionHeading eyebrow="Member Stories" title="Heard From the Community" />
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-[1240px] mx-auto">
             {testimonials.map((t, i) => (
-              <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={VIEWPORT} transition={{ duration: 0.5, ease: EASE, delay: i * 0.1 }} className="bg-card border border-line p-10 rounded-xl flex flex-col shadow-sm">
+              <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={VIEWPORT} transition={{ duration: 0.5, ease: EASE, delay: i * 0.1 }} className="bg-card border border-line p-10 lg:p-12 rounded-2xl flex flex-col shadow-[0_4px_12px_rgba(0,0,0,0.02)] h-full">
                 <div className="flex-grow">
                   <p className="font-serif text-[18px] leading-[1.6] text-ink mb-10">"{t.quote}"</p>
                 </div>
@@ -257,29 +263,31 @@ export default function Membership() {
       </section>
 
       {/* ── FAQ ─────────────────────────────────────────────────────── */}
-      <section className="py-24 lg:py-32 bg-card">
-        <div className="max-w-3xl mx-auto px-6">
-          <SectionHeading eyebrow="FAQs" title="Questions, Answered" subtitle="Everything you need to know about becoming a Beyond member." />
-          <FAQAccordion items={faqs} />
-          <p className="text-center text-[14px] text-slate font-medium mt-12">
-            Still have questions?{' '}
-            <Link to="/contact" className="text-copper hover:underline font-bold">Write to our team</Link>
-          </p>
+      <section className="py-[100px] lg:py-[140px] bg-card">
+        <div className="max-w-[1440px] mx-auto px-6 w-full">
+          <div className="max-w-[980px] mx-auto">
+            <SectionHeading eyebrow="FAQs" title="Questions, Answered" subtitle="Everything you need to know about becoming a Beyond member." />
+            <FAQAccordion items={faqs} />
+            <p className="text-center text-[14px] text-slate font-medium mt-12">
+              Still have questions?{' '}
+              <Link to="/contact" className="text-copper hover:underline font-bold">Write to our team</Link>
+            </p>
+          </div>
         </div>
       </section>
 
       {/* ── Final CTA ───────────────────────────────────────────────── */}
-      <section className="bg-deep-slate py-32 relative overflow-hidden">
+      <section className="bg-deep-slate py-[100px] lg:py-[140px] relative overflow-hidden">
         <div className="absolute inset-0 w-full h-full opacity-10 mix-blend-overlay pointer-events-none">
           <img src="/uh_yeah_20101995-space-4660847.jpg" alt="" className="w-full h-full object-cover" loading="lazy" />
         </div>
         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-forest/10 rounded-full blur-[100px] pointer-events-none -translate-y-1/2 translate-x-1/3" />
         
-        <div className="relative max-w-[800px] mx-auto px-6 text-center z-10">
+        <div className="relative max-w-[980px] mx-auto px-6 text-center z-10">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={VIEWPORT} transition={{ duration: 0.7, ease: EASE }}>
             <div className="w-12 h-[1px] bg-copper mx-auto mb-8" />
             <h2 className="font-serif text-[40px] md:text-[56px] font-medium text-deep-slate-text tracking-[-0.02em] mb-6 leading-[1.2]">Build Relationships Beyond Transactions</h2>
-            <p className="text-[16px] lg:text-[18px] text-deep-slate-text/70 font-medium max-w-[540px] mx-auto leading-[1.7] mb-12">Join a network designed for meaningful collaboration, long-term growth, and trusted connections.</p>
+            <p className="text-[16px] lg:text-[18px] text-deep-slate-text/70 font-medium max-w-[560px] mx-auto leading-[1.7] mb-12">Join a network designed for meaningful collaboration, long-term growth, and trusted connections.</p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-5">
               <a href="#membership-form" className="flex items-center justify-center w-full sm:w-auto bg-forest text-card px-8 h-[52px] rounded-lg font-semibold text-[15px] hover:bg-forest-hover transition-colors shadow-sm">
                 Apply for Membership

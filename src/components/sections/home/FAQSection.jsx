@@ -32,18 +32,19 @@ export default function FAQSection() {
   };
 
   return (
-    <section className="bg-pearl overflow-hidden lg:min-h-[90vh] flex flex-col justify-center py-24 lg:py-0">
-      <div className="max-w-[1400px] mx-auto px-6 w-full">
+    <section className="bg-pearl py-[100px] lg:py-[140px]">
+      <div className="max-w-[1440px] mx-auto px-6 w-full">
         
         {/* Inner Content Wrapper */}
-        <div className="max-w-[800px] mx-auto">
+        <div className="max-w-[980px] mx-auto">
           
-          <div className="mb-20">
-            <div className="flex items-center gap-4 mb-8">
+          <div className="max-w-[700px] mx-auto text-center mb-16">
+            <div className="flex items-center justify-center gap-4 mb-4">
               <span className="w-8 h-[1px] bg-copper" />
               <span className="text-[12px] font-bold tracking-widest text-slate uppercase">
                 Information
               </span>
+              <span className="w-8 h-[1px] bg-copper" />
             </div>
             <h2 className="font-serif text-[36px] leading-[1.2] lg:text-[48px] font-medium text-ink mb-6 tracking-[-0.02em]">
               Frequently Asked Questions
@@ -84,7 +85,7 @@ export default function FAQSection() {
                         transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
                         className="overflow-hidden"
                       >
-                        <div className="pb-8 text-[15px] leading-[1.7] text-slate font-medium max-w-[680px]">
+                        <div className="pb-8 text-[15px] leading-[1.7] text-slate font-medium max-w-[720px]">
                           {faq.a}
                         </div>
                       </motion.div>

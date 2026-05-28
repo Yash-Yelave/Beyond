@@ -36,14 +36,14 @@ const testimonials = [
 
 export default function Testimonials() {
   return (
-    <section className="bg-stone border-y border-line overflow-hidden lg:min-h-[90vh] flex flex-col justify-center py-24 lg:py-0">
-      <div className="max-w-[1400px] mx-auto px-6 w-full">
+    <section className="bg-stone border-y border-line py-[100px] lg:py-[140px]">
+      <div className="max-w-[1440px] mx-auto px-6 w-full">
         
         {/* Inner Content Wrapper */}
-        <div className="max-w-[1200px] mx-auto">
+        <div className="max-w-[1240px] mx-auto">
           
-          <div className="max-w-[620px] mb-20">
-             <div className="flex items-center gap-4 mb-8">
+          <div className="max-w-[700px] mb-16">
+             <div className="flex items-center gap-4 mb-4">
               <span className="w-8 h-[1px] bg-forest" />
               <span className="text-[12px] font-bold tracking-widest text-slate uppercase">
                 Member Insights
@@ -52,12 +52,12 @@ export default function Testimonials() {
             <h2 className="font-serif text-[36px] leading-[1.2] lg:text-[48px] font-medium text-ink mb-6 tracking-[-0.02em]">
               Voices from the Network.
             </h2>
-            <p className="text-[16px] leading-[1.7] text-slate font-medium">
+            <p className="text-[16px] leading-[1.7] text-slate font-medium max-w-[620px]">
               Real outcomes and experiences from the people already building within the ecosystem.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
             {testimonials.map((t, idx) => (
               <motion.div
                 key={idx}
@@ -65,7 +65,7 @@ export default function Testimonials() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.6, delay: idx * 0.1, ease: EASE }}
-                className="bg-card border border-line p-10 lg:p-12 rounded-2xl flex flex-col shadow-[0_4px_12px_rgba(0,0,0,0.02)]"
+                className="bg-card border border-line p-10 lg:p-12 rounded-2xl flex flex-col shadow-[0_4px_12px_rgba(0,0,0,0.02)] h-full"
               >
                 <div className="flex-grow">
                   <p className="font-serif text-[20px] leading-[1.6] text-ink mb-10">

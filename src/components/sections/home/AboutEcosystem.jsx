@@ -6,11 +6,11 @@ const EASE = [0.25, 0.1, 0.25, 1];
 
 export default function AboutEcosystem() {
   return (
-    <section className="bg-stone border-y border-line overflow-hidden lg:min-h-[90vh] flex flex-col justify-center py-24 lg:py-0">
-      <div className="max-w-[1400px] mx-auto px-6 w-full">
+    <section className="bg-stone border-y border-line py-[100px] lg:py-[140px]">
+      <div className="max-w-[1440px] mx-auto px-6 w-full">
         
         {/* Inner Content Wrapper */}
-        <div className="max-w-[1200px] mx-auto flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
+        <div className="max-w-[1240px] mx-auto flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
           
           {/* Left Text Content */}
           <motion.div
@@ -20,18 +20,18 @@ export default function AboutEcosystem() {
             transition={{ duration: 0.8, ease: EASE }}
             className="w-full lg:w-[45%]"
           >
-            <div className="flex items-center gap-4 mb-8">
+            <div className="flex items-center gap-4 mb-4">
               <span className="w-8 h-[1px] bg-copper" />
               <span className="text-[12px] font-bold tracking-widest text-slate uppercase">
                 The Platform
               </span>
             </div>
             
-            <h2 className="font-serif text-[36px] leading-[1.2] lg:text-[48px] font-medium text-ink mb-8 tracking-[-0.02em] max-w-[620px]">
+            <h2 className="font-serif text-[36px] leading-[1.2] lg:text-[48px] font-medium text-ink mb-6 tracking-[-0.02em] max-w-[620px]">
               A curated engine for growth and intelligence.
             </h2>
             
-            <div className="space-y-6 text-slate text-[16px] leading-[1.7] font-medium mb-10 max-w-[620px]">
+            <div className="space-y-6 text-slate text-[16px] leading-[1.7] font-medium mb-12 max-w-[620px]">
               <p>
                 Traditional networking relies on serendipity. Beyond replaces it with structured intentionality. We have built a high-trust environment where ambitious founders, active investors, and seasoned operators connect.
               </p>
