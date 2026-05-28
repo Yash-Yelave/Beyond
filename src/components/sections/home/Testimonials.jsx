@@ -36,61 +36,65 @@ const testimonials = [
 
 export default function Testimonials() {
   return (
-    <section className="bg-stone py-24 lg:py-32 border-y border-line">
-      <div className="max-w-[1400px] mx-auto px-6">
+    <section className="bg-stone border-y border-line overflow-hidden lg:min-h-[90vh] flex flex-col justify-center py-24 lg:py-0">
+      <div className="max-w-[1400px] mx-auto px-6 w-full">
         
-        <div className="max-w-[620px] mb-20">
-           <div className="flex items-center gap-4 mb-8">
-            <span className="w-8 h-[1px] bg-forest" />
-            <span className="text-[12px] font-bold tracking-widest text-slate uppercase">
-              Member Insights
-            </span>
+        {/* Inner Content Wrapper */}
+        <div className="max-w-[1200px] mx-auto">
+          
+          <div className="max-w-[620px] mb-20">
+             <div className="flex items-center gap-4 mb-8">
+              <span className="w-8 h-[1px] bg-forest" />
+              <span className="text-[12px] font-bold tracking-widest text-slate uppercase">
+                Member Insights
+              </span>
+            </div>
+            <h2 className="font-serif text-[36px] leading-[1.2] lg:text-[48px] font-medium text-ink mb-6 tracking-[-0.02em]">
+              Voices from the Network.
+            </h2>
+            <p className="text-[16px] leading-[1.7] text-slate font-medium">
+              Real outcomes and experiences from the people already building within the ecosystem.
+            </p>
           </div>
-          <h2 className="font-serif text-[36px] leading-[1.2] lg:text-[48px] font-medium text-ink mb-6 tracking-[-0.02em]">
-            Voices from the Network.
-          </h2>
-          <p className="text-[16px] leading-[1.7] text-slate font-medium">
-            Real outcomes and experiences from the people already building within the ecosystem.
-          </p>
-        </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {testimonials.map((t, idx) => (
-            <motion.div
-              key={idx}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.6, delay: idx * 0.1, ease: EASE }}
-              className="bg-card border border-line p-10 lg:p-12 rounded-xl flex flex-col shadow-sm"
-            >
-              <div className="flex-grow">
-                <p className="font-serif text-[20px] leading-[1.6] text-ink mb-10">
-                  "{t.quote}"
-                </p>
-              </div>
-              
-              <div className="flex items-center justify-between mt-auto pt-6 border-t border-line/60">
-                <div className="flex items-center gap-4">
-                  <img 
-                    src={t.avatar} 
-                    alt={t.name} 
-                    className="w-12 h-12 rounded-full object-cover border border-line"
-                    loading="lazy"
-                  />
-                  <div>
-                    <h4 className="text-[14px] font-bold text-ink mb-0.5">{t.name}</h4>
-                    <p className="text-[13px] text-slate font-medium">{t.role}</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {testimonials.map((t, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.6, delay: idx * 0.1, ease: EASE }}
+                className="bg-card border border-line p-10 lg:p-12 rounded-2xl flex flex-col shadow-[0_4px_12px_rgba(0,0,0,0.02)]"
+              >
+                <div className="flex-grow">
+                  <p className="font-serif text-[20px] leading-[1.6] text-ink mb-10">
+                    "{t.quote}"
+                  </p>
+                </div>
+                
+                <div className="flex items-center justify-between mt-auto pt-6 border-t border-line/60">
+                  <div className="flex items-center gap-4">
+                    <img 
+                      src={t.avatar} 
+                      alt={t.name} 
+                      className="w-12 h-12 rounded-full object-cover border border-line"
+                      loading="lazy"
+                    />
+                    <div>
+                      <h4 className="text-[14px] font-bold text-ink mb-0.5">{t.name}</h4>
+                      <p className="text-[13px] text-slate font-medium">{t.role}</p>
+                    </div>
+                  </div>
+                  <div className="hidden sm:block px-3 py-1 bg-surface rounded text-[11px] font-bold text-slate uppercase tracking-wider">
+                    {t.type}
                   </div>
                 </div>
-                <div className="hidden sm:block px-3 py-1 bg-surface rounded text-[11px] font-bold text-slate uppercase tracking-wider">
-                  {t.type}
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
+              </motion.div>
+            ))}
+          </div>
 
+        </div>
       </div>
     </section>
   );
