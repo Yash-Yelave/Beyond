@@ -1,57 +1,37 @@
-import React, { useState, useEffect } from 'react';
-import Header from './components/Header';
-import Hero from './components/Hero';
-import MetricsBanner from './components/MetricsBanner';
-import Portfolio from './components/Portfolio';
-import MissionVision from './components/MissionVision';
-import EcosystemPillars from './components/EcosystemPillars';
-import CommunityReel from './components/CommunityReel';
-import FAQ from './components/FAQ';
-import FeaturedProjectsSlider from './components/FeaturedProjectsSlider';
-import Footer from './components/Footer';
-import SubmitOpportunityPage from './components/SubmitOpportunityPage';
-import MembershipPage from './components/MembershipPage';
+import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-const getPage = () => {
-  const h = window.location.hash;
-  if (h === '#/submit') return 'submit';
-  if (h === '#/membership') return 'membership';
-  return 'home';
-};
+// Layouts
+import MainLayout from './components/layout/MainLayout';
+
+// Pages
+import Home from './pages/Home';
+import About from './pages/About';
+import Membership from './pages/Membership';
+import Events from './pages/Events';
+import Insights from './pages/Insights';
+import SubmitOpportunity from './pages/SubmitOpportunity';
+import Contact from './pages/Contact';
+import Dashboard from './pages/Dashboard';
 
 function App() {
-  const [page, setPage] = useState(getPage);
-
-  useEffect(() => {
-    const onHash = () => {
-      setPage(getPage());
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    };
-    window.addEventListener('hashchange', onHash);
-    return () => window.removeEventListener('hashchange', onHash);
-  }, []);
-
   return (
-    <div className="min-h-screen bg-white font-sans text-slate-900 flex flex-col">
-      <Header />
-      <main className="flex-grow">
-        {page === 'submit' && <SubmitOpportunityPage />}
-        {page === 'membership' && <MembershipPage />}
-        {page === 'home' && (
-          <>
-            <Hero />
-            <MetricsBanner />
-            <Portfolio />
-            <MissionVision />
-            <EcosystemPillars />
-            <CommunityReel />
-            <FAQ />
-            <FeaturedProjectsSlider />
-          </>
-        )}
-      </main>
-      <Footer />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route element={<MainLayout />}>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/membership" element={<Membership />} />
+          <Route path="/events" element={<Events />} />
+          <Route path="/insights" element={<Insights />} />
+          <Route path="/submit-opportunity" element={<SubmitOpportunity />} />
+          <Route path="/contact" element={<Contact />} />
+        </Route>
+        
+        {/* Dashboard stands alone (no public header/footer) */}
+        <Route path="/dashboard" element={<Dashboard />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
