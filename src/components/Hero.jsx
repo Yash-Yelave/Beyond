@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
 const containerVariants = {
@@ -54,21 +55,22 @@ const Hero = () => {
         </motion.p>
         
         <motion.div variants={itemVariants} className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6">
-          <motion.button 
-            whileHover={{ scale: 1.03 }}
-            whileTap={{ scale: 0.97 }}
-            className="bg-teal-600 text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-teal-700 transition-colors shadow-lg shadow-teal-600/30"
-          >
-            Join the Ecosystem
-          </motion.button>
-          
-          <motion.button 
-            whileHover={{ scale: 1.03 }}
-            whileTap={{ scale: 0.97 }}
-            className="bg-transparent text-white border-2 border-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-white hover:text-slate-900 transition-colors"
-          >
-            Explore Opportunities
-          </motion.button>
+          <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
+            <Link
+              to="/membership"
+              className="inline-block bg-teal-600 text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-teal-700 transition-colors shadow-lg shadow-teal-600/30"
+            >
+              Join the Ecosystem
+            </Link>
+          </motion.div>
+          <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
+            <Link
+              to="/submit-opportunity"
+              className="inline-block bg-transparent text-white border-2 border-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-white hover:text-slate-900 transition-colors"
+            >
+              Explore Opportunities
+            </Link>
+          </motion.div>
         </motion.div>
       </motion.div>
     </section>
