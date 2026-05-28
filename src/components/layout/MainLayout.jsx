@@ -10,7 +10,7 @@ import Footer from './Footer';
  */
 export default function MainLayout() {
   return (
-    <div className="min-h-screen bg-white font-sans text-slate-900 flex flex-col">
+    <div className="min-h-screen bg-ivory font-sans text-primary flex flex-col antialiased selection:bg-gold/20 selection:text-gold-hover">
       <Navbar />
       <main className="flex-grow">
         <Outlet />
