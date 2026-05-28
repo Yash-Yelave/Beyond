@@ -37,7 +37,7 @@ const events = [
 
 export default function Events() {
   return (
-    <div className="bg-stone min-h-screen py-24 lg:py-32">
+    <div className="bg-stone min-h-screen pt-[100px] pb-24 lg:pt-[120px] lg:pb-32">
       <div className="max-w-[1400px] mx-auto px-6">
         <SectionHeading 
           eyebrow="Ecosystem Events" 

@@ -86,7 +86,7 @@ export default function Membership() {
     <div className="bg-pearl min-h-screen">
 
       {/* ── Hero ────────────────────────────────────────────────────── */}
-      <section className="relative pt-[120px] pb-24 lg:pt-[160px] lg:pb-32 overflow-hidden border-b border-line">
+      <section className="relative pt-[80px] pb-24 lg:pt-[100px] lg:pb-32 overflow-hidden border-b border-line">
         <div className="max-w-[1400px] mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
           
           <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease: EASE }} className="lg:col-span-6">

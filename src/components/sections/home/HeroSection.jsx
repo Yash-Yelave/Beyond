@@ -8,7 +8,7 @@ export default function HeroSection() {
   return (
     <section className="relative bg-pearl min-h-screen flex items-center pt-[80px] overflow-hidden">
       
-      <div className="max-w-[1400px] mx-auto w-full px-6 py-20 lg:py-24 grid grid-cols-1 lg:grid-cols-12 gap-16 items-center relative z-10">
+      <div className="max-w-[1400px] mx-auto w-full px-6 pb-20 pt-10 lg:pb-24 lg:pt-10 grid grid-cols-1 lg:grid-cols-12 gap-16 items-center relative z-10">
         
         {/* Left Content */}
         <motion.div
