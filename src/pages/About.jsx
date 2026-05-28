@@ -31,58 +31,60 @@ export default function About() {
     <div className="bg-pearl min-h-screen">
 
       {/* ── Hero ────────────────────────────────────────────────── */}
-      <section className="relative pt-[80px] pb-24 lg:pt-[100px] lg:pb-32 overflow-hidden border-b border-line">
-        <div className="max-w-[1400px] mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
-          
-          <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease: EASE }} className="lg:col-span-6">
-            <div className="flex items-center gap-4 mb-8">
-              <span className="w-8 h-[1px] bg-copper" />
-              <span className="text-[12px] font-bold tracking-widest text-slate uppercase">
-                About the Ecosystem
-              </span>
-            </div>
-            <h1 className="font-serif text-[44px] md:text-[64px] font-medium text-ink tracking-[-0.02em] leading-[1.12] mb-6">
-              Built for <br className="hidden md:block"/> Those Who Build.
-            </h1>
-            <p className="text-[16px] lg:text-[18px] text-slate font-medium leading-[1.7] max-w-[540px]">
-              Beyond was founded on a simple belief: the right relationships, built on trust, create more value than any tool, tactic, or transaction.
-            </p>
-          </motion.div>
-
-          <div className="lg:col-span-6 relative h-[400px] lg:h-[500px] hidden md:flex items-center justify-center">
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 1, ease: EASE, delay: 0.2 }}
-              className="absolute inset-0 w-full h-full bg-stone border border-line rounded-xl overflow-hidden group"
-            >
-              <div className="absolute inset-0 bg-forest/5 mix-blend-multiply z-10 pointer-events-none group-hover:bg-transparent transition-colors duration-700" />
-              <img 
-                src="/campaign-creators-gMsnXqILjp4-unsplash.jpg" 
-                alt="Ecosystem workspace" 
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[1s] ease-out"
-                loading="lazy"
-              />
+      <section className="relative pt-[100px] pb-[100px] lg:pt-[140px] lg:pb-[140px] overflow-hidden border-b border-line">
+        <div className="max-w-[1440px] mx-auto px-6 w-full">
+          <div className="max-w-[1240px] mx-auto flex flex-col lg:flex-row gap-16 items-center justify-between">
+            
+            <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease: EASE }} className="w-full lg:w-[55%]">
+              <div className="flex items-center gap-4 mb-4">
+                <span className="w-8 h-[1px] bg-copper" />
+                <span className="text-[12px] font-bold tracking-widest text-slate uppercase">
+                  About the Ecosystem
+                </span>
+              </div>
+              <h1 className="font-serif text-[44px] md:text-[64px] font-medium text-ink tracking-[-0.02em] leading-[1.12] mb-6">
+                Built for <br className="hidden md:block"/> Those Who Build.
+              </h1>
+              <p className="text-[16px] lg:text-[18px] text-slate font-medium leading-[1.7] max-w-[560px] mb-12">
+                Beyond was founded on a simple belief: the right relationships, built on trust, create more value than any tool, tactic, or transaction.
+              </p>
             </motion.div>
-          </div>
 
+            <div className="w-full lg:w-[45%] relative hidden md:flex items-center justify-end">
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 1, ease: EASE, delay: 0.2 }}
+                className="relative w-full aspect-[16/10] bg-stone border border-line rounded-2xl overflow-hidden group shadow-[0_20px_40px_-15px_rgba(0,0,0,0.05)]"
+              >
+                <div className="absolute inset-0 bg-forest/5 mix-blend-multiply z-10 pointer-events-none group-hover:bg-transparent transition-colors duration-700" />
+                <img 
+                  src="/campaign-creators-gMsnXqILjp4-unsplash.jpg" 
+                  alt="Ecosystem workspace" 
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[1s] ease-out"
+                  loading="lazy"
+                />
+              </motion.div>
+            </div>
+
+          </div>
         </div>
       </section>
 
       {/* ── Mission ─────────────────────────────────────────────── */}
-      <section className="py-24 lg:py-32 bg-card">
-        <div className="max-w-[1400px] mx-auto px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+      <section className="py-[100px] lg:py-[140px] bg-card">
+        <div className="max-w-[1440px] mx-auto px-6 w-full">
+          <div className="max-w-[1240px] mx-auto flex flex-col lg:flex-row gap-16 items-center justify-between">
             
-            <motion.div initial={{ opacity: 0, x: -24 }} whileInView={{ opacity: 1, x: 0 }} viewport={VIEWPORT} transition={{ duration: 0.7, ease: EASE }} className="lg:col-span-6">
-              <div className="flex items-center gap-4 mb-8">
+            <motion.div initial={{ opacity: 0, x: -24 }} whileInView={{ opacity: 1, x: 0 }} viewport={VIEWPORT} transition={{ duration: 0.7, ease: EASE }} className="w-full lg:w-[50%]">
+              <div className="flex items-center gap-4 mb-4">
                 <span className="w-8 h-[1px] bg-copper" />
                 <span className="text-[12px] font-bold tracking-widest text-slate uppercase">Our Mission</span>
               </div>
-              <h2 className="font-serif text-[36px] md:text-[48px] font-medium text-ink tracking-[-0.02em] mb-8 leading-[1.2]">
+              <h2 className="font-serif text-[36px] md:text-[48px] font-medium text-ink tracking-[-0.02em] mb-6 leading-[1.2]">
                 Infrastructure for <br/> Trusted Growth.
               </h2>
-              <div className="space-y-6 text-[16px] text-slate font-medium leading-[1.7] max-w-[540px]">
+              <div className="space-y-6 text-[16px] text-slate font-medium leading-[1.7] max-w-[620px] mb-12">
                 <p>
                   Beyond is a private, application-based ecosystem that connects the most ambitious founders, investors, operators, and creators building the future of business in India and beyond.
                 </p>
@@ -92,9 +94,9 @@ export default function About() {
               </div>
             </motion.div>
 
-            <motion.div initial={{ opacity: 0, x: 24 }} whileInView={{ opacity: 1, x: 0 }} viewport={VIEWPORT} transition={{ duration: 0.7, ease: EASE }} className="lg:col-span-6 grid grid-cols-2 gap-4 lg:gap-6">
+            <motion.div initial={{ opacity: 0, x: 24 }} whileInView={{ opacity: 1, x: 0 }} viewport={VIEWPORT} transition={{ duration: 0.7, ease: EASE }} className="w-full lg:w-[50%] grid grid-cols-2 gap-4 lg:gap-6">
               {stats.map((s, i) => (
-                <div key={i} className="bg-stone border border-line rounded-xl p-8 flex flex-col items-center justify-center text-center">
+                <div key={i} className="bg-stone border border-line rounded-2xl p-8 flex flex-col items-center justify-center text-center">
                   <p className="font-serif text-[32px] md:text-[40px] font-medium text-ink mb-2">{s.value}</p>
                   <p className="text-[13px] font-bold uppercase tracking-wider text-slate">{s.label}</p>
                 </div>
@@ -106,19 +108,19 @@ export default function About() {
       </section>
 
       {/* ── Values ──────────────────────────────────────────────── */}
-      <section className="py-24 lg:py-32 bg-stone border-y border-line">
-        <div className="max-w-[1400px] mx-auto px-6">
+      <section className="py-[100px] lg:py-[140px] bg-stone border-y border-line">
+        <div className="max-w-[1440px] mx-auto px-6 w-full">
           <SectionHeading eyebrow="Our Values" title="What We Stand For" subtitle="These aren't slogans. They're the operating principles that guide every decision we make." />
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-[1240px] mx-auto">
             {values.map((v, i) => (
-              <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={VIEWPORT} transition={{ duration: 0.5, ease: EASE, delay: i * 0.08 }} className="bg-card border border-line rounded-xl p-8 shadow-sm flex flex-col gap-6">
+              <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={VIEWPORT} transition={{ duration: 0.5, ease: EASE, delay: i * 0.08 }} className="bg-card border border-line rounded-2xl p-10 shadow-[0_4px_12px_rgba(0,0,0,0.02)] flex flex-col gap-6">
                 <div className="w-12 h-12 rounded-xl bg-forest/5 flex items-center justify-center shrink-0">
                   <svg className="w-6 h-6 text-forest" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d={v.icon} /></svg>
                 </div>
                 <div>
                   <h3 className="font-serif text-[20px] font-medium text-ink mb-3">{v.title}</h3>
-                  <p className="text-[15px] text-slate font-medium leading-[1.7]">{v.desc}</p>
+                  <p className="text-[15px] text-slate font-medium leading-[1.7] max-w-[620px]">{v.desc}</p>
                 </div>
               </motion.div>
             ))}
@@ -127,17 +129,17 @@ export default function About() {
       </section>
 
       {/* ── Team ────────────────────────────────────────────────── */}
-      <section className="py-24 lg:py-32 bg-pearl">
-        <div className="max-w-[1400px] mx-auto px-6">
+      <section className="py-[100px] lg:py-[140px] bg-pearl">
+        <div className="max-w-[1440px] mx-auto px-6 w-full">
           <SectionHeading eyebrow="The Team" title="People Behind Beyond" subtitle="A small, deeply invested team that cares about every member's journey." />
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-[1240px] mx-auto">
             {team.map((t, i) => (
-              <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={VIEWPORT} transition={{ duration: 0.5, ease: EASE, delay: i * 0.1 }} className="bg-card border border-line rounded-xl p-8 shadow-sm group">
+              <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={VIEWPORT} transition={{ duration: 0.5, ease: EASE, delay: i * 0.1 }} className="bg-card border border-line rounded-2xl p-10 shadow-[0_4px_12px_rgba(0,0,0,0.02)] group flex flex-col h-full">
                 <div className={`w-14 h-14 rounded-full bg-forest/5 text-forest flex items-center justify-center text-[16px] font-bold tracking-wider mb-6 group-hover:scale-105 transition-transform`}>{t.initials}</div>
                 <h3 className="font-serif text-[24px] font-medium text-ink mb-1">{t.name}</h3>
                 <p className="text-[12px] text-copper font-bold uppercase tracking-wider mb-4">{t.role}</p>
-                <p className="text-[15px] text-slate font-medium leading-[1.7]">{t.bio}</p>
+                <p className="text-[15px] text-slate font-medium leading-[1.7] flex-grow">{t.bio}</p>
               </motion.div>
             ))}
           </div>
@@ -145,17 +147,17 @@ export default function About() {
       </section>
 
       {/* ── CTA ─────────────────────────────────────────────────── */}
-      <section className="bg-deep-slate py-32 relative overflow-hidden">
+      <section className="bg-deep-slate py-[100px] lg:py-[140px] relative overflow-hidden">
         <div className="absolute inset-0 w-full h-full opacity-10 mix-blend-overlay pointer-events-none">
           <img src="/uh_yeah_20101995-space-4660847.jpg" alt="" className="w-full h-full object-cover" loading="lazy" />
         </div>
         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-forest/10 rounded-full blur-[100px] pointer-events-none -translate-y-1/2 translate-x-1/3" />
         
-        <div className="relative max-w-[800px] mx-auto px-6 text-center z-10">
+        <div className="relative max-w-[980px] mx-auto px-6 text-center z-10">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={VIEWPORT} transition={{ duration: 0.7, ease: EASE }}>
             <div className="w-12 h-[1px] bg-copper mx-auto mb-8" />
             <h2 className="font-serif text-[40px] md:text-[56px] font-medium text-deep-slate-text tracking-[-0.02em] mb-6 leading-[1.2]">Join the Ecosystem</h2>
-            <p className="text-[16px] lg:text-[18px] text-deep-slate-text/70 font-medium max-w-[540px] mx-auto leading-[1.7] mb-12">Whether you're a founder, investor, or operator — there's a place for you in Beyond.</p>
+            <p className="text-[16px] lg:text-[18px] text-deep-slate-text/70 font-medium max-w-[560px] mx-auto leading-[1.7] mb-12">Whether you're a founder, investor, or operator — there's a place for you in Beyond.</p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-5">
               <Link to="/membership" className="flex items-center justify-center w-full sm:w-auto bg-forest text-card px-8 h-[52px] rounded-lg font-semibold text-[15px] hover:bg-forest-hover transition-colors shadow-sm">
                 Apply for Membership
