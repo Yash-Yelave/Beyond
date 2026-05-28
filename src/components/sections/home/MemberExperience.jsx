@@ -5,53 +5,64 @@ const EASE = [0.25, 0.1, 0.25, 1];
 
 export default function MemberExperience() {
   return (
-    <section className="bg-ivory py-20 lg:py-32">
+    <section className="bg-stone py-24 lg:py-32 border-y border-line">
       <div className="max-w-[1400px] mx-auto px-6">
         
-        <div className="mb-20">
-          <div className="w-12 h-[1px] bg-gold mb-8" />
-          <h2 className="font-serif text-[40px] leading-[50px] lg:text-[52px] lg:leading-[60px] font-light text-primary mb-6 tracking-[-0.02em]">
-            Real Interactions.<br />Genuine Relationships.
-          </h2>
-          <p className="text-[18px] leading-[34px] text-secondary max-w-[620px]">
-            Beyond is not just a digital platform. It’s a living, breathing community where meaningful connections happen in real time, offline and online.
-          </p>
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
+          <div className="max-w-[620px]">
+            <div className="flex items-center gap-4 mb-8">
+              <span className="w-8 h-[1px] bg-copper" />
+              <span className="text-[12px] font-bold tracking-widest text-slate uppercase">
+                The Network in Motion
+              </span>
+            </div>
+            <h2 className="font-serif text-[36px] leading-[1.2] lg:text-[48px] font-medium text-ink mb-6 tracking-[-0.02em]">
+              Real Interactions.<br />Genuine Relationships.
+            </h2>
+            <p className="text-[16px] leading-[1.7] text-slate font-medium">
+              A dynamic, layered ecosystem where meaningful connections happen in real time, offline and online.
+            </p>
+          </div>
         </div>
 
-        {/* Staggered Editorial Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-6 lg:gap-10">
+        {/* Dynamic Editorial Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-6 lg:gap-8">
           
-          {/* Large Landscape */}
+          {/* Main Large Card */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.9, ease: EASE }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.8, ease: EASE }}
             className="md:col-span-8 flex flex-col gap-4"
           >
-            <div className="w-full aspect-[16/9] bg-stone relative overflow-hidden rounded-md border border-border">
-              <div className="absolute inset-0 bg-[#E5DFD3] mix-blend-multiply opacity-30" />
+            <div className="w-full aspect-[16/9] bg-card relative overflow-hidden rounded-xl border border-line group">
+              <div className="absolute inset-0 bg-line mix-blend-multiply opacity-20 group-hover:scale-105 transition-transform duration-[1s] ease-out" />
             </div>
-            <div className="flex items-center gap-4 text-[12px] uppercase tracking-[0.18em] text-secondary">
-              <span className="w-6 h-[1px] bg-gold" />
-              <span>Founder Dinners • New York</span>
+            <div className="flex items-center gap-3">
+              <span className="px-2.5 py-1 rounded bg-forest/10 text-forest text-[11px] font-bold uppercase tracking-wider">
+                Founder Dinners
+              </span>
+              <span className="text-[14px] font-medium text-slate">New York City</span>
             </div>
           </motion.div>
 
-          {/* Portrait Crop */}
+          {/* Side Portrait Card */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.9, delay: 0.2, ease: EASE }}
-            className="md:col-span-4 flex flex-col gap-4 md:mt-24 lg:mt-32"
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.8, delay: 0.2, ease: EASE }}
+            className="md:col-span-4 flex flex-col gap-4 md:mt-16 lg:mt-24"
           >
-            <div className="w-full aspect-[3/4] bg-muted relative overflow-hidden rounded-md border border-border">
-              <div className="absolute inset-0 bg-[#D4CFC4] mix-blend-multiply opacity-20" />
+            <div className="w-full aspect-[3/4] bg-pearl relative overflow-hidden rounded-xl border border-line group">
+              <div className="absolute inset-0 bg-surface mix-blend-multiply opacity-50 group-hover:scale-105 transition-transform duration-[1s] ease-out" />
             </div>
-            <div className="flex items-center gap-4 text-[12px] uppercase tracking-[0.18em] text-secondary">
-              <span className="w-6 h-[1px] bg-gold" />
-              <span>Investor Roundtables</span>
+            <div className="flex items-center gap-3">
+              <span className="px-2.5 py-1 rounded bg-copper/10 text-copper text-[11px] font-bold uppercase tracking-wider">
+                Strategic Circles
+              </span>
+              <span className="text-[14px] font-medium text-slate">Private Sessions</span>
             </div>
           </motion.div>
 

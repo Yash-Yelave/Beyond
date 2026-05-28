@@ -9,86 +9,97 @@ const builders = [
     project: 'Aura Health',
     desc: 'Scaling mental wellness through AI-driven personalized therapeutics.',
     industry: 'HealthTech',
-    offset: 'mt-0',
+    date: 'Oct 2024',
   },
   {
     name: 'Marcus Chen',
     project: 'Nexus Finance',
     desc: 'Building the next generation of borderless payment infrastructure.',
     industry: 'FinTech',
-    offset: 'lg:mt-16',
+    date: 'Sep 2024',
   },
   {
     name: 'Sarah Jenkins',
     project: 'Lumina Energy',
     desc: 'Decentralized grid solutions for sustainable urban environments.',
     industry: 'ClimateTech',
-    offset: 'lg:mt-32',
+    date: 'Aug 2024',
   }
 ];
 
 export default function FeaturedBuilders() {
   return (
-    <section className="bg-stone py-20 lg:py-32 border-y border-border/50">
+    <section className="bg-pearl py-24 lg:py-32">
       <div className="max-w-[1400px] mx-auto px-6">
         
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
           <div className="max-w-[620px]">
-            <div className="w-12 h-[1px] bg-gold mb-8" />
-            <h2 className="font-serif text-[40px] leading-[50px] lg:text-[52px] lg:leading-[60px] font-light text-primary mb-6 tracking-[-0.02em]">
+             <div className="flex items-center gap-4 mb-8">
+              <span className="w-8 h-[1px] bg-copper" />
+              <span className="text-[12px] font-bold tracking-widest text-slate uppercase">
+                Featured Projects
+              </span>
+            </div>
+            <h2 className="font-serif text-[36px] leading-[1.2] lg:text-[48px] font-medium text-ink mb-6 tracking-[-0.02em]">
               Backed by Builders.
             </h2>
-            <p className="text-[18px] leading-[34px] text-secondary">
-              Meet the visionary founders shaping the future within the Beyond ecosystem.
+            <p className="text-[16px] leading-[1.7] text-slate font-medium">
+              Discover the latest innovations and intelligence originating from the network.
             </p>
           </div>
-          <button className="hidden md:inline-flex items-center gap-3 text-[12px] font-semibold uppercase tracking-[0.18em] text-primary hover:text-gold transition-colors pb-2 border-b border-gold/30 hover:border-gold">
+          <button className="hidden md:inline-flex items-center gap-2 text-[14px] font-bold text-ink hover:text-forest transition-colors">
             View All Members
+            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
           </button>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 lg:gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {builders.map((b, idx) => (
             <motion.div
               key={idx}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.9, delay: idx * 0.1, ease: EASE }}
-              className={`group flex flex-col ${b.offset}`}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.6, delay: idx * 0.1, ease: EASE }}
+              className="group flex flex-col bg-card rounded-xl border border-line overflow-hidden hover:shadow-lg transition-shadow duration-300"
             >
               {/* Image Area */}
-              <div className="w-full aspect-[4/5] bg-muted mb-8 overflow-hidden rounded-md border border-border/50 relative">
-                 <div className="absolute inset-0 bg-[#D4CFC4] mix-blend-multiply opacity-20 group-hover:scale-105 transition-transform duration-[1.5s] ease-out" />
+              <div className="w-full aspect-[16/10] bg-surface relative overflow-hidden border-b border-line">
+                 <div className="absolute inset-0 bg-line mix-blend-multiply opacity-30 group-hover:scale-105 transition-transform duration-700 ease-out" />
               </div>
 
               {/* Content */}
-              <div>
-                <span className="block text-[11px] font-semibold tracking-[0.2em] text-gold uppercase mb-4">
-                  {b.industry}
-                </span>
-                <h3 className="font-serif text-[28px] leading-[38px] font-light text-primary mb-2">
+              <div className="p-8 flex flex-col flex-grow">
+                <div className="flex items-center justify-between mb-4">
+                  <span className="px-2.5 py-1 rounded-full bg-forest/10 text-forest text-[11px] font-bold tracking-wider uppercase">
+                    {b.industry}
+                  </span>
+                  <span className="text-[12px] font-medium text-slate">
+                    {b.date}
+                  </span>
+                </div>
+                
+                <h3 className="font-serif text-[24px] font-medium text-ink mb-2">
                   {b.project}
                 </h3>
-                <p className="text-[15px] text-secondary/80 mb-6 font-medium italic">
+                <p className="text-[14px] text-slate mb-4 font-medium italic">
                   by {b.name}
                 </p>
-                <p className="text-[16px] leading-[30px] text-secondary mb-8">
+                <p className="text-[15px] leading-[1.6] text-slate mb-8 flex-grow">
                   {b.desc}
                 </p>
-                <button className="inline-flex items-center gap-3 text-[13px] font-medium tracking-[0.05em] text-primary group-hover:text-gold transition-colors">
+                
+                <button className="inline-flex items-center gap-2 text-[14px] font-bold text-ink group-hover:text-copper transition-colors mt-auto">
                   Explore Story 
-                  <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+                  <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                  </svg>
                 </button>
               </div>
             </motion.div>
           ))}
-        </div>
-
-        <div className="mt-16 md:hidden">
-          <button className="w-full inline-flex items-center justify-center border border-border text-primary h-[52px] font-medium text-[13px] tracking-[0.05em] uppercase hover:bg-card transition-colors">
-            View All Members
-          </button>
         </div>
 
       </div>
