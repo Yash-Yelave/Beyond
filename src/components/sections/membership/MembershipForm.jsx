@@ -12,8 +12,8 @@ const slideVariants = {
 
 const SectionLabel = ({ title, subtitle }) => (
   <div className="mb-7">
-    <h3 className="text-lg font-bold text-slate-900 mb-1">{title}</h3>
-    {subtitle && <p className="text-sm text-slate-500">{subtitle}</p>}
+    <h3 className="text-lg font-bold text-[#0f172a] mb-1">{title}</h3>
+    {subtitle && <p className="text-sm text-[#475569]">{subtitle}</p>}
     <div className="h-[2px] w-8 bg-teal-500 rounded-full mt-3" />
   </div>
 );
@@ -51,11 +51,11 @@ function MiniStepper({ current }) {
         const idx = i + 1; const done = idx < current; const active = idx === current;
         return (
           <React.Fragment key={s.n}>
-            <div className={`flex items-center gap-1.5 shrink-0 px-3 py-1.5 rounded-full text-xs font-semibold transition-all ${active ? 'bg-slate-900 text-white' : done ? 'bg-teal-500 text-white' : 'bg-slate-100 text-slate-400'}`}>
-              {done ? <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg> : <span>{s.n}</span>}
+            <div className={`flex items-center gap-1.5 shrink-0 px-3 py-1.5 rounded-full text-xs font-semibold transition-all ${active ? 'bg-[#0f172a] text-white' : done ? 'bg-teal-600 text-white' : 'bg-[#f1f5f9] text-[#475569]'}`}>
+              {done ? <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg> : <span>{s.n}</span>}
               <span className="hidden sm:inline">{s.label}</span>
             </div>
-            {i < STEPS.length - 1 && <div className={`h-[1px] w-4 shrink-0 ${i < current - 1 ? 'bg-teal-400' : 'bg-slate-100'}`} />}
+            {i < STEPS.length - 1 && <div className={`h-[1px] w-4 shrink-0 ${i < current - 1 ? 'bg-teal-500' : 'bg-[#e2e8f0]'}`} />}
           </React.Fragment>
         );
       })}
@@ -120,10 +120,10 @@ function StepReview({ d, u, e }) {
       <FormCheckbox id="m_c" label="I agree to maintain respectful and confidential participation within the ecosystem." checked={d.confidential || false} onChange={() => u('confidential', !d.confidential)} />
     </div>
     {(e.guidelines || e.internal || e.confidential) && <p className="text-xs text-red-500 mb-4">Please accept all agreements before submitting.</p>}
-    <div className="bg-slate-50 border border-slate-100 rounded-xl p-5 space-y-2.5">
-      <p className="text-xs font-semibold uppercase tracking-wide text-slate-400 mb-3">Summary</p>
+    <div className="bg-[#f8fafc] border border-[#e2e8f0] rounded-xl p-5 space-y-2.5">
+      <p className="text-xs font-semibold uppercase tracking-wide text-[#64748b] mb-3">Summary</p>
       {[['Name', d.fullName], ['Email', d.email], ['Role', d.role], ['Industry', d.industry], ['Interests', (d.interests || []).length ? `${(d.interests || []).length} selected` : null]].map(([l, v]) =>
-        v ? <div key={l} className="flex justify-between text-sm"><span className="text-slate-500">{l}</span><span className="font-medium text-slate-800 truncate max-w-[60%]">{v}</span></div> : null
+        v ? <div key={l} className="flex justify-between text-sm"><span className="text-[#475569]">{l}</span><span className="font-medium text-[#1e293b] truncate max-w-[60%]">{v}</span></div> : null
       )}
     </div>
   </>);
@@ -159,23 +159,23 @@ export default function MembershipForm() {
   const submit = () => { const e = validate(5, data); if (Object.keys(e).length) { setErrors(e); return; } setSubmitted(true); };
 
   if (submitted) return (
-    <div className="bg-white border border-slate-100 rounded-2xl shadow-sm p-16 text-center">
+    <div className="bg-white border border-[#e2e8f0] rounded-2xl shadow-sm p-16 text-center">
       <div className="w-16 h-16 bg-teal-50 border border-teal-100 rounded-full flex items-center justify-center mx-auto mb-5">
         <svg className="w-8 h-8 text-teal-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}><path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
       </div>
-      <h3 className="text-2xl font-bold text-slate-900 mb-3">Application Submitted</h3>
-      <p className="text-slate-500 mb-2">Thank you, <strong className="text-slate-700">{data.fullName || 'Applicant'}</strong>. We'll reach out within 5–7 business days.</p>
-      <p className="text-xs text-slate-400">Confirmation sent to <strong className="text-slate-600">{data.email}</strong></p>
+      <h3 className="text-2xl font-bold text-[#0f172a] mb-3">Application Submitted</h3>
+      <p className="text-[#475569] mb-2">Thank you, <strong className="text-[#334155]">{data.fullName || 'Applicant'}</strong>. We'll reach out within 5–7 business days.</p>
+      <p className="text-xs text-[#64748b]">Confirmation sent to <strong className="text-[#475569]">{data.email}</strong></p>
     </div>
   );
 
   const p = { d: data, u: update, e: errors };
   return (
-    <div className="bg-white border border-slate-100 rounded-2xl shadow-sm overflow-hidden">
-      <div className="border-b border-slate-100 px-6 py-4 bg-white sticky top-16 z-20">
+    <div className="bg-white border border-[#e2e8f0] rounded-2xl shadow-sm overflow-hidden">
+      <div className="border-b border-[#e2e8f0] px-6 py-4 bg-white sticky top-16 z-20">
         <MiniStepper current={step} />
       </div>
-      <div className="px-6 md:px-10 py-10 min-h-[480px]">
+      <div className="px-6 md:px-10 py-10 min-h-[480px] text-[#1e293b] [&_label]:text-[#1e293b] [&_.text-slate]:text-[#475569] [&_.text-copper]:text-[#b45309]">
         <AnimatePresence mode="wait" custom={dir}>
           <motion.div key={step} custom={dir} variants={slideVariants} initial="enter" animate="center" exit="exit" transition={{ duration: 0.3, ease: EASE }}>
             {step === 1 && <StepPersonal {...p} />}
@@ -186,11 +186,11 @@ export default function MembershipForm() {
           </motion.div>
         </AnimatePresence>
       </div>
-      <div className="border-t border-slate-100 px-6 md:px-10 py-5 flex items-center justify-between bg-slate-50/50">
-        <button onClick={back} disabled={step === 1} className="flex items-center gap-2 text-sm font-medium text-slate-500 hover:text-slate-900 disabled:opacity-30 disabled:cursor-not-allowed transition-colors">
+      <div className="border-t border-[#e2e8f0] px-6 md:px-10 py-5 flex items-center justify-between bg-[#f8fafc]/50">
+        <button onClick={back} disabled={step === 1} className="flex items-center gap-2 text-sm font-medium text-[#475569] hover:text-[#0f172a] disabled:opacity-30 disabled:cursor-not-allowed transition-colors">
           <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" /></svg>Back
         </button>
-        <span className="text-xs text-slate-400">{step} of {STEPS.length}</span>
+        <span className="text-xs text-[#475569] font-medium">{step} of {STEPS.length}</span>
         {step < STEPS.length ? (
           <motion.button whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} onClick={next} className="flex items-center gap-2 bg-slate-900 text-white px-6 py-2.5 rounded-xl text-sm font-semibold hover:bg-slate-800 transition-colors">
             Continue <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
