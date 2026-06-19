@@ -151,21 +151,65 @@ export default function MembershipForm() {
   const [dir, setDir] = useState(1);
   const [data, setData] = useState(INIT);
   const [errors, setErrors] = useState({});
-  const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
 
   const update = (f, v) => { setData(p => ({ ...p, [f]: v })); setErrors(p => { const n={...p}; delete n[f]; return n; }); };
   const next = () => { const e = validate(step, data); if (Object.keys(e).length) { setErrors(e); return; } setErrors({}); setDir(1); setStep(s => s + 1); };
   const back = () => { setErrors({}); setDir(-1); setStep(s => s - 1); };
-  const submit = () => { const e = validate(5, data); if (Object.keys(e).length) { setErrors(e); return; } setSubmitted(true); };
+  const submit = () => { 
+    const e = validate(5, data); 
+    if (Object.keys(e).length) { setErrors(e); return; } 
+    
+    setIsSubmitting(true);
+    const payload = {
+      FullName: data.fullName,
+      Email: data.email,
+      Phone: data.phone,
+      LinkedIn: data.linkedin,
+      CityCountry: data.location,
+      CurrentRole: data.role,
+      Organization: data.org,
+      Industry: data.industry,
+      YearsExperience: data.experience,
+      Expertise: data.expertise,
+      CurrentFocus: data.focus,
+      Achievements: data.achievements,
+      Website: data.website,
+      WhyJoin: data.whyBeyond,
+      ValueContribute: data.contribution,
+      ConnectWith: data.connect,
+      BuildingExploring: data.building,
+      EcosystemInterests: data.interests || [],
+      AgreeGuidelines: data.guidelines || false,
+      AgreeReview: data.internal || false,
+      AgreeConfidentiality: data.confidential || false
+    };
 
-  if (submitted) return (
+    const scriptUrl = import.meta.env.VITE_GOOGLE_SCRIPT_URL;
+
+    fetch(scriptUrl, {
+      method: 'POST',
+      mode: 'no-cors',
+      body: JSON.stringify(payload)
+    })
+    .then(() => { 
+      setIsSuccess(true); 
+      setIsSubmitting(false); 
+    })
+    .catch((error) => { 
+      console.error(error); 
+      setIsSubmitting(false); 
+    });
+  };
+
+  if (isSuccess) return (
     <div className="bg-white border border-[#e2e8f0] rounded-2xl shadow-sm p-16 text-center">
       <div className="w-16 h-16 bg-teal-50 border border-teal-100 rounded-full flex items-center justify-center mx-auto mb-5">
         <svg className="w-8 h-8 text-teal-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}><path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
       </div>
-      <h3 className="text-2xl font-bold text-[#0f172a] mb-3">Application Submitted</h3>
-      <p className="text-[#475569] mb-2">Thank you, <strong className="text-[#334155]">{data.fullName || 'Applicant'}</strong>. We'll reach out within 5–7 business days.</p>
-      <p className="text-xs text-[#64748b]">Confirmation sent to <strong className="text-[#475569]">{data.email}</strong></p>
+      <h3 className="text-2xl font-bold text-[#0f172a] mb-3">Application Received</h3>
+      <p className="text-[#475569] mb-2">Thank you for applying to Beyond. Our team will review your submission and contact you shortly.</p>
     </div>
   );
 
@@ -196,8 +240,8 @@ export default function MembershipForm() {
             Continue <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
           </motion.button>
         ) : (
-          <motion.button whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} onClick={submit} className="flex items-center gap-2 bg-teal-600 text-white px-8 py-2.5 rounded-xl text-sm font-semibold hover:bg-teal-700 transition-colors">
-            Apply for Review <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
+          <motion.button disabled={isSubmitting} whileHover={!isSubmitting ? { scale: 1.02 } : {}} whileTap={!isSubmitting ? { scale: 0.98 } : {}} onClick={submit} className={`flex items-center gap-2 bg-teal-600 text-white px-8 py-2.5 rounded-xl text-sm font-semibold transition-colors ${isSubmitting ? 'opacity-70 cursor-not-allowed' : 'hover:bg-teal-700'}`}>
+            {isSubmitting ? 'Submitting...' : 'Apply for Review'} {!isSubmitting && <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>}
           </motion.button>
         )}
       </div>
