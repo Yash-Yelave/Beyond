@@ -190,6 +190,11 @@ function FAQAccordion({ items }) {
 }
 
 export default function Membership() {
+  const scrollToPrivateDeals = (event) => {
+    event.preventDefault();
+    document.getElementById('private-deals')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+
   return (
     <div className="bg-pearl min-h-screen">
       <section className="relative pt-[100px] pb-[80px] lg:pt-[140px] lg:pb-[110px] overflow-hidden border-b border-line">
@@ -225,29 +230,50 @@ export default function Membership() {
           <div className="max-w-[1240px] mx-auto">
             <SectionHeading eyebrow="Membership" title="What Beyond Adds" subtitle="Beyond makes the impact side visible, organized, and actionable." className="mb-8" />
             <div className="grid grid-cols-1 lg:grid-cols-4 gap-5">
-              {benefits.map((benefit, i) => (
-                <motion.div
-                  key={benefit.title}
-                  initial={{ opacity: 0, y: 18 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={VIEWPORT}
-                  transition={{ duration: 0.5, ease: EASE, delay: i * 0.06 }}
-                  className="rounded-2xl border border-line bg-pearl p-6 min-h-[205px] flex flex-col"
-                >
-                  <div className="w-11 h-11 rounded-xl flex items-center justify-center mb-5 bg-card text-forest border border-line">
-                    <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.7}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d={benefit.icon} />
-                    </svg>
-                  </div>
-                  <div>
-                    <p className="text-[11px] font-bold uppercase tracking-widest mb-3 text-copper">
-                      {String(i + 1).padStart(2, '0')}
-                    </p>
-                    <h3 className="font-serif text-[26px] font-medium mb-3 text-ink">{benefit.title}</h3>
-                    <p className="text-[15px] font-medium leading-[1.7] text-slate">{benefit.copy}</p>
-                  </div>
-                </motion.div>
-              ))}
+              {benefits.map((benefit, i) => {
+                const isPrivateDealFlow = i === 0;
+                const BenefitCard = isPrivateDealFlow ? motion.a : motion.div;
+
+                return (
+                  <BenefitCard
+                    key={benefit.title}
+                    href={isPrivateDealFlow ? '#private-deals' : undefined}
+                    onClick={isPrivateDealFlow ? scrollToPrivateDeals : undefined}
+                    initial={{ opacity: 0, y: 18 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    whileHover={isPrivateDealFlow ? { scale: 1.02, y: -4 } : undefined}
+                    whileTap={isPrivateDealFlow ? { scale: 0.99 } : undefined}
+                    viewport={VIEWPORT}
+                    transition={{ duration: 0.5, ease: EASE, delay: i * 0.06 }}
+                    className={`rounded-2xl border border-line bg-pearl p-6 min-h-[205px] flex flex-col ${
+                      isPrivateDealFlow
+                        ? 'cursor-pointer hover:border-copper hover:shadow-[0_14px_30px_rgba(245,158,11,0.12)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-copper focus-visible:ring-offset-2 focus-visible:ring-offset-card'
+                        : ''
+                    }`}
+                  >
+                    <div className="w-11 h-11 rounded-xl flex items-center justify-center mb-5 bg-card text-forest border border-line">
+                      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.7}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d={benefit.icon} />
+                      </svg>
+                    </div>
+                    <div>
+                      <p className="text-[11px] font-bold uppercase tracking-widest mb-3 text-copper">
+                        {String(i + 1).padStart(2, '0')}
+                      </p>
+                      <h3 className="font-serif text-[26px] font-medium mb-3 text-ink">{benefit.title}</h3>
+                      <p className="text-[15px] font-medium leading-[1.7] text-slate">{benefit.copy}</p>
+                    </div>
+                    {isPrivateDealFlow && (
+                      <span className="mt-auto pt-5 inline-flex items-center gap-2 text-[13px] font-bold text-copper">
+                        View opportunities
+                        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M12 5v14m0 0l-5-5m5 5l5-5" />
+                        </svg>
+                      </span>
+                    )}
+                  </BenefitCard>
+                );
+              })}
             </div>
           </div>
         </div>
@@ -295,7 +321,7 @@ export default function Membership() {
         </div>
       </section>
 
-      <section className="py-[90px] lg:py-[120px] bg-deep-slate text-deep-slate-text">
+      <section id="private-deals" className="scroll-mt-24 py-[90px] lg:py-[120px] bg-deep-slate text-deep-slate-text">
         <div className="max-w-[1440px] mx-auto px-6 w-full">
           <div className="max-w-[1240px] mx-auto grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-10 items-start">
             <div>
