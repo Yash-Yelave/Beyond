@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import SectionHeading from '../components/ui/SectionHeading';
 import MembershipForm from '../components/sections/membership/MembershipForm';
 
@@ -12,41 +12,57 @@ const benefits = [
     title: 'Private Deal Flow',
     copy: 'Curated private investment opportunities from Tiger 21, family offices, and investor networks in the U.S. and India.',
     icon: 'M3 17l6-6 4 4 8-8M14 7h7v7',
+    to: '/private-deal-flow',
+    actionLabel: 'View deal examples',
   },
   {
     title: 'Syndicate Access',
     copy: 'A way for members to review select private deals together and participate collectively when appropriate.',
     icon: 'M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M15 7a3 3 0 11-6 0 3 3 0 016 0z',
+    to: '/beyond-2027',
+    actionLabel: 'Beyond 2027 Fund',
   },
   {
     title: 'Life and Executive Coaching',
     copy: 'Manifestation and healing techniques to achieve your goals.',
     icon: 'M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z',
+    to: '/manifestation-resources',
+    actionLabel: 'View resources',
   },
   {
     title: 'Wealth Strategy',
     copy: 'Personalized discussions around wealth creation, tax efficiency, estate planning, and income growth.',
     icon: 'M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5l5 5v11a2 2 0 01-2 2z',
+    href: 'https://app.shakram.com',
+    actionLabel: 'Open Shakram',
   },
   {
     title: 'Member Support',
     copy: 'Dedicated coordination, research, scheduling, and follow-up support through an India-based assistant.',
     icon: 'M18 8a6 6 0 01-12 0m12 8a6 6 0 01-12 0M5 8h14M5 16h14',
+    to: '/member-support',
+    actionLabel: 'Support details',
   },
   {
     title: 'Research & Diligence',
     copy: 'Access to curated research, diligence notes, investment insights, and materials for deeper review.',
     icon: 'M21 21l-4.35-4.35M10.5 18a7.5 7.5 0 100-15 7.5 7.5 0 000 15z',
+    to: '/research-resources',
+    actionLabel: 'Explore resources',
   },
   {
     title: 'W.I.S.D.O.M. Learning',
     copy: 'Continued learning across wealth, investments, well-being, innovation, legacy, mentorship, and giving back.',
     icon: 'M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5s3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18s-3.332.477-4.5 1.253',
+    href: 'https://infinityforum.club',
+    actionLabel: 'Open Infinity Forum',
   },
   {
     title: 'Impact Allocation',
     copy: 'Approximately half of membership fees support operations and the Junicorns Platform for rural student entrepreneurs.',
     icon: 'M3 17l6-6 4 4 8-8M14 7h7v7',
+    to: '/impact-allocation',
+    actionLabel: 'See impact focus',
   },
 ];
 
@@ -190,9 +206,58 @@ function FAQAccordion({ items }) {
 }
 
 export default function Membership() {
-  const scrollToPrivateDeals = (event) => {
-    event.preventDefault();
-    document.getElementById('private-deals')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  const navigate = useNavigate();
+
+  React.useEffect(() => {
+    const scrollToTarget = (targetId) => {
+      const target = document.getElementById(targetId);
+      if (!target) return;
+
+      const top = target.getBoundingClientRect().top + window.scrollY - 88;
+      window.scrollTo({ top, behavior: 'smooth' });
+    };
+
+    const scrollToHash = () => {
+      const targetId = window.location.hash.slice(1);
+      if (!targetId) return;
+
+      window.setTimeout(() => scrollToTarget(targetId), 120);
+    };
+
+    scrollToHash();
+    window.addEventListener('hashchange', scrollToHash);
+    return () => window.removeEventListener('hashchange', scrollToHash);
+  }, []);
+
+  const handleBenefitClick = (event, benefit) => {
+    if (benefit.scrollTarget) {
+      window.setTimeout(() => {
+        const target = document.getElementById(benefit.scrollTarget);
+        if (!target) return;
+
+        const top = target.getBoundingClientRect().top + window.scrollY - 88;
+        window.scrollTo({ top, behavior: 'smooth' });
+      }, 120);
+      return;
+    }
+
+    if (benefit.to) {
+      event.preventDefault();
+      navigate(benefit.to);
+    }
+  };
+
+  const getBenefitHref = (benefit) => {
+    if (benefit.scrollTarget) return `#${benefit.scrollTarget}`;
+    if (benefit.href) return benefit.href;
+    if (benefit.to) return `${import.meta.env.BASE_URL.replace(/\/$/, '')}${benefit.to}`;
+    return undefined;
+  };
+
+  const getActionIconPath = (benefit) => {
+    if (benefit.scrollTarget) return 'M12 5v14m0 0l-5-5m5 5l5-5';
+    if (benefit.href) return 'M7 17L17 7M9 7h8v8';
+    return 'M9 5l7 7-7 7';
   };
 
   return (
@@ -229,24 +294,26 @@ export default function Membership() {
         <div className="max-w-[1440px] mx-auto px-6 w-full">
           <div className="max-w-[1240px] mx-auto">
             <SectionHeading eyebrow="Membership" title="What Beyond Adds" subtitle="Beyond makes the impact side visible, organized, and actionable." className="mb-8" />
-            <div className="grid grid-cols-1 lg:grid-cols-4 gap-5">
+            <div className="grid grid-cols-1 lg:grid-cols-4 lg:auto-rows-fr gap-5">
               {benefits.map((benefit, i) => {
-                const isPrivateDealFlow = i === 0;
-                const BenefitCard = isPrivateDealFlow ? motion.a : motion.div;
+                const isInteractive = Boolean(benefit.scrollTarget || benefit.to || benefit.href);
+                const BenefitCard = isInteractive ? motion.a : motion.div;
 
                 return (
                   <BenefitCard
                     key={benefit.title}
-                    href={isPrivateDealFlow ? '#private-deals' : undefined}
-                    onClick={isPrivateDealFlow ? scrollToPrivateDeals : undefined}
+                    href={getBenefitHref(benefit)}
+                    onClick={isInteractive ? (event) => handleBenefitClick(event, benefit) : undefined}
+                    target={benefit.href ? '_blank' : undefined}
+                    rel={benefit.href ? 'noopener noreferrer' : undefined}
                     initial={{ opacity: 0, y: 18 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    whileHover={isPrivateDealFlow ? { scale: 1.02, y: -4 } : undefined}
-                    whileTap={isPrivateDealFlow ? { scale: 0.99 } : undefined}
+                    whileHover={isInteractive ? { scale: 1.02, y: -4 } : undefined}
+                    whileTap={isInteractive ? { scale: 0.99 } : undefined}
                     viewport={VIEWPORT}
                     transition={{ duration: 0.5, ease: EASE, delay: i * 0.06 }}
-                    className={`rounded-2xl border border-line bg-pearl p-6 min-h-[205px] flex flex-col ${
-                      isPrivateDealFlow
+                    className={`rounded-2xl border border-line bg-pearl p-6 min-h-[205px] h-full flex flex-col ${
+                      isInteractive
                         ? 'cursor-pointer hover:border-copper hover:shadow-[0_14px_30px_rgba(245,158,11,0.12)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-copper focus-visible:ring-offset-2 focus-visible:ring-offset-card'
                         : ''
                     }`}
@@ -263,11 +330,15 @@ export default function Membership() {
                       <h3 className="font-serif text-[26px] font-medium mb-3 text-ink">{benefit.title}</h3>
                       <p className="text-[15px] font-medium leading-[1.7] text-slate">{benefit.copy}</p>
                     </div>
-                    {isPrivateDealFlow && (
+                    {isInteractive && (
                       <span className="mt-auto pt-5 inline-flex items-center gap-2 text-[13px] font-bold text-copper">
-                        View opportunities
+                        {benefit.actionLabel}
                         <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M12 5v14m0 0l-5-5m5 5l5-5" />
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d={getActionIconPath(benefit)}
+                          />
                         </svg>
                       </span>
                     )}
@@ -279,7 +350,7 @@ export default function Membership() {
         </div>
       </section>
 
-      <section className="py-[56px] lg:py-[72px] bg-stone border-b border-line">
+      <section id="wisdom-framework" className="scroll-mt-24 py-[56px] lg:py-[72px] bg-stone border-b border-line">
         <div className="max-w-[1440px] mx-auto px-6 w-full">
           <div className="max-w-[1240px] mx-auto">
             <motion.a
@@ -341,6 +412,13 @@ export default function Membership() {
                   </div>
                 ))}
               </div>
+              <div className="border border-copper/25 bg-copper/5 rounded-xl p-5 mb-5">
+                <p className="text-[11px] font-bold uppercase tracking-wider text-copper mb-2">Member Interest</p>
+                <p className="text-[14px] font-semibold leading-[1.6] mb-2">
+                  For private and pre-IPO opportunities, members will be able to opt in and indicate a non-binding amount they may wish to invest.
+                </p>
+                <p className="text-[12px] leading-[1.6] text-deep-slate-text/55">The member interest workflow is coming soon.</p>
+              </div>
               <p className="text-[12px] leading-[1.6] text-deep-slate-text/55">
                 This is an example, not a guarantee of return or a recommendation to invest. Members should review official materials, valuations, risks, and suitability before making any investment decision.
               </p>
@@ -398,7 +476,7 @@ export default function Membership() {
         </div>
       </section>
 
-      <section className="py-[90px] lg:py-[120px] bg-stone border-b border-line">
+      <section id="impact-allocation" className="scroll-mt-24 py-[90px] lg:py-[120px] bg-stone border-b border-line">
         <div className="max-w-[1440px] mx-auto px-6 w-full">
           <div className="max-w-[1240px] mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-[0.82fr_1.18fr] gap-12 items-start mb-10">

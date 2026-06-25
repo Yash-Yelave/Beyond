@@ -12,6 +12,7 @@ const Events = lazy(() => import('./pages/Events'));
 const Insights = lazy(() => import('./pages/Insights'));
 const SubmitOpportunity = lazy(() => import('./pages/SubmitOpportunity'));
 const Contact = lazy(() => import('./pages/Contact'));
+const MemberResourcePage = lazy(() => import('./pages/MemberResourcePage'));
 const Dashboard = lazy(() => import('./pages/Dashboard'));
 const basename = import.meta.env.BASE_URL === '/' ? '/' : import.meta.env.BASE_URL.replace(/\/$/, '');
 
@@ -26,6 +27,12 @@ const router = createBrowserRouter(
         <Route path="/insights" element={<Insights />} />
         <Route path="/submit-opportunity" element={<SubmitOpportunity />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/private-deal-flow" element={<MemberResourcePage pageKey="private-deal-flow" />} />
+        <Route path="/beyond-2027" element={<MemberResourcePage pageKey="beyond-2027" />} />
+        <Route path="/manifestation-resources" element={<MemberResourcePage pageKey="manifestation-resources" />} />
+        <Route path="/member-support" element={<MemberResourcePage pageKey="member-support" />} />
+        <Route path="/impact-allocation" element={<MemberResourcePage pageKey="impact-allocation" />} />
+        <Route path="/research-resources" element={<MemberResourcePage pageKey="research-resources" />} />
       </Route>
       
       {/* Dashboard stands alone (no public header/footer) */}
