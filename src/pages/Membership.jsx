@@ -378,13 +378,7 @@ export default function Membership() {
                   className="group overflow-hidden border border-[#e2e8f0] bg-white rounded-2xl min-h-[390px] flex flex-col shadow-[0_16px_40px_rgba(15,23,42,0.08)] transition-all duration-300 hover:border-[#f59e0b] hover:shadow-[0_20px_48px_rgba(245,158,11,0.16)]"
                 >
                   <div className="h-36 bg-[#f8fafc] border-b border-[#e2e8f0] flex items-center justify-center px-8">
-                    {item.logo ? (
-                      <img src={logoSrc(item.logo)} alt={item.logoAlt || `${item.title} logo`} className={`${logoSizeClasses[item.logoSize] || logoSizeClasses.default} object-contain`} />
-                    ) : (
-                      <span className="inline-flex items-center justify-center rounded-xl px-5 py-4 text-center text-[18px] font-black uppercase tracking-wider bg-deep-slate text-deep-slate-text">
-                        {item.logoText || item.title}
-                      </span>
-                    )}
+                    <img src={logoSrc(item.logo)} alt={item.logoAlt} className={`${logoSizeClasses[item.logoSize] || logoSizeClasses.default} object-contain`} />
                   </div>
                   <div className="p-5 flex-1 flex flex-col">
                     <p className="text-[11px] font-bold uppercase tracking-wider text-[#b45309] mb-3">{item.label}</p>
