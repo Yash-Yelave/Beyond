@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import SectionHeading from '../components/ui/SectionHeading';
 import MembershipForm from '../components/sections/membership/MembershipForm';
 
@@ -9,60 +9,34 @@ const VIEWPORT = { once: true, margin: '-80px' };
 
 const benefits = [
   {
-    title: 'Private Deal Flow',
-    copy: 'Curated private investment opportunities from Tiger 21, family offices, and investor networks in the U.S. and India.',
+    title: 'Public Markets Edge',
+    copy: 'Led by Ravi Talluri: AI trading ideas, swing trading, options, and portfolio reviews.',
     icon: 'M3 17l6-6 4 4 8-8M14 7h7v7',
-    to: '/private-deal-flow',
-    actionLabel: 'View deal examples',
   },
   {
-    title: 'Syndicate Access',
-    copy: 'A way for members to review select private deals together and participate collectively when appropriate.',
-    icon: 'M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M15 7a3 3 0 11-6 0 3 3 0 016 0z',
-    to: '/beyond-2027',
-    actionLabel: 'Beyond 2027 Fund',
+    title: 'Private Markets - USA',
+    copy: 'Led by Usha: venture capital, private equity, SPVs, and Tiger 21 opportunities.',
+    icon: 'M12 3l7 4v5c0 5-3.5 8.5-7 9-3.5-.5-7-4-7-9V7l7-4z',
   },
   {
-    title: 'Life and Executive Coaching',
-    copy: 'Manifestation and healing techniques to achieve your goals.',
+    title: 'Private Markets - India',
+    copy: 'Led by Siddharth: Indian startups, real estate, and private investments.',
+    icon: 'M12 2a10 10 0 100 20 10 10 0 000-20zM2 12h20M12 2c3 3 4 6 4 10s-1 7-4 10c-3-3-4-6-4-10s1-7 4-10z',
+  },
+  {
+    title: 'Business Ownership',
+    copy: 'Board opportunities, acquisitions, partnerships, and entrepreneurship.',
+    icon: 'M3 21h18M5 21V7l8-4v18M19 21V11l-6-4M9 9h1M9 13h1M9 17h1M14 13h1M14 17h1',
+  },
+  {
+    title: 'Executive Growth',
+    copy: 'Executive coaching, leadership, career acceleration, manifestation, and healing techniques.',
     icon: 'M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z',
-    to: '/manifestation-resources',
-    actionLabel: 'View resources',
   },
   {
-    title: 'Wealth Strategy',
-    copy: 'Personalized discussions around wealth creation, tax efficiency, estate planning, and income growth.',
-    icon: 'M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5l5 5v11a2 2 0 01-2 2z',
-    href: 'https://app.shakram.com',
-    actionLabel: 'Open Shakram',
-  },
-  {
-    title: 'Member Support',
-    copy: 'Dedicated coordination, research, scheduling, and follow-up support through an India-based assistant.',
-    icon: 'M18 8a6 6 0 01-12 0m12 8a6 6 0 01-12 0M5 8h14M5 16h14',
-    to: '/member-support',
-    actionLabel: 'Support details',
-  },
-  {
-    title: 'Research & Diligence',
-    copy: 'Access to curated research, diligence notes, investment insights, and materials for deeper review.',
-    icon: 'M21 21l-4.35-4.35M10.5 18a7.5 7.5 0 100-15 7.5 7.5 0 000 15z',
-    to: '/research-resources',
-    actionLabel: 'Explore resources',
-  },
-  {
-    title: 'W.I.S.D.O.M. Learning',
-    copy: 'Continued learning across wealth, investments, well-being, innovation, legacy, mentorship, and giving back.',
-    icon: 'M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5s3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18s-3.332.477-4.5 1.253',
-    href: 'https://infinityforum.club',
-    actionLabel: 'Open Infinity Forum',
-  },
-  {
-    title: 'Impact Allocation',
-    copy: 'Approximately half of membership fees support operations and the Junicorns Platform for rural student entrepreneurs.',
-    icon: 'M3 17l6-6 4 4 8-8M14 7h7v7',
-    to: '/impact-allocation',
-    actionLabel: 'See impact focus',
+    title: 'AI Tools & Resources',
+    copy: 'Led by Vijval: AI agents, investment tools, research platforms, and automation.',
+    icon: 'M13 10V3L4 14h7v7l9-11h-7z',
   },
 ];
 
@@ -93,60 +67,37 @@ const wisdomItems = [
   },
 ];
 
-const fundTerms = [
-  ['Minimum Investment', '$250,000'],
-  ['Initial Capital Call', 'Approximately 35% on June 25'],
-  ['Remaining Capital', 'Called quarterly through 2027'],
-  ['Fund Term', 'Five years'],
-  ['Portfolio', 'SpaceX, Anthropic, OpenAI, and other private technology companies'],
-];
-
-const anomalyTerms = [
-  ['Fund', 'Anomaly Ventures Fund I LP'],
-  ['Target Fund Size', '$50M-$100M'],
-  ['Stage', 'Early-stage frontier technology, AI agents, platforms, consumer health, and wellness'],
-  ['Liquidity Strategy', 'Structured DPI-first terms such as dividends, royalties, and revenue share'],
-  ['Fund Term', '5-year investment period, 10-year max plus LP-approved extension'],
-  ['GP Alignment', 'Approximately $10M of GP warehoused equity into Fund I'],
-];
-
-const anomalyHighlights = [
-  'Focused on outlier founders at the intersection of technology, AI, and medicine.',
-  'Built around earlier paths to liquidity while still pursuing venture-scale outcomes.',
-  'Led by Vasudev Bailey, PhD, with deep AI, biotech, healthcare, and academic networks.',
-  'Uses Anomaly Network Partners to surround founders with operators, strategics, academics, and capital support.',
-];
-
-const indiaOpportunities = [
+const accessPortfolio = [
   {
-    label: 'Private Markets',
-    title: 'VC Funds in India',
-    copy: 'Growth-stage and early-stage venture exposure through India-focused managers such as 108 Capital and Ecosystem Ventures.',
+    label: 'Pre-IPO Technology',
+    title: 'SpaceX',
+    copy: 'Private-market exposure members may be able to review through curated access vehicles and partner relationships.',
   },
   {
-    label: 'Public Markets',
-    title: 'Hedge Fund Strategies',
+    label: 'Pre-IPO AI',
+    title: 'Anthropic',
+    copy: 'Potential exposure to leading artificial intelligence infrastructure through select private-market opportunities.',
+  },
+  {
+    label: 'Pre-IPO AI',
+    title: 'OpenAI',
+    copy: 'Member review access may include private-company exposure to foundational AI platforms when capacity is available.',
+  },
+  {
+    label: 'India Venture',
+    title: '108 Capital / Ecosystem Ventures',
+    copy: 'India-focused venture exposure through early-stage and growth-stage manager relationships.',
+  },
+  {
+    label: 'India Public Markets',
+    title: 'Whitespace Alpha',
     copy: 'SEBI-registered Category III AIF strategies across bonds, equities, derivatives, and benchmark indices.',
   },
   {
-    label: 'Macro Thesis',
-    title: "India's GDP Vision",
-    copy: 'Investor education on India’s demographic dividend, converging technologies, and long-term macro trajectory.',
-  },
-  {
-    label: 'Impact Channel',
+    label: 'Impact Platform',
     title: 'ISF Junicorns',
-    copy: 'A platform aimed at helping 100,000 rural youth ages 8-25 across India build innovation and entrepreneurship skills.',
+    copy: 'A rural youth entrepreneurship platform connected to mentorship, innovation camps, scholarships, and measurable impact.',
   },
-];
-
-const indiaLeaders = [
-  ['Usha Nandigala', 'Tiger 21 DET04 member, founder of Infinity Forum, co-founder of Megha AI, and former Amazon and GM executive.'],
-  ['Poondla Siddharth Reddy', 'Group CEO of International Startup Foundation, leading ISF Junicorns and impact-token work.'],
-  ['Sreekanth Perepu', 'Founding Partner at 108 Capital, with experience across venture capital, investment banking, and consulting.'],
-  ['Abhishek Sanghvi', 'Co-founder of Ecosystem Ventures, focused on early-stage Indian ventures and structured investment instruments.'],
-  ['Puneet Sharma', 'Fund Manager and CEO of Whitespace Alpha, a SEBI-registered Category III AIF.'],
-  ['Sreekanth K Arimanithaya', 'CEO of Singularity University and Xarpie Labs, focused on AI, exponential technologies, and India growth.'],
 ];
 
 const faqs = [
@@ -163,8 +114,8 @@ const faqs = [
     a: 'Members receive the impact-focused Beyond layer alongside curated investment conversations, wealth strategy discussions, member support, research, due diligence, and learning through the W.I.S.D.O.M. Framework.',
   },
   {
-    q: 'Is the Singularity Access One Fund a guaranteed opportunity?',
-    a: 'No. It is an example of the type of opportunity members may review. Members should review official materials, risks, valuations, and suitability before making any investment decision.',
+    q: 'Are the access portfolio examples guaranteed opportunities?',
+    a: 'No. They are examples of the types of companies, managers, and platforms members may review. Members should review official materials, risks, valuations, and suitability before making any investment decision.',
   },
 ];
 
@@ -206,8 +157,6 @@ function FAQAccordion({ items }) {
 }
 
 export default function Membership() {
-  const navigate = useNavigate();
-
   React.useEffect(() => {
     const scrollToTarget = (targetId) => {
       const target = document.getElementById(targetId);
@@ -229,37 +178,6 @@ export default function Membership() {
     return () => window.removeEventListener('hashchange', scrollToHash);
   }, []);
 
-  const handleBenefitClick = (event, benefit) => {
-    if (benefit.scrollTarget) {
-      window.setTimeout(() => {
-        const target = document.getElementById(benefit.scrollTarget);
-        if (!target) return;
-
-        const top = target.getBoundingClientRect().top + window.scrollY - 88;
-        window.scrollTo({ top, behavior: 'smooth' });
-      }, 120);
-      return;
-    }
-
-    if (benefit.to) {
-      event.preventDefault();
-      navigate(benefit.to);
-    }
-  };
-
-  const getBenefitHref = (benefit) => {
-    if (benefit.scrollTarget) return `#${benefit.scrollTarget}`;
-    if (benefit.href) return benefit.href;
-    if (benefit.to) return `${import.meta.env.BASE_URL.replace(/\/$/, '')}${benefit.to}`;
-    return undefined;
-  };
-
-  const getActionIconPath = (benefit) => {
-    if (benefit.scrollTarget) return 'M12 5v14m0 0l-5-5m5 5l5-5';
-    if (benefit.href) return 'M7 17L17 7M9 7h8v8';
-    return 'M9 5l7 7-7 7';
-  };
-
   return (
     <div className="bg-pearl min-h-screen">
       <section className="relative pt-[100px] pb-[80px] lg:pt-[140px] lg:pb-[110px] overflow-hidden border-b border-line">
@@ -271,7 +189,7 @@ export default function Membership() {
                 <span className="text-[12px] font-bold tracking-widest text-slate uppercase">Beyond | Impact Side of Infinity Forum</span>
               </div>
               <h1 className="font-serif text-[44px] md:text-[64px] font-medium text-ink tracking-[-0.02em] leading-[1.12] mb-6">
-                Invest together. <br className="hidden md:block" /> Create impact together.
+                From capital to legacy.
               </h1>
               <p className="text-[16px] lg:text-[18px] text-slate font-medium leading-[1.7] max-w-[620px] mb-10">
                 Beyond is focused on the impact part of Infinity Forum: helping members connect wealth creation, learning, and giving back through the Junicorns Platform.
@@ -294,29 +212,16 @@ export default function Membership() {
         <div className="max-w-[1440px] mx-auto px-6 w-full">
           <div className="max-w-[1240px] mx-auto">
             <SectionHeading eyebrow="Membership" title="What Beyond Adds" subtitle="Beyond makes the impact side visible, organized, and actionable." className="mb-8" />
-            <div className="grid grid-cols-1 lg:grid-cols-4 lg:auto-rows-fr gap-5">
-              {benefits.map((benefit, i) => {
-                const isInteractive = Boolean(benefit.scrollTarget || benefit.to || benefit.href);
-                const BenefitCard = isInteractive ? motion.a : motion.div;
-
-                return (
-                  <BenefitCard
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:auto-rows-fr gap-5">
+              {benefits.map((benefit, i) => (
+                  <motion.div
                     key={benefit.title}
-                    href={getBenefitHref(benefit)}
-                    onClick={isInteractive ? (event) => handleBenefitClick(event, benefit) : undefined}
-                    target={benefit.href ? '_blank' : undefined}
-                    rel={benefit.href ? 'noopener noreferrer' : undefined}
                     initial={{ opacity: 0, y: 18 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    whileHover={isInteractive ? { scale: 1.02, y: -4 } : undefined}
-                    whileTap={isInteractive ? { scale: 0.99 } : undefined}
+                    whileHover={{ scale: 1.02, y: -4 }}
                     viewport={VIEWPORT}
                     transition={{ duration: 0.5, ease: EASE, delay: i * 0.06 }}
-                    className={`rounded-2xl border border-line bg-pearl p-6 min-h-[205px] h-full flex flex-col ${
-                      isInteractive
-                        ? 'cursor-pointer hover:border-copper hover:shadow-[0_14px_30px_rgba(245,158,11,0.12)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-copper focus-visible:ring-offset-2 focus-visible:ring-offset-card'
-                        : ''
-                    }`}
+                    className="rounded-2xl border border-line bg-pearl p-6 min-h-[205px] h-full flex flex-col transition-all duration-300 hover:border-copper hover:bg-card hover:shadow-[0_14px_30px_rgba(245,158,11,0.12)]"
                   >
                     <div className="w-11 h-11 rounded-xl flex items-center justify-center mb-5 bg-card text-forest border border-line">
                       <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.7}>
@@ -330,21 +235,8 @@ export default function Membership() {
                       <h3 className="font-serif text-[26px] font-medium mb-3 text-ink">{benefit.title}</h3>
                       <p className="text-[15px] font-medium leading-[1.7] text-slate">{benefit.copy}</p>
                     </div>
-                    {isInteractive && (
-                      <span className="mt-auto pt-5 inline-flex items-center gap-2 text-[13px] font-bold text-copper">
-                        {benefit.actionLabel}
-                        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            d={getActionIconPath(benefit)}
-                          />
-                        </svg>
-                      </span>
-                    )}
-                  </BenefitCard>
-                );
-              })}
+                  </motion.div>
+                ))}
             </div>
           </div>
         </div>
@@ -392,154 +284,41 @@ export default function Membership() {
         </div>
       </section>
 
-      <section id="private-deals" className="scroll-mt-24 py-[90px] lg:py-[120px] bg-deep-slate text-deep-slate-text">
-        <div className="max-w-[1440px] mx-auto px-6 w-full">
-          <div className="max-w-[1240px] mx-auto grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-10 items-start">
-            <div>
-              <p className="text-[12px] font-bold uppercase tracking-widest text-copper mb-4">Example Opportunity</p>
-              <h2 className="font-serif text-[34px] md:text-[46px] font-medium mb-5">Singularity Access One Fund</h2>
-              <p className="text-[15px] leading-[1.7] text-deep-slate-text/75">
-                Through Tiger 21 relationships, Infinity Forum members may review opportunities such as Singularity Access One. Beyond keeps the impact focus visible alongside these conversations. Usha Nandigala has personally committed $750,000 from her Roth IRA. The fund includes exposure to SpaceX, Anthropic, OpenAI, and other private technology companies, with approximately $2 million of remaining capacity.
-              </p>
-            </div>
-
-            <div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-                {fundTerms.map(([label, value]) => (
-                  <div key={label} className="border border-deep-slate-text/10 bg-deep-slate-text/5 rounded-xl p-4">
-                    <p className="text-[11px] font-bold uppercase tracking-wider text-deep-slate-text/50 mb-1">{label}</p>
-                    <p className="text-[14px] font-semibold leading-[1.5]">{value}</p>
-                  </div>
-                ))}
-              </div>
-              <div className="border border-copper/25 bg-copper/5 rounded-xl p-5 mb-5">
-                <p className="text-[11px] font-bold uppercase tracking-wider text-copper mb-2">Member Interest</p>
-                <p className="text-[14px] font-semibold leading-[1.6] mb-2">
-                  For private and pre-IPO opportunities, members will be able to opt in and indicate a non-binding amount they may wish to invest.
-                </p>
-                <p className="text-[12px] leading-[1.6] text-deep-slate-text/55">The member interest workflow is coming soon.</p>
-              </div>
-              <p className="text-[12px] leading-[1.6] text-deep-slate-text/55">
-                This is an example, not a guarantee of return or a recommendation to invest. Members should review official materials, valuations, risks, and suitability before making any investment decision.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-[90px] lg:py-[120px] bg-card border-b border-line">
+      <section id="private-deals" className="scroll-mt-24 py-[90px] lg:py-[120px] bg-deep-slate text-deep-slate-text border-b border-line">
         <div className="max-w-[1440px] mx-auto px-6 w-full">
           <div className="max-w-[1240px] mx-auto">
-            <div className="grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-12 items-start mb-10">
-              <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={VIEWPORT} transition={{ duration: 0.6, ease: EASE }}>
-                <p className="text-[12px] font-bold uppercase tracking-widest text-copper mb-4">Another Example Opportunity</p>
-                <h2 className="font-serif text-[34px] md:text-[46px] font-medium text-ink tracking-[-0.02em] leading-[1.15] mb-5">
-                  Anomaly Ventures Fund I
-                </h2>
-                <p className="text-[15px] leading-[1.8] text-slate font-medium mb-6">
-                  Anomaly is a venture fund focused on outlier founders working at the intersection of technology, AI, and medicine. The strategy pairs venture upside with structured terms designed to create earlier paths to liquidity.
-                </p>
-                <p className="text-[13px] leading-[1.7] text-slate/75 font-medium">
-                  This is included as an example of the kind of private-market diligence members may review. Official offering documents and suitability review should control any investment decision.
-                </p>
-              </motion.div>
-
-              <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={VIEWPORT} transition={{ duration: 0.6, ease: EASE, delay: 0.08 }} className="bg-stone border border-line rounded-2xl p-7 lg:p-8">
-                <h3 className="font-serif text-[26px] font-medium text-ink mb-6">Why It May Fit the Conversation</h3>
-                <div className="space-y-4">
-                  {anomalyHighlights.map((item) => (
-                    <div key={item} className="flex items-start gap-3">
-                      <span className="mt-2 w-2 h-2 rounded-full bg-copper shrink-0" />
-                      <p className="text-[15px] leading-[1.7] text-slate font-medium">{item}</p>
-                    </div>
-                  ))}
-                </div>
-              </motion.div>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {anomalyTerms.map(([label, value], i) => (
-                <motion.div
-                  key={label}
+            <SectionHeading eyebrow="Access" title="Portfolio" subtitle="A consolidated view of private-company, fund-manager, public-market, and impact-platform opportunities members can evaluate through Beyond." className="mb-9" />
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-7">
+              {accessPortfolio.map((item, i) => (
+                <motion.article
+                  key={item.title}
                   initial={{ opacity: 0, y: 16 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={VIEWPORT}
-                  transition={{ duration: 0.45, ease: EASE, delay: i * 0.04 }}
-                  className="bg-pearl border border-line rounded-xl p-5"
+                  transition={{ duration: 0.45, ease: EASE, delay: i * 0.03 }}
+                  className="border border-deep-slate-text/10 bg-deep-slate-text/5 rounded-xl p-5 min-h-[205px]"
                 >
-                  <p className="text-[11px] font-bold uppercase tracking-wider text-copper mb-2">{label}</p>
-                  <p className="text-[14px] font-semibold leading-[1.55] text-ink">{value}</p>
-                </motion.div>
+                  <p className="text-[11px] font-bold uppercase tracking-wider text-copper mb-4">{item.label}</p>
+                  <h3 className="font-serif text-[25px] font-medium mb-3">{item.title}</h3>
+                  <p className="text-[13px] leading-[1.65] text-deep-slate-text/70 font-medium">{item.copy}</p>
+                </motion.article>
               ))}
             </div>
-          </div>
-        </div>
-      </section>
 
-      <section id="impact-allocation" className="scroll-mt-24 py-[90px] lg:py-[120px] bg-stone border-b border-line">
-        <div className="max-w-[1440px] mx-auto px-6 w-full">
-          <div className="max-w-[1240px] mx-auto">
-            <div className="grid grid-cols-1 lg:grid-cols-[0.82fr_1.18fr] gap-12 items-start mb-10">
-              <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={VIEWPORT} transition={{ duration: 0.6, ease: EASE }}>
-                <p className="text-[12px] font-bold uppercase tracking-widest text-copper mb-4">India Investment Opportunities</p>
-                <h2 className="font-serif text-[34px] md:text-[46px] font-medium text-ink tracking-[-0.02em] leading-[1.15] mb-5">
-                  India-focused private, public, macro, and impact conversations
-                </h2>
-                <p className="text-[15px] leading-[1.8] text-slate font-medium mb-6">
-                  Tiger 21 materials outline an India opportunity track that spans VC funds, hedge fund strategies, the country&apos;s GDP growth thesis, and the ISF Junicorns impact platform. Beyond can use this as a curated lens for members who want India exposure connected to measurable impact.
-                </p>
-                <div className="rounded-2xl border border-line bg-card p-5">
-                  <p className="text-[11px] font-bold uppercase tracking-widest text-copper mb-3">Impact Example</p>
-                  <p className="text-[15px] leading-[1.7] text-slate font-medium">
-                    ISF Junicorns is presented as a flagship initiative for rural youth across India, with innovation camps, mentorship, global exposure, and an impact-token concept tied to measurable social and planetary contribution.
+            <motion.div initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={VIEWPORT} transition={{ duration: 0.55, ease: EASE }} className="border border-copper/25 bg-copper/5 rounded-xl p-5">
+              <div className="grid grid-cols-1 lg:grid-cols-[0.85fr_1.15fr] gap-5">
+                <div>
+                  <p className="text-[11px] font-bold uppercase tracking-wider text-copper mb-2">How participation works</p>
+                  <h3 className="font-serif text-[26px] font-medium mb-3">Members review, opt in, and indicate interest.</h3>
+                </div>
+                <div>
+                  <p className="text-[14px] font-semibold leading-[1.65] mb-2">
+                    For private and pre-IPO opportunities, members can opt in and suggest the amount they may want to invest.
+                  </p>
+                  <p className="text-[12px] leading-[1.6] text-deep-slate-text/55">
+                    Final participation depends on official terms, availability, accreditation, documentation, risk review, and suitability. These examples are not investment advice, return guarantees, or offers to sell securities.
                   </p>
                 </div>
-              </motion.div>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {indiaOpportunities.map((item, i) => (
-                  <motion.div
-                    key={item.title}
-                    initial={{ opacity: 0, y: 16 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={VIEWPORT}
-                    transition={{ duration: 0.45, ease: EASE, delay: i * 0.04 }}
-                    className="bg-card border border-line rounded-2xl p-6 min-h-[270px] flex flex-col"
-                  >
-                    <div className="flex items-center justify-between gap-4 mb-8">
-                      <p className="text-[11px] font-bold uppercase tracking-wider text-copper">{item.label}</p>
-                      <span className="w-10 h-10 rounded-xl bg-forest/5 text-forest flex items-center justify-center border border-line">
-                        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
-                          <path strokeLinecap="round" strokeLinejoin="round" d={i === 0 ? 'M3 17l6-6 4 4 8-8M14 7h7v7' : i === 1 ? 'M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8V7m0 11v-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z' : i === 2 ? 'M12 2a10 10 0 100 20 10 10 0 000-20zM2 12h20M12 2c3 3 4 6 4 10s-1 7-4 10c-3-3-4-6-4-10s1-7 4-10z' : 'M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5s3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18s-3.332.477-4.5 1.253'} />
-                        </svg>
-                      </span>
-                    </div>
-                    <div>
-                      <h3 className="font-serif text-[25px] font-medium text-ink mb-3">{item.title}</h3>
-                      <p className="text-[14px] leading-[1.7] text-slate font-medium">{item.copy}</p>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-
-            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={VIEWPORT} transition={{ duration: 0.6, ease: EASE }} className="bg-card border border-line rounded-2xl p-7 lg:p-8">
-              <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 mb-7">
-                <div>
-                  <p className="text-[12px] font-bold uppercase tracking-widest text-copper mb-3">People and Platforms Mentioned</p>
-                  <h3 className="font-serif text-[30px] md:text-[38px] font-medium text-ink tracking-[-0.02em]">India opportunity network</h3>
-                </div>
-                <p className="max-w-[380px] text-[12px] leading-[1.6] text-slate/75 font-medium lg:text-right">
-                  Included for member discussion only. Official materials, risks, tax treatment, and suitability should guide any investment decision.
-                </p>
-              </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {indiaLeaders.map(([name, role]) => (
-                  <div key={name} className="bg-pearl border border-line rounded-xl p-5">
-                    <p className="font-serif text-[21px] font-medium text-ink mb-2">{name}</p>
-                    <p className="text-[13px] leading-[1.65] text-slate font-medium">{role}</p>
-                  </div>
-                ))}
               </div>
             </motion.div>
           </div>
