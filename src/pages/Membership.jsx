@@ -72,31 +72,79 @@ const accessPortfolio = [
     label: 'Pre-IPO Technology',
     title: 'SpaceX',
     copy: 'Private-market exposure members may be able to review through curated access vehicles and partner relationships.',
+    logo: 'portfolio-logos/spacex.svg',
+    logoAlt: 'SpaceX logo',
+    logoSize: 'wide',
   },
   {
     label: 'Pre-IPO AI',
     title: 'Anthropic',
     copy: 'Potential exposure to leading artificial intelligence infrastructure through select private-market opportunities.',
+    logo: 'portfolio-logos/anthropic.svg',
+    logoAlt: 'Anthropic logo',
   },
   {
     label: 'Pre-IPO AI',
     title: 'OpenAI',
     copy: 'Member review access may include private-company exposure to foundational AI platforms when capacity is available.',
+    logo: 'portfolio-logos/openai.png',
+    logoAlt: 'OpenAI logo',
+    logoSize: 'wide',
   },
   {
     label: 'India Venture',
     title: '108 Capital / Ecosystem Ventures',
     copy: 'India-focused venture exposure through early-stage and growth-stage manager relationships.',
+    logo: 'portfolio-logos/108-capital.png',
+    logoAlt: '108 Capital logo',
+    logoSize: 'square',
   },
   {
     label: 'India Public Markets',
     title: 'Whitespace Alpha',
     copy: 'SEBI-registered Category III AIF strategies across bonds, equities, derivatives, and benchmark indices.',
+    logo: 'portfolio-logos/whitespace-alpha.png',
+    logoAlt: 'Whitespace Alpha logo',
+    logoSize: 'compact',
   },
   {
     label: 'Impact Platform',
     title: 'ISF Junicorns',
     copy: 'A rural youth entrepreneurship platform connected to mentorship, innovation camps, scholarships, and measurable impact.',
+    logo: 'portfolio-logos/junicorn.png',
+    logoAlt: 'Junicorn logo',
+    logoSize: 'wide',
+  },
+  {
+    label: 'India Consumer Brand',
+    title: "Sid's Farm",
+    copy: 'Premium dairy company delivering fresh, pure, minimally processed milk and dairy products through an integrated farm-to-doorstep supply chain.',
+    logo: 'portfolio-logos/sids-farm-mark.png',
+    logoAlt: "Sid's Farm logo",
+    logoSize: 'square',
+  },
+  {
+    label: 'India Opportunity',
+    title: 'Earthscape',
+    copy: 'Potential India opportunity under review for members as part of the private-market pipeline.',
+    logo: 'portfolio-logos/earthscape.png',
+    logoAlt: 'Earthscape logo',
+    logoSize: 'compact',
+  },
+  {
+    label: 'Private Opportunity',
+    title: 'Zero Pearl',
+    copy: 'Potential private-market opportunity under review for members.',
+    logo: 'portfolio-logos/zero-pearl.png',
+    logoAlt: 'Zero Pearl logo',
+    logoSize: 'compact',
+  },
+  {
+    label: 'India Consumer Tech',
+    title: 'Swiggy',
+    copy: 'Potential India consumer-technology opportunity under review, subject to official terms and availability.',
+    logo: 'portfolio-logos/swiggy.svg',
+    logoAlt: 'Swiggy logo',
   },
 ];
 
@@ -118,6 +166,15 @@ const faqs = [
     a: 'No. They are examples of the types of companies, managers, and platforms members may review. Members should review official materials, risks, valuations, and suitability before making any investment decision.',
   },
 ];
+
+const logoSrc = (path) => `${import.meta.env.BASE_URL}${path.replace(/^\//, '')}`;
+
+const logoSizeClasses = {
+  wide: 'max-h-20 max-w-[84%]',
+  square: 'h-24 w-auto max-w-[58%]',
+  compact: 'h-20 w-auto max-w-[72%]',
+  default: 'max-h-20 max-w-full',
+};
 
 function FeeCard({ label, value, note }) {
   return (
@@ -157,6 +214,9 @@ function FAQAccordion({ items }) {
 }
 
 export default function Membership() {
+  const [showAllPortfolio, setShowAllPortfolio] = React.useState(false);
+  const visiblePortfolio = showAllPortfolio ? accessPortfolio : accessPortfolio.slice(0, 6);
+
   React.useEffect(() => {
     const scrollToTarget = (targetId) => {
       const target = document.getElementById(targetId);
@@ -284,38 +344,85 @@ export default function Membership() {
         </div>
       </section>
 
-      <section id="private-deals" className="scroll-mt-24 py-[90px] lg:py-[120px] bg-deep-slate text-deep-slate-text border-b border-line">
+      <section id="private-deals" className="scroll-mt-24 py-[90px] lg:py-[120px] bg-[#f8fafc] text-[#111827] border-b border-line">
         <div className="max-w-[1440px] mx-auto px-6 w-full">
           <div className="max-w-[1240px] mx-auto">
-            <SectionHeading eyebrow="Access" title="Portfolio" subtitle="A consolidated view of private-company, fund-manager, public-market, and impact-platform opportunities members can evaluate through Beyond." className="mb-9" />
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-7">
-              {accessPortfolio.map((item, i) => (
+            <motion.div
+              initial={{ opacity: 0, y: 18 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={VIEWPORT}
+              transition={{ duration: 0.65, ease: EASE }}
+              className="text-center mx-auto max-w-[760px] mb-10"
+            >
+              <div className="flex items-center justify-center gap-4 mb-4">
+                <span className="w-8 h-[1px] bg-copper" />
+                <span className="text-[12px] font-bold tracking-widest text-[#b45309] uppercase">Access</span>
+                <span className="w-8 h-[1px] bg-copper" />
+              </div>
+              <h2 className="font-serif text-[36px] md:text-[48px] font-medium text-[#111827] tracking-[-0.02em] leading-[1.2]">
+                Portfolio
+              </h2>
+              <p className="mt-6 text-[16px] text-[#475569] font-medium leading-[1.7]">
+                A consolidated view of private-company, fund-manager, public-market, and impact-platform opportunities members can evaluate through Beyond.
+              </p>
+            </motion.div>
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 mb-7">
+              {visiblePortfolio.map((item, i) => (
                 <motion.article
                   key={item.title}
                   initial={{ opacity: 0, y: 16 }}
                   whileInView={{ opacity: 1, y: 0 }}
+                  whileHover={{ scale: 1.025, y: -4 }}
                   viewport={VIEWPORT}
                   transition={{ duration: 0.45, ease: EASE, delay: i * 0.03 }}
-                  className="border border-deep-slate-text/10 bg-deep-slate-text/5 rounded-xl p-5 min-h-[205px]"
+                  className="group overflow-hidden border border-[#e2e8f0] bg-white rounded-2xl min-h-[390px] flex flex-col shadow-[0_16px_40px_rgba(15,23,42,0.08)] transition-all duration-300 hover:border-[#f59e0b] hover:shadow-[0_20px_48px_rgba(245,158,11,0.16)]"
                 >
-                  <p className="text-[11px] font-bold uppercase tracking-wider text-copper mb-4">{item.label}</p>
-                  <h3 className="font-serif text-[25px] font-medium mb-3">{item.title}</h3>
-                  <p className="text-[13px] leading-[1.65] text-deep-slate-text/70 font-medium">{item.copy}</p>
+                  <div className="h-36 bg-[#f8fafc] border-b border-[#e2e8f0] flex items-center justify-center px-8">
+                    {item.logo ? (
+                      <img src={logoSrc(item.logo)} alt={item.logoAlt || `${item.title} logo`} className={`${logoSizeClasses[item.logoSize] || logoSizeClasses.default} object-contain`} />
+                    ) : (
+                      <span className="inline-flex items-center justify-center rounded-xl px-5 py-4 text-center text-[18px] font-black uppercase tracking-wider bg-deep-slate text-deep-slate-text">
+                        {item.logoText || item.title}
+                      </span>
+                    )}
+                  </div>
+                  <div className="p-5 flex-1 flex flex-col">
+                    <p className="text-[11px] font-bold uppercase tracking-wider text-[#b45309] mb-3">{item.label}</p>
+                    <h3 className="font-serif text-[26px] font-medium mb-4 text-[#111827]">{item.title}</h3>
+                    <p className="text-[14px] leading-[1.7] text-[#475569] font-medium">{item.copy}</p>
+                    <span className="mt-auto pt-7">
+                      <span className="inline-flex w-full h-11 items-center justify-center rounded-lg bg-[#0f172a] text-white text-[13px] font-bold transition-all duration-300 group-hover:bg-[#f59e0b] group-hover:text-[#111827]">
+                        Potential Opportunity
+                      </span>
+                    </span>
+                  </div>
                 </motion.article>
               ))}
             </div>
 
-            <motion.div initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={VIEWPORT} transition={{ duration: 0.55, ease: EASE }} className="border border-copper/25 bg-copper/5 rounded-xl p-5">
+            {accessPortfolio.length > 6 && (
+              <div className="flex justify-center mb-10">
+                <button
+                  type="button"
+                  onClick={() => setShowAllPortfolio((current) => !current)}
+                  className="inline-flex h-12 items-center justify-center rounded-lg border border-[#f59e0b]/50 bg-[#0f172a] px-7 text-[14px] font-bold text-white shadow-[0_10px_24px_rgba(15,23,42,0.08)] transition-all duration-300 hover:border-[#f59e0b] hover:bg-[#f59e0b] hover:text-[#111827] hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f59e0b]"
+                >
+                  {showAllPortfolio ? 'Show Less' : 'View More Opportunities'}
+                </button>
+              </div>
+            )}
+
+            <motion.div initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={VIEWPORT} transition={{ duration: 0.55, ease: EASE }} className="border border-[#e2e8f0] bg-white rounded-xl p-5 shadow-[0_14px_32px_rgba(15,23,42,0.06)]">
               <div className="grid grid-cols-1 lg:grid-cols-[0.85fr_1.15fr] gap-5">
                 <div>
                   <p className="text-[11px] font-bold uppercase tracking-wider text-copper mb-2">How participation works</p>
-                  <h3 className="font-serif text-[26px] font-medium mb-3">Members review, opt in, and indicate interest.</h3>
+                  <h3 className="font-serif text-[26px] font-medium mb-3 text-[#111827]">Members review, opt in, and indicate interest.</h3>
                 </div>
                 <div>
-                  <p className="text-[14px] font-semibold leading-[1.65] mb-2">
+                  <p className="text-[14px] font-semibold leading-[1.65] mb-2 text-[#334155]">
                     For private and pre-IPO opportunities, members can opt in and suggest the amount they may want to invest.
                   </p>
-                  <p className="text-[12px] leading-[1.6] text-deep-slate-text/55">
+                  <p className="text-[12px] leading-[1.6] text-[#64748b]">
                     Final participation depends on official terms, availability, accreditation, documentation, risk review, and suitability. These examples are not investment advice, return guarantees, or offers to sell securities.
                   </p>
                 </div>
