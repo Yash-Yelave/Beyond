@@ -21,7 +21,7 @@ const pages = {
       },
       {
         title: 'India Opportunities',
-        copy: 'India-focused conversations may include VC funds, hedge fund strategies, macro education, and impact channels connected to Junicorns.',
+        copy: 'India-focused conversations may include VC funds, hedge fund strategies, macro education, and founder networks connected to Junicorns.',
       },
     ],
     note: 'These are examples for member discussion only. They are not guarantees of access, performance, or recommendations to invest.',
@@ -95,7 +95,7 @@ const pages = {
     eyebrow: 'Impact Allocation',
     title: 'Where Membership Fees Create Impact',
     status: 'Transparent model',
-    intro: 'Approximately 50% of membership fees support operations and the development of the Junicorns Platform, the philanthropic initiative connected to Beyond.',
+    intro: 'Approximately 50% of membership fees support operations, member resources, and the development of the Junicorns Platform.',
     sections: [
       {
         title: 'Operations support',
@@ -107,7 +107,7 @@ const pages = {
       },
       {
         title: 'Visible impact',
-        copy: 'Beyond keeps the impact side of Infinity Forum clear so members can see how wealth creation, learning, and giving back connect.',
+        copy: 'Beyond helps members see how wisdom, opportunity, wealth creation, and giving back can work together.',
       },
     ],
     note: 'Impact allocation details may evolve as operations, programming, and platform needs are finalized.',

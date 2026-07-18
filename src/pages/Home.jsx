@@ -6,9 +6,9 @@ const EASE = [0.25, 0.1, 0.25, 1];
 const VIEWPORT = { once: true, margin: '-80px' };
 
 const principles = [
-  ['Impact first', 'Beyond is focused on the philanthropic and entrepreneurial impact side of the Infinity Forum vision.'],
-  ['Built for students', 'The work supports the Junicorns Platform, helping rural students learn how to become successful entrepreneurs.'],
-  ['Connected to capital', 'Members can connect wealth, learning, and investing conversations to practical long-term impact.'],
+  ['WISDOM', 'Learn the right way to think through perspective, education, and conversations with people who have built meaningful success.'],
+  ['BEYOND', 'Apply that wisdom through investments, relationships, private opportunities, business growth, and innovative resources.'],
+  ['IMPACT', 'Create lasting wealth, significance, and legacy through families, communities, mentorship, and purpose-driven work.'],
 ];
 
 function Principle({ title, copy, index }) {
@@ -38,13 +38,22 @@ export default function Home() {
             <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, ease: EASE }}>
               <div className="flex items-center gap-4 mb-4">
                 <span className="w-8 h-[1px] bg-copper" />
-                <span className="text-[12px] font-bold tracking-widest text-slate uppercase">Impact Initiative of Infinity Forum</span>
+                <span className="text-[12px] font-bold tracking-widest text-slate uppercase">Infinity Forum | Beyond Vision</span>
               </div>
               <h1 className="font-serif text-[46px] md:text-[72px] font-medium text-ink tracking-[-0.02em] leading-[1.05] mb-8 max-w-[880px]">
-                Beyond is where Infinity Forum turns wealth into impact.
+                Where{' '}
+                <a
+                  href="https://infinityforum.club"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-copper hover:text-forest transition-colors"
+                >
+                  wisdom
+                </a>{' '}
+                becomes opportunity.
               </h1>
               <p className="text-[17px] lg:text-[20px] text-slate font-medium leading-[1.75] max-w-[720px] mb-10">
-                Beyond focuses on the impact part of Infinity Forum: supporting entrepreneurial education, rural student opportunity, and giving members a clear way to connect wealth creation with giving back.
+                Beyond transforms wisdom into opportunity through exclusive access, meaningful relationships, and innovative resources for members ready to execute.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link to="/membership" className="inline-flex items-center justify-center bg-forest text-card px-8 h-[52px] rounded-lg font-semibold text-[15px] hover:bg-forest-hover transition-colors shadow-sm">
@@ -81,10 +90,10 @@ export default function Home() {
             <motion.div initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={VIEWPORT} transition={{ duration: 0.55, ease: EASE }}>
               <div className="flex items-center gap-4 mb-4">
                 <span className="w-8 h-[1px] bg-copper" />
-                <span className="text-[12px] font-bold tracking-widest text-slate uppercase">Why Beyond Exists</span>
+                <span className="text-[12px] font-bold tracking-widest text-slate uppercase">The Member Journey</span>
               </div>
               <h2 className="font-serif text-[36px] md:text-[48px] font-medium text-ink tracking-[-0.02em] leading-[1.2]">
-                The impact layer needs its own home.
+                Learn the thinking. Apply it. Build what lasts.
               </h2>
             </motion.div>
 
@@ -101,10 +110,10 @@ export default function Home() {
         <div className="max-w-[980px] mx-auto px-6 text-center">
           <p className="text-[12px] font-bold tracking-widest text-slate uppercase mb-4">Next Step</p>
           <h2 className="font-serif text-[36px] md:text-[48px] font-medium text-ink tracking-[-0.02em] leading-[1.2] mb-6">
-            The details live on the membership page.
+            See how membership works.
           </h2>
           <p className="text-[16px] text-slate font-medium leading-[1.7] max-w-[620px] mx-auto mb-10">
-            The membership page explains how Beyond connects the broader Infinity Forum membership structure to impact, member benefits, and the application process.
+            The membership page explains the access, portfolio examples, resources, advisor support, and application process for Beyond members.
           </p>
           <Link to="/membership" className="inline-flex items-center justify-center bg-forest text-card px-8 h-[52px] rounded-lg font-semibold text-[15px] hover:bg-forest-hover transition-colors shadow-sm">
             Go to Membership

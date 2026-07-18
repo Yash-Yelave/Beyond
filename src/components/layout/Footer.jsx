@@ -29,7 +29,7 @@ export default function Footer() {
               Beyond
             </Link>
             <p className="text-[14px] text-deep-slate-text/60 leading-[1.8] max-w-[360px]">
-              The impact-focused side of the Infinity Forum vision.
+              Where Infinity Forum wisdom becomes opportunity.
             </p>
           </div>
 

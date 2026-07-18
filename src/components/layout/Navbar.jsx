@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
+import { scrollToElementId } from '../../utils/smoothScroll';
 
 const EASE = [0.25, 0.1, 0.25, 1];
 
 const navLinks = [
   { label: 'Home',       to: '/' },
   { label: 'Membership', to: '/membership' },
+  { label: 'About',      to: '/about' },
   { label: 'Contact',    to: '/contact' },
 ];
 
@@ -44,6 +46,7 @@ const MenuIcon = ({ open }) => (
 
 export default function Navbar() {
   const { pathname } = useLocation();
+  const navigate = useNavigate();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -57,6 +60,17 @@ export default function Navbar() {
   useEffect(() => { setMobileOpen(false); }, [pathname]);
 
   const isActive = (to) => to === '/' ? pathname === '/' : pathname.startsWith(to);
+  const goToMembershipForm = (event) => {
+    event.preventDefault();
+    setMobileOpen(false);
+
+    if (pathname.startsWith('/membership')) {
+      scrollToElementId('membership-form');
+      return;
+    }
+
+    navigate('/membership', { state: { scrollTo: 'membership-form' } });
+  };
 
   return (
     <>
@@ -68,7 +82,7 @@ export default function Navbar() {
           scrolled ? 'bg-pearl/90 backdrop-blur-md border-b border-line' : 'bg-transparent'
         }`}
       >
-        <div className="max-w-[1440px] mx-auto px-6 h-[72px] flex items-center justify-between gap-6">
+        <div className="max-w-[1440px] mx-auto px-6 h-[72px] flex items-center justify-between gap-6 relative">
 
           {/* Brand */}
           <Link to="/" className="text-ink font-serif font-medium text-[22px] tracking-tight shrink-0 hover:opacity-80 transition-opacity">
@@ -76,7 +90,7 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop nav */}
-          <nav className="hidden lg:flex items-center gap-10">
+          <nav className="hidden lg:flex items-center gap-10 absolute left-1/2 -translate-x-1/2">
             {navLinks.map((l) => (
               <NavLink key={l.to} {...l} active={isActive(l.to)} />
             ))}
@@ -92,7 +106,8 @@ export default function Navbar() {
             </Link>
             <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
               <Link
-                to="/membership"
+                to="/membership#membership-form"
+                onClick={goToMembershipForm}
                 className="inline-flex items-center justify-center border border-forest/30 text-forest hover:border-forest hover:bg-forest/5 h-[42px] px-6 rounded-lg font-semibold text-[13px] transition-all duration-200"
               >
                 Apply
@@ -148,7 +163,7 @@ export default function Navbar() {
                 initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }}
                 className="border-t border-line mt-6 pt-8 flex flex-col gap-4"
               >
-                <Link to="/membership" onClick={() => setMobileOpen(false)}
+                <Link to="/membership#membership-form" onClick={goToMembershipForm}
                   className="w-full inline-flex items-center justify-center bg-forest text-card h-[48px] rounded-lg font-semibold text-[14px] transition-all duration-200">
                   Apply for Membership
                 </Link>
